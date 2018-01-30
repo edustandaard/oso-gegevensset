@@ -1,20 +1,15 @@
-Release notes bij OSO technische bestanden versie 1.2.2 van 20151119:
-De bestanden "OSO Codelijsten" en "Validatie XSLT" zijn gewijzigd. 
+Release notes bij OSO technische bestanden versie 2016.1.3 van 20170102.
+In deze release zijn de bestanden "OSO gegevensset XSD", "OSO Codelijsten" en "Validatie XSLT" gewijzigd.
+Verschillen tussen deze en voorgaande versie van XSD en XSLT zijn weergegeven in de meegeleverde PATCH-bestanden: "OSO_gegevensset.xsd.patch" en "ValideerOSOprofielen.xsl.patch". Deze bestanden kunnen worden gebruikt om de bestanden om te zetten met behulp van de applicatie Patch.
 
 Deze aanpassing betreft:
-1) Nieuwe code "Nvt" bij codelijst 39. Soort arrangement; omdat dit veld "Soort arrangement" verplicht is en het gegeven niet meer benodigd is richting DUO
-
+1) De restrictie van het veld "Toetsscore" is opgerekt naar 0 t/m 1000 om de scores van alle eindtoetsen te kunnen bevatten (was 50 t/m 550).
+2) Alle codelijsten  bij eindtoetsresultaat zijn uit het XSD gehaald en in bestand "OSO Codelijsten" toegevoegd.
+3) De validaties van deze eindtoets codelijsten 42 t/m 47 zijn toegevoegd aan "Validatie XSLT"
+4) De verplichting van 31 juli bij TLV einddatum is opgeheven; d.w.z. de typering van dit veld is aangepast en de validatie controleert hier niet meer op.
 
 ---
-Eerdere aanpassingen
+Eerdere aanpassingen in versie 2016.1
+2016.1.2: Het bijlagedocument (leerlingrapport) bij eindtoetsresultaat is optioneel gemaakt in XSD (conform de afspraak)
+2016.1.1: Technische bestanden bij nieuwe versie 2016.1 van afspraak OSO Gegevensset
  
-In versie 1.2.2 van 20150716 zijn codelijsten en XSLT gewijzigd:
-1) Nieuwe code "Nvt" bij codelijst 31. TLV Bekostigingscategorie
-2) Nieuwe code "NAZ" bij codelijst 11. Referentiescore
-
-In versie 1.2.2 van 20150529 zijn codelijsten en XSLT gewijzigd:
-1) Nieuwe code "LA" bij codelijst 11. Referentiescores
-2) Business rule OS.T01 (verplichting minimaal 1 toetsresultaat in po-vo-overstap) is vervallen (was voorheen minimaal de eindtoets)
-3) business rule OS.L04 gewijzigd naar "Het adres of adresbuitenland is verplicht indien adres niet geheim is"
-
-In versie 1.2.1 van 20150302 zijn codelijsten, XSLT en XSD gewijzigd.
