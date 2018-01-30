@@ -1,13 +1,13 @@
-<?xml version="1.0"?>
-<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+<?xml version="1.0" encoding="UTF-8"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/dossier">
   <metadata>
     <deeldossier>LASLVS</deeldossier>
     <pakketnaam>LeerlingInZicht</pakketnaam>
     <pakketversie>1</pakketversie>
-    <datum>2017-03-02</datum>
+    <datum>2018-01-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
-    <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <standaardversie>2018.1</standaardversie>
+    <validatieversie>2018.1.1</validatieversie>
     <categorie_uitlevering>
       <cat_metadata>VERPLICHT</cat_metadata>
       <cat_ouderinzage>VERPLICHT</cat_ouderinzage>
@@ -113,7 +113,7 @@
     <naamdirecteur>P. de Haan</naamdirecteur>
     <website>www.osotestschool.nl</website>
     <leerling>
-      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Björn</voornaam>
       <voornaam>Johannes</voornaam>
       <voornaam>Martinus</voornaam>
       <voornaam>Franciscus</voornaam>
@@ -219,7 +219,7 @@
         </communicatie>
       </communicatielijst>
       <gba>
-        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Björn</gbavoornaam>
         <gbavoornaam>Johannes</gbavoornaam>
         <gbavoornaam>Martinus</gbavoornaam>
         <gbavoornaam>Franciscus</gbavoornaam>
@@ -497,7 +497,7 @@
           <tlvcategorie>L</tlvcategorie>
           <!-- tlvbeschikkingsnummer geen vast format meer. 123456-2015-00013 -->
           <tlvbeschikkingsnummer>55667788abcd</tlvbeschikkingsnummer>
-          <tlveinddatum>2017-07-31</tlveinddatum>
+          <tlveinddatum>2018-07-31</tlveinddatum>
         </tlv>
         <arrangement>
           <arrangement_datum>2015-01-28</arrangement_datum>
@@ -1075,7 +1075,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
           <lwoo_ingangdatum>2016-05-04</lwoo_ingangdatum>
           <lwoo_swvnummer>98229</lwoo_swvnummer>
           <lwoo_beschikkingsnummer>OND/ODS-2014/38325 U</lwoo_beschikkingsnummer>
-          <lwoo_einddatum>2017-07-31</lwoo_einddatum>
+          <lwoo_einddatum>2018-07-31</lwoo_einddatum>
         </lwoo>
         <upw>
           <upwingangdatum>2006-05-04</upwingangdatum>
@@ -1299,7 +1299,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
       <eindtoets_basisonderwijs>
         <eindtoetsresultaat>
           <toetssoort>0011</toetssoort>
-          <toetsniveau>B</toetsniveau>
+          <toetsniveau>S</toetsniveau>
           <toetsomschrijving>Centrale eindtoets (CET)</toetsomschrijving>
           <datum_afname>2015-04-28</datum_afname>
           <wettelijke_ontheffing>N</wettelijke_ontheffing>
@@ -1918,6 +1918,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geslacht>1</geslacht>
         <!--codelijst 41 7=Biologische moeder-->
         <relatietotkind>7</relatietotkind>
+        <overleden>false</overleden>
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
       <verzorger>
@@ -1927,6 +1928,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geboortedatum>1943-10-28</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>5</relatietotkind>
+        <overleden>true</overleden>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
@@ -1937,6 +1939,8 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geboortedatum>1938-06-12</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>3</relatietotkind>
+        <overleden>true</overleden>
+        <overlijdensdatum>2017-05-01</overlijdensdatum>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>

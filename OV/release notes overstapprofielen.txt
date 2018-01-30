@@ -1,16 +1,24 @@
-Release notes bij Overstapprofielen technische bestanden versie 2017.1 van 20170308.
+Release notes bij Overstapprofielen technische bestanden versie 2018.1 van 20180115.
 In deze release zijn de bestanden "OSO gegevensset XSD", "OSO Codelijsten" en "Validatie XSLT" gewijzigd.
 
-Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2017.1_xxx.xml"). 
+Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2018.1_xxx.xml"). 
 
 Deze aanpassing betreft:
+1) Nieuwe velden <overleden> en <overlijdensdatum> binnen <verzorger> toegevoegd, inclusief validatie van BR bij <overlijdensdatum>
+2) Validatie van inperking in waarden bij codelijst 43 aangepast
+3) Validatie van actuele versie 2018.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
+
+
+---
+
+Eerdere aanpassingen in versie 2017.1
+2017.1.1 van 20180102: Deze aanpassing betreft:
 1) Nieuwe SWV-profielen toegevoegd: nieuwe codelijst 48, nieuwe waarden bij codelijst 16 en 29
 2) Nieuwe blok "categorie_uitlevering" binnen metadata toegevoegd
 3) Validatie toegevoegd dat bij selectief uitleveren in het geval van OPT-UIT ook werkelijk alle gegevens uit deze categorie ontbreken
 4) Nieuwe XSLT toegevoegd t.b.v. validatie van de SWV-profielen, waarbij de validatie van de codelijsten en OPT-UIT wordt hergebruikt in validatie Overstapprofielen XSLT en validatie SWV PaO profielen XSLT
 5) Herrangschikking van elementen in XSD en toevoeging van documentatie aan XSD, zonder wijzigingen in de werking
 
----
 Eerdere aanpassingen in versie 2016.1
 2016.1.3 van 20170104: Deze aanpassing betreft:
 1) Eindtoetsresultaat om de resultaten van de nieuwe eindtoetsen voor het schooljaar 2016-2017 mogelijk te maken:

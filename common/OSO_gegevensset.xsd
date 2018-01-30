@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Wijzigingen in afgelopen jaren: 
+	 20180102 Eerste concept release van versie 2018.1, inclusief wijzigingen:
+	 			versienummer van de namespace aangepast naar "2018" (i.p.v. "2017")
+	 			uitbreiding met velden <overleden> en <overlijdensdatum> blok <verzorger> t.b.v. overleden ouders. 
 	 20170308 Eerste officiele release van versie 2017.1, inclusief wijzigingen:
 	 			versienummer van de namespace aangepast naar "2017" (i.p.v. "2016")
 	 			uitbreiding met optioneel blok "Categorie uitlevering" t.b.v. selectief uitleveren. 
@@ -17,11 +20,6 @@
 	 20150302 gegevensblok "afgenomendoor" uit het blok "eindtoets" verwijderd
      20150216 namespace hernoemd en veld "niveau_eindtoets" binnen eindtoets_basisonderwijs toegevoegd.
 	 20150126 blokken "arrangement", "opp", "verblijf_opdc" en "eindtoets_basisonderwijs" en velden "motivatie_herzienadvies" en "toestemming" toegevoegd.
-	 20140530 veld "iban" toegevoegd en typering van veld "tijd" gewijzigd van integer naar decimal
-     20140519 verplichting van 2 velden m.b.t. lgf (lgfcvinummer en lgfbrincode) verwijderd zodat deze velden optioneel zijn conform afspraak
-              validatie van nog 5 velden met codelijst (akkoord, lgfindicatierec, rvcindicatie, examenuitslag en beoordelingexamenvak) verplaatst van XSD naar XSLT
-     20140509 enumeratie en restricties van velden met codelijst verwijderd; validatie van codelijsten nu in XSLT
-     20140221 van element "voadviesduoType" is de typering veranderd van integer naar string 
      
      *** algemene indeling van de documentatie ***
 	<xs:annotation>
@@ -30,7 +28,7 @@
 		<xs:documentation source="wijzigingen">Wijzigingshistorie</xs:documentation>
 	</xs:annotation>
 -->
-<xs:schema xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/dossier" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.edustandaard.nl/oso_gegevensset/2018/dossier" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <!-- DOSSIER -->
   <xs:element name="dossier" type="dossierType"/>
   <xs:complexType name="dossierType">
@@ -2604,6 +2602,21 @@
               <xs:documentation source="implementatie">Dit veld heeft waarde uit codelijst 41 “Relatie tot kind” in bestand “OSO codelijsten”, zoals 1 (=Vader), 2 (=Moeder) en 3
 								(=Voogd)</xs:documentation>
               <xs:documentation source="wijzigingen">20160120 Dit veld heeft sinds versie 2016.1 een waarde uit codelijst</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!-- 20180102 Dit blok toegevoegd -->
+          <xs:element name="overleden" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">De indicatie of deze verzorger overleden is.</xs:documentation>
+              <xs:documentation source="wijzigingen">20180102 Dit veld is ingevoerd in versie 2018.1</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!-- 20180102 Dit blok toegevoegd -->
+          <xs:element name="overlijdensdatum" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">De datum van overlijden van de verzorger (dit veld heeft alleen betekenis indien de waarde van voorgaande veld "Överleden?" true is).</xs:documentation>
+              <xs:documentation source="implementatie">Formaat: EEJJ-MM-DD of EEJJ-MM of EEJJ</xs:documentation>
+              <xs:documentation source="wijzigingen">20180102 Dit veld is ingevoerd in versie 2018.1</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="wettigevertegenwoordiger" type="xs:boolean">

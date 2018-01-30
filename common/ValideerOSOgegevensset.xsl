@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180115: Validatie van BR OG.04 bij veld <overlijdensdatum> toegevoegd -->
+<!-- 20180102: Eerste comcept release voor Validatie van OSO Gegevensset versie 2018.1, inclusief wijzigingen:
+				Validatie van veld <standaardversie> gewijzigd
+				Validatie van codelijsten aangepast: codelijsten 43 (Niveau eindtoets) -->
 <!-- 20170308: Eerste officiele release voor Validatie van OSO Gegevensset versie 2017.1, inclusief wijzigingen:
 				Validatie toegevoegd dat bij selectief uitleveren in het geval van OPT-UIT ook werkelijk alle gegevens uit deze categorie ontbreken 
 				Validatie van codelijsten aangepast: codelijsten 16 (soort overstap/dossier), 29 (soort overdracht)
@@ -15,7 +19,7 @@
 <!-- 20140519: validatie van 4 velden met codelijst (akkoord, lgfindicatierec, rvcindicatie, examenuitslag en beoordelingexamenvak) toegevoegd, na verwijdering uit XSD -->
 <!-- 20140509: validatie van veel gegevensvelden met codelijsten (enumeraties) toegevoegd, na verwijdering uit XSD -->
 <!--           validatie van veld Herzien VO advies (herzienadvies) toegevoegd -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2018/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
   <xsl:template match="/">
     <meldingen>
@@ -401,9 +405,10 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetsniveau> binnen <eindtoets_basisonderwijs> conform codelijst 43. Niveau eindtoets -->
+      <!-- 20180102: Validatie ingeperkt tot 1 code "S" -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetsniveau">
-        <xsl:if test="not(text()='B') and not(text()='N') and not(text()='S') and not(text()='E') ">
+        <xsl:if test="not(text()='S')">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Toetsniveau' binnen het blok 'Eindtoets basisonderwijs' bevat een waarde die niet voorkomt in codelijst 43.</xsl:with-param>
           </xsl:call-template>
@@ -574,7 +579,7 @@
       <!-- ________________________________________________________________________________________ -->
       <!--                              Validatie van veldwaarden                                   -->
       <!-- ________________________________________________________________________________________ -->
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OG.01 -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.01 -->
       <!-- e-mail format controle van veld "nummer" binnen "communicatie" (zie Tabel A.6): 
 				Formaat AN  4…256 (karakterset afkomstig van basistype)Reguliere expressie
 				Beschrijving controles: 
@@ -609,17 +614,18 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OG.02 -->
-      <!-- Veld "standaardversie" binnen "metadata" heeft waarde "2017.1" -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.02 -->
+      <!-- Veld <standaardversie> binnen <metadata> heeft waarde "2018.1" -->
       <!-- Is de waarde van veld dossier.metadata.standaardversie conform afspraak -->
+      <!-- 201801020: Validatie van deze veldwaarde gewijzigd -->
       <xsl:for-each select="/descendant::*/od:metadata/od:standaardversie">
-        <xsl:if test="not(text()='2017.1')">
+        <xsl:if test="not(text()='2018.1')">
           <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'Versienummer van standaard' bevat een waarde die niet gelijk is aan de verplichte waarde "2017.1".</xsl:with-param>
+            <xsl:with-param name="tekst">Het veld 'Versienummer van standaard' bevat een waarde die niet gelijk is aan de verplichte waarde "2018.1".</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OG.03 -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.03 -->
       <!-- lwoo einddatum format controle van veld "lwoo_einddatum" binnen "lwoo" (zie Tabel A.20): 
 				Formaat "EEJJ-07-31"
 				reguliere expressie: "[0-9][0-9][0-9][0-9]-07-31" -->
@@ -631,10 +637,25 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.04 -->
+      <!-- Gegevensveld "Overlijdensdatum van ouders/verzorgers" is alleen toegestaan indien is overleden (overleden heeft waarde “true”). -->
+      <!-- 20180115 volgende regel toegevoegd -->
+      <xsl:for-each select="/descendant::*/od:verzorger">
+        <xsl:if test="not(od:overleden) and (od:overlijdensdatum) ">
+          <xsl:call-template name="melding">
+            <xsl:with-param name="tekst">De gegevens over ouder/verzorger mogen geen overlijdensdatum bevatten wanneer het kenmerk van overlijden ontbreekt.</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="(od:overleden='false') and (od:overlijdensdatum) ">
+          <xsl:call-template name="melding">
+            <xsl:with-param name="tekst">De gegevens over ouder/verzorger mogen geen overlijdensdatum bevatten wanneer kenmerk van overlijden anders aangeeft.</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:for-each>
       <!-- ________________________________________________________________________________________ -->
       <!--                              Validatie van Categorie velden wanneer uitgezet             -->
       <!-- ________________________________________________________________________________________ -->
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_metadata -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_metadata -->
       <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_metadata='OPT-UIT') and (//od:dossier/od:metadata))">
@@ -647,7 +668,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens over de overdracht uit de categorie "Metadata" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_ouderinzage -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_ouderinzage -->
       <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_ouderinzage='OPT-UIT') and (//od:dossier/od:inzage))">
@@ -655,7 +676,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Ouderinzage" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_oudersverzorgers -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_oudersverzorgers -->
       <!-- Gegevens van categorie "Ouders/Verzorgers" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:verzorgersaansprakelijk))">
@@ -673,7 +694,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen aansprakelijke instelling gegevens bevatten uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_vve -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_vve -->
       <!-- Gegevens van categorie "VVE" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regels toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:vanpeuterspeelzaal))">
@@ -696,7 +717,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen Vroegschoolse educatie gegevens uit de categorie "VVE" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_schoolloopbaan -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_schoolloopbaan -->
       <!-- Gegevens van categorie "Schoolloopbaan" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_schoolloopbaan='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:schoolloopbaanlijst))">
@@ -704,7 +725,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Schoolloopbaan" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_overstapadvies -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_overstapadvies -->
       <!-- Gegevens van categorie "Overstapadvies" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_overstapadvies='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:overstapadvies))">
@@ -712,7 +733,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Overstapadvies" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_zorgenbegeleiding -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_zorgenbegeleiding -->
       <!-- Gegevens van categorie "Zorg en Begeleiding" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regels toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_zorgenbegeleiding='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:zorg))">
@@ -725,7 +746,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gevevens over SE functioneren uit de categorie "Zorg en Begeleiding" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_verzuim -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_verzuim -->
       <!-- Gegevens van categorie "Verzuim" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_verzuim='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:verzuim))">
@@ -733,7 +754,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Verzuim" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_eindtoetsbo -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_eindtoetsbo -->
       <!-- Gegevens van categorie "Eindtoets bo" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_eindtoetsbo='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:eindtoets_basisonderwijs))">
@@ -741,7 +762,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Eindtoets bo" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_toetsresultaten -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_toetsresultaten -->
       <!-- Gegevens van categorie "Toetsresultaten" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_toetsresultaten='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:toetslijst))">
@@ -749,7 +770,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Toetsresultaten" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_handelingsplannen -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_handelingsplannen -->
       <!-- Gegevens van categorie "Handelingsplannen" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:handelingsplanlijst))">
@@ -757,7 +778,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Handelingsplannen" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_cijferlijsten -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_cijferlijsten -->
       <!-- Gegevens van categorie "Cijferlijsten" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_cijferlijsten='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:cijferlijstlijst))">
@@ -765,7 +786,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Cijferlijsten" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_vombo -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_vombo -->
       <!-- Gegevens van categorie "Cijferlijsten" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regels toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:bevorderd))">
@@ -803,7 +824,7 @@
           <xsl:with-param name="tekst">Een dossier mag geen Overige VO-MBO gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2017.1, business rule OS.cat_bijlagedocs -->
+      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_bijlagedocs -->
       <!-- Gegevens van categorie "Bijlagedocumenten" zijn verboden wanneer uitgezet in dossier -->
       <!-- 20170308 volgende regel toegevoegd -->
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_bijlagedocs='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:overigdocumentlijst))">

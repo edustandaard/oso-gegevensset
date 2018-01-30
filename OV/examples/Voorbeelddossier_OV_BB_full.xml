@@ -1,37 +1,37 @@
-<?xml version="1.0"?>
-<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+<?xml version="1.0" encoding="UTF-8"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/dossier">
   <metadata>
     <deeldossier>LASLVS</deeldossier>
     <pakketnaam>LeerlingInZicht</pakketnaam>
     <pakketversie>1</pakketversie>
-    <datum>2017-03-02</datum>
+    <datum>2018-01-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
-    <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <standaardversie>2018.1</standaardversie>
+    <validatieversie>2018.1.1</validatieversie>
     <categorie_uitlevering>
       <cat_metadata>VERPLICHT</cat_metadata>
-      <cat_ouderinzage>VERPLICHT</cat_ouderinzage>
+      <cat_ouderinzage>OPTIONEEL</cat_ouderinzage>
       <cat_school>VERPLICHT</cat_school>
       <cat_leerling>VERPLICHT</cat_leerling>
-      <cat_oudersverzorgers>VERPLICHT</cat_oudersverzorgers>
-      <cat_vve>VERBODEN</cat_vve>
-      <cat_schoolloopbaan>VERPLICHT</cat_schoolloopbaan>
-      <cat_overstapadvies>VERPLICHT</cat_overstapadvies>
-      <cat_zorgenbegeleiding>VERPLICHT</cat_zorgenbegeleiding>
-      <cat_verzuim>OPT-UIT</cat_verzuim>
-      <cat_eindtoetsbo>OPT-UIT</cat_eindtoetsbo>
-      <cat_toetsresultaten>OPT-UIT</cat_toetsresultaten>
-      <cat_handelingsplannen>OPT-UIT</cat_handelingsplannen>
-      <cat_cijferlijsten>OPT-UIT</cat_cijferlijsten>
-      <cat_vombo>VERBODEN</cat_vombo>
-      <cat_bijlagedocs>OPT-UIT</cat_bijlagedocs>
+      <cat_oudersverzorgers>OPTIONEEL</cat_oudersverzorgers>
+      <cat_vve>OPTIONEEL</cat_vve>
+      <cat_schoolloopbaan>OPTIONEEL</cat_schoolloopbaan>
+      <cat_overstapadvies>OPTIONEEL</cat_overstapadvies>
+      <cat_zorgenbegeleiding>OPTIONEEL</cat_zorgenbegeleiding>
+      <cat_verzuim>OPTIONEEL</cat_verzuim>
+      <cat_eindtoetsbo>OPTIONEEL</cat_eindtoetsbo>
+      <cat_toetsresultaten>OPTIONEEL</cat_toetsresultaten>
+      <cat_handelingsplannen>OPTIONEEL</cat_handelingsplannen>
+      <cat_cijferlijsten>OPTIONEEL</cat_cijferlijsten>
+      <cat_vombo>OPTIONEEL</cat_vombo>
+      <cat_bijlagedocs>OPTIONEEL</cat_bijlagedocs>
     </categorie_uitlevering>
-    <!--codelijsat 16: POVO-->
+    <!--codelijst 16: OVERIG -->
     <overstap>POVO</overstap>
   </metadata>
   <!-- codelijst 29 overdrachtsoort: overdrachtbinnenbrin of overstapdossier -->
-  <overdrachtsoort>overstapdossier</overdrachtsoort>
-  <!--inzage niet verpliocht bij overdrachtbinnenbrin-->
+  <overdrachtsoort>overdrachtbinnenbrin</overdrachtsoort>
+  <!--inzage niet verplicht bij overdrachtbinnenbrin-->
   <inzage>
     <voorlopigdossier>false</voorlopigdossier>
     <inzage>true</inzage>
@@ -113,7 +113,7 @@
     <naamdirecteur>P. de Haan</naamdirecteur>
     <website>www.osotestschool.nl</website>
     <leerling>
-      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Björn</voornaam>
       <voornaam>Johannes</voornaam>
       <voornaam>Martinus</voornaam>
       <voornaam>Franciscus</voornaam>
@@ -219,7 +219,7 @@
         </communicatie>
       </communicatielijst>
       <gba>
-        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Björn</gbavoornaam>
         <gbavoornaam>Johannes</gbavoornaam>
         <gbavoornaam>Martinus</gbavoornaam>
         <gbavoornaam>Franciscus</gbavoornaam>
@@ -240,7 +240,33 @@
       <!-- codelijst 10: nnca-->
       <nnca>1</nnca>
       <tehuis>false</tehuis>
-      <verzorgersaansprakelijk>true</verzorgersaansprakelijk>
+      <verzorgersaansprakelijk>false</verzorgersaansprakelijk>
+      <aansprakelijkeinstelling>
+        <naam>De Zonnestraal</naam>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Loosduinsehoofdstraat</straat>
+            <nummer>599</nummer>
+            <toevoeging>a</toevoeging>
+            <!--<aanduiding>TO</aanduiding>
+                        <locatieomschrijving>Blokker</locatieomschrijving>-->
+            <postcode>2552AE</postcode>
+            <plaats>Den Haag</plaats>
+            <gemeente>'s Gravenhage</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>overig</aanduiding>
+            <nummer>0704400433</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+      </aansprakelijkeinstelling>
       <overstapadvies>
         <!-- codelijst 2: advies vo -->
         <!-- 40: VMBO GL -->
@@ -262,6 +288,7 @@
       </overstapadvies>
       <vanpeuterspeelzaal>true</vanpeuterspeelzaal>
       <naampeuterspeelzaal>De Triangel</naampeuterspeelzaal>
+      <!-- voorschools en vroegschools alleen in POPO -->
       <schoolloopbaanlijst>
         <schoolloopbaan>
           <schooljaar>2006-2007</schooljaar>
@@ -1248,6 +1275,553 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         </document>
         <toelichtingsef>Lees goed wat wat er in de rapporten staat.</toelichtingsef>
       </sefunctioneren>
+      <verzuim>
+        <dagdelengeoorloofd>12</dagdelengeoorloofd>
+        <dagdelenongeoorloofd>2</dagdelenongeoorloofd>
+        <urengeoorloofd>3</urengeoorloofd>
+        <urenongeoorloofd>6</urenongeoorloofd>
+        <meerdan25percent>false</meerdan25percent>
+        <frequentie>2</frequentie>
+        <contactleerplicht>true</contactleerplicht>
+        <rmcmelding>true</rmcmelding>
+        <documentLijst>
+          <document>
+            <bestandsnaam>verzuimrapport.txt</bestandsnaam>
+            <omschrijving>Hierin staat hoe vaak de leelring verzuimd
+                            heeft.</omschrijving>
+            <bestandsinhoud>UEsDBAoAAAAAAHOCG0eFuZbPOAAAADgAAAASAAAAdmVyenVpbXJhcHBvcnQudHh0ZGl0IGlz
+                            IGRlIHZlcnp1aW1iaWpsYWdlDQoNCmRlIGxlZXJsaW5nIHdhcyB2YWFrIGFmd2V6aWdQSwEC
+                            PwAKAAAAAABzghtHhbmWzzgAAAA4AAAAEgAkAAAAAAAAACAAAAAAAAAAdmVyenVpbXJhcHBv
+                            cnQudHh0CgAgAAAAAAABABgAWqAGZ9Pg0AE4UgZn0+DQAThSBmfT4NABUEsFBgAAAAABAAEA
+                            ZAAAAGgAAAAAAA==</bestandsinhoud>
+          </document>
+        </documentLijst>
+      </verzuim>
+      <eindtoets_basisonderwijs>
+        <eindtoetsresultaat>
+          <toetssoort>0011</toetssoort>
+          <toetsniveau>S</toetsniveau>
+          <toetsomschrijving>Centrale eindtoets (CET)</toetsomschrijving>
+          <datum_afname>2015-04-28</datum_afname>
+          <wettelijke_ontheffing>N</wettelijke_ontheffing>
+          <standaardscore>525</standaardscore>
+          <toets_advies>Kaderberoepsgerichte leerweg</toets_advies>
+          <onderdelen>
+            <onderdeel>
+              <onderdeelcode>8000</onderdeelcode>
+              <!-- De unieke code voor een onderdeel van de eindtoets. Let op, originele waardebereik ingeperkt tot 8000 (Taal) of 8001 (Rekenen). -->
+              <onderdeelomschrijving>Nederlandse taal</onderdeelomschrijving>
+              <!--<ond_referentieniveau>01</ond_referentieniveau>-->
+              <ond_referentieniveau>03</ond_referentieniveau>
+              <!-- 1S -->
+              <domeinen>
+                <domein>
+                  <domeincode>8050</domeincode>
+                  <!--De unieke code voor een domein. Let op, originele waardebereik ingeperkt tot 8050 (Lezen) of 8051 (Taalverzorging).-->
+                  <domeinomschrijving>Nederlandse taal -
+                                        Lezen</domeinomschrijving>
+                  <dom_referentieniveau>01</dom_referentieniveau>
+                </domein>
+                <domein>
+                  <domeincode>8051</domeincode>
+                  <domeinomschrijving>Nederlandse taal -
+                                        Taalverzorging</domeinomschrijving>
+                  <dom_referentieniveau>01</dom_referentieniveau>
+                  <!-- Lager dan 1F -->
+                </domein>
+              </domeinen>
+            </onderdeel>
+            <onderdeel>
+              <onderdeelcode>8001</onderdeelcode>
+              <!-- De unieke code voor een onderdeel van de eindtoets. Let op, originele waardebereik ingeperkt tot 8000 (Taal) of 8001 (Rekenen). -->
+              <onderdeelomschrijving>Rekenen</onderdeelomschrijving>
+              <ond_referentieniveau>04</ond_referentieniveau>
+              <!-- 2F -->
+            </onderdeel>
+          </onderdelen>
+        </eindtoetsresultaat>
+        <deelgenomen>true</deelgenomen>
+        <document>
+          <bestandsnaam>citouitslag.jpg</bestandsnaam>
+          <omschrijving>leerlingrapport van CITO</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIAPRcWkh5ePa/Xx8AAMIjAAAPAAAAY2l0b3VpdHNsYWcuanBnxVgFVFRPF380
+                        SshSIiUsoTRLtyKwgKSEIOmyLN1LSYrUEiLdoYAg3SDpHyWlpBtBkG6QEIVvia/jnO+c75zv
+                        wbydN/c3v3vnzn13Zt7Z2NksQPIQqggFMDAAAAP9B5zNYVDKuVuaAYCiIjuADwAANgDBwATw
+                        0DUpdOFD18nRv3LoIn7V/gRdLIOxz7sDT4HLS90SDkPCAD5eiJAYL58YnxADBCLGL4r+/7MI
+                        FwAi8QBsNJaXj48XK/KStxhdMF9fct1H37Cu6oPognNVX0AXhmxMgBH9+/FS3T8qEhETEAVg
+                        MFEIgk/UzIwfwssHgQvzi/LDTM34YDATEX4TQTMImh3ABK5sgPDyYpBc8rviom24qsucC4Fz
+                        v2COWjg7O4jx8NghuWGm9iYIbri9LY87zIEHws3LA0jcc3eAwa0RzgwmCHNLO0nwVv0HMIOl
+                    </bestandsinhoud>
+        </document>
+      </eindtoets_basisonderwijs>
+      <toetslijst>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>DREM8</eldtoetscode>
+            <leergebied>technisch lezen</leergebied>
+            <toetsnaam>Drempelonderzoek 678 2010 Technisch lezen</toetsnaam>
+            <!--<toetsversie></toetsversie>-->
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2015-04-10</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <dl>0</dl>
+            <afgenomendoor>
+              <naammedewerker>Mevr. de Graaf</naammedewerker>
+              <functie>leerkracht</functie>
+            </afgenomendoor>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>15</aantalgoed>
+            </toetsscore>
+            <referentiescore>
+              <!--codelijst 11: DQ=Didactisch Quotient-->
+              <codereferentiescore>DQ</codereferentiescore>
+              <!--codelijst 22: Landelijk-->
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>60</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>D</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <document>
+              <bestandsnaam>drem8.jpg</bestandsnaam>
+              <omschrijving>drempelonderzoek technisch lezen</omschrijving>
+              <bestandsinhoud>UEsDBBQAAAAIAF1jWkjbNCaur6wAAEG3AAAJAAAAZHJlbTguanBn7FtlUJxNEn5hgSW4Bvcl
+                                wOIWFrcPD27BWRZ315AggQR3CAR3dydACMETCO4WCBogeIKE23znUld1v66u6npr5u2Z7nmm
+                                p2fqrd2pZ+/m7tYAAmV5JXkABQUAUJAf4G6dIVHO184aAJSUoAAmAABoAC8KKgBGahLIwofU
+                                SZBPOWQR/VO/AbLYvUD7NRwwRxY8pKJhh4B7wAE+Ht6HIjx8InwP6Xl/1SKCQn82YQBAPBhA
+                                Q/rz8PHxgOL/iFuNLKi5f8RqRlagP+kSyAr9T/omstAXogIMyOc74Hf5x4n4Rfj4AAtrOA/M
+                            </bestandsinhoud>
+            </document>
+          </resultaat>
+          <opmerking>Leerling was zenuwachtig voor de toets.</opmerking>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>NIO2004</eldtoetscode>
+            <!--<leergebied></leergebied>-->
+            <toetsnaam>NIO: Nederlandse Intelligentietest voor Onderwijsniveau,
+                            2004</toetsnaam>
+            <!--<toetsversie></toetsversie>-->
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2016-01-03</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <!--<dl></dl>-->
+            <afgenomendoor>
+              <naammedewerker>Mevr. M. Smit</naammedewerker>
+              <functie>orthopedagoog</functie>
+              <werktbijinstelling>
+                <instelling>
+                  <naam>Orthopedagogisch centrum Smit</naam>
+                  <adreslijst>
+                    <adres>
+                      <soortadres>bezoek</soortadres>
+                      <straat>Burgemeester Reigerstraat</straat>
+                      <nummer>55</nummer>
+                      <!-- <toevoeging></toevoeging>
+                                            <aanduiding></aanduiding>
+                                            <locatieomschrijving></locatieomschrijving> -->
+                      <postcode>3581KM</postcode>
+                      <plaats>Utrecht</plaats>
+                      <gemeente>Utrecht</gemeente>
+                      <land omschrijving="Nederland">6030</land>
+                    </adres>
+                  </adreslijst>
+                  <communicatielijst>
+                    <communicatie>
+                      <soort>telefoon</soort>
+                      <aanduiding>werk</aanduiding>
+                      <nummer>0302542890</nummer>
+                      <geheim>false</geheim>
+                      <noodnummer>false</noodnummer>
+                    </communicatie>
+                  </communicatielijst>
+                </instelling>
+              </werktbijinstelling>
+            </afgenomendoor>
+          </afname>
+          <resultaat>
+            <!--<toetsscore>
+                            <aantalopgaven>0</aantalopgaven>
+                            <aantalgoed>0</aantalgoed>
+                            <aantalfout>0</aantalfout>
+                            <aantalgelezen>0</aantalgelezen>
+                            <tijd>0</tijd>
+                            <vaardigheidsscore>0</vaardigheidsscore>
+                            <codevaardigheidsschaal>codevaardigheidsschaal0</codevaardigheidsschaal>
+                            <betrouwbaarheidsinterval>
+                                <bivlaag>0</bivlaag>
+                                <bivhoog>0</bivhoog>
+                            </betrouwbaarheidsinterval>
+                        </toetsscore>-->
+            <referentiescore>
+              <codereferentiescore>IQ</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>97</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>RW2006-12-155</eldtoetscode>
+            <leergebied>rekenen</leergebied>
+            <toetsnaam>Rekenen-Wiskunde 2006 ( jaar van uitgave groep 3/4)</toetsnaam>
+            <toetsversie>B8-digi S(B)O</toetsversie>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2015-10-23</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <!--<dl></dl>-->
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>51</aantalgoed>
+              <vaardigheidsscore>90</vaardigheidsscore>
+              <codevaardigheidsschaal>110</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>B</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>IV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>III</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>FN</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>RNTRM</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <!-- test of de waarde < goed wordt getoond/geïmporteerd -->
+              <waarde>1F</waarde>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>40</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CAE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>C</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CIV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>II</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>BLZ07-20-138</eldtoetscode>
+            <leergebied>begrijpend lezen</leergebied>
+            <toetsnaam>Begrijpend lezen 2007( jaar van uitgave groep 3/4)</toetsnaam>
+            <toetsversie>M8-digi S(B)O</toetsversie>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2014-01-19</afnamedatum>
+            <jaargroep>7</jaargroep>
+            <dl>25</dl>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>36</aantalgoed>
+              <vaardigheidsscore>103</vaardigheidsscore>
+              <codevaardigheidsschaal>118</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>C</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>IV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>III</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>FN</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>RNTRM</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>2S</waarde>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>60</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CAE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>D</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CIV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>IV</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>WISC3NL2005</eldtoetscode>
+            <leergebied>IQ</leergebied>
+            <toetsnaam>WISC-III NL: Nederlandse bewerking van de Wechsler Intelligence
+                            Scale for Children, 2002/2005 Verkorte versie zonder subtest 11 en 13
+                            toegestaan</toetsnaam>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2016-01-10</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <dl>25</dl>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>36</aantalgoed>
+              <vaardigheidsscore>103</vaardigheidsscore>
+              <codevaardigheidsschaal>118</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>IQ</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>114</waarde>
+              <kwalificatie>geen kwalificatie</kwalificatie>
+            </referentiescore>
+            <document>
+              <bestandsnaam>WISC3NL2005.txt</bestandsnaam>
+              <omschrijving>WISC3NL2005</omschrijving>
+              <bestandsinhoud>UEsDBAoAAAAAADxtjkhtqwZyCwAAAAsAAAAPAAAAV0lTQzNOTDIwMDUudHh0V0lTQzNOTDIw
+                                MDVQSwECPwAKAAAAAAA8bY5IbasGcgsAAAALAAAADwAkAAAAAAAAACAAAAAAAAAAV0lTQzNO
+                                TDIwMDUudHh0CgAgAAAAAAABABgAh5gxpUKW0QFD/DClQpbRAUP8MKVCltEBUEsFBgAAAAAB
+                                AAEAYQAAADgAAAAAAA==</bestandsinhoud>
+            </document>
+          </resultaat>
+          <toetsonderdeel>
+            <eldonderdeelcode>WISC3NL2005V</eldonderdeelcode>
+            <onderdeelnaam>WISC-III NL Verbaal</onderdeelnaam>
+            <resultaat>
+              <toetsscore>
+                <aantalopgaven>100</aantalopgaven>
+                <aantalgoed>80</aantalgoed>
+                <aantalfout>20</aantalfout>
+                <aantalgelezen>100</aantalgelezen>
+                <tijd>50</tijd>
+                <vaardigheidsscore>2</vaardigheidsscore>
+                <codevaardigheidsschaal>ABC</codevaardigheidsschaal>
+                <betrouwbaarheidsinterval>
+                  <bivlaag>60</bivlaag>
+                  <bivhoog>140</bivhoog>
+                </betrouwbaarheidsinterval>
+              </toetsscore>
+              <referentiescore>
+                <codereferentiescore>IQ</codereferentiescore>
+                <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+                <waarde>108</waarde>
+                <kwalificatie>geen kwalificatie</kwalificatie>
+              </referentiescore>
+              <document>
+                <bestandsnaam>WISC-III NL Verbaal.txt</bestandsnaam>
+                <omschrijving>WISC-III NL Verbaal</omschrijving>
+                <bestandsinhoud>UEsDBAoAAAAAAFJsjkjPePYiEwAAABMAAAAXAAAAV0lTQy1JSUkgTkwgVmVyYmFhbC50eHRX
+                                    SVNDLUlJSSBOTCBWZXJiYWFsUEsBAj8ACgAAAAAAUmyOSM949iITAAAAEwAAABcAJAAAAAAA
+                                    AAAgAAAAAAAAAFdJU0MtSUlJIE5MIFZlcmJhYWwudHh0CgAgAAAAAAABABgAH9dFnkGW0QG5
+                                    7ESeQZbRAbnsRJ5BltEBUEsFBgAAAAABAAEAaQAAAEgAAAAAAA==</bestandsinhoud>
+              </document>
+            </resultaat>
+          </toetsonderdeel>
+          <toetsonderdeel>
+            <eldonderdeelcode>WISC3NL2005P</eldonderdeelcode>
+            <onderdeelnaam>WISC-III NL Performaal</onderdeelnaam>
+            <resultaat>
+              <toetsscore>
+                <aantalopgaven>80</aantalopgaven>
+                <aantalgoed>73</aantalgoed>
+                <aantalfout>7</aantalfout>
+                <aantalgelezen>80</aantalgelezen>
+                <tijd>30</tijd>
+                <vaardigheidsscore>2</vaardigheidsscore>
+                <codevaardigheidsschaal>ABC</codevaardigheidsschaal>
+                <betrouwbaarheidsinterval>
+                  <bivlaag>60</bivlaag>
+                  <bivhoog>140</bivhoog>
+                </betrouwbaarheidsinterval>
+              </toetsscore>
+              <referentiescore>
+                <codereferentiescore>IQ</codereferentiescore>
+                <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+                <waarde>125</waarde>
+                <kwalificatie>geen kwalificatie</kwalificatie>
+              </referentiescore>
+              <document>
+                <bestandsnaam>WISC-III NL Performaal.txt</bestandsnaam>
+                <omschrijving>WISC-III NL Performaal</omschrijving>
+                <bestandsinhoud>UEsDBAoAAAAAAFtsjkgLxdr7FgAAABYAAAAaAAAAV0lTQy1JSUkgTkwgUGVyZm9ybWFhbC50
+                                    eHRXSVNDLUlJSSBOTCBQZXJmb3JtYWFsUEsBAj8ACgAAAAAAW2yOSAvF2vsWAAAAFgAAABoA
+                                    JAAAAAAAAAAgAAAAAAAAAFdJU0MtSUlJIE5MIFBlcmZvcm1hYWwudHh0CgAgAAAAAAABABgA
+                                    sIHLqUGW0QGOM8upQZbRAY4zy6lBltEBUEsFBgAAAAABAAEAbAAAAE4AAAAAAA==</bestandsinhoud>
+              </document>
+            </resultaat>
+          </toetsonderdeel>
+          <opmerking>WISC afgenomen omdat verzorgers een IQ-test wilden</opmerking>
+        </toets>
+      </toetslijst>
+      <handelingsplanlijst>
+        <handelingsplan>
+          <startdatum>2014-01-01</startdatum>
+          <einddatum>2016-01-01</einddatum>
+          <isgerichtop>rekenvaardigheid</isgerichtop>
+          <document>
+            <bestandsnaam>HandelingsplanRekenen.pdf</bestandsnaam>
+            <omschrijving>handelingsplan rekenen</omschrijving>
+            <bestandsinhoud>UEsDBBQAAAAIANRxWkiaB7JRzg0AAIMdAAAZAAAASGFuZGVsaW5nc3BsYW5SZWtlbmVuLnBk
+                            Zu1ZeVgTRxTnUhQBqUUED1yugkeyR24K4YoUhAgCCtbSskkWCCTZuFkkHBW01aooiOCBJ6JY
+                            WrUiFtGCnJVWUfFAa2vxAvkUsR5ttVKRboIYymH1n7Z/OF+y386b937vzXtvZnZmnIIFvjSY
+                        </bestandsinhoud>
+          </document>
+        </handelingsplan>
+      </handelingsplanlijst>
+      <cijferlijstlijst>
+        <cijferlijst>
+          <cijferlijstTypelijst>
+            <naam>Rapport 1</naam>
+            <onderdeel>
+              <naam>Geschiedenis</naam>
+              <score>
+                <waarde>10</waarde>
+                <kwalificatie>Goed</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-08</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Wiskunde</naam>
+              <score>
+                <waarde>4</waarde>
+                <kwalificatie>Onvoldoende</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-12</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Biologie</naam>
+              <score>
+                <waarde>3</waarde>
+                <kwalificatie>Onvoldoende</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-28</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <score>
+              <waarde>5.7</waarde>
+              <kwalificatie>Voldoende</kwalificatie>
+            </score>
+          </cijferlijstTypelijst>
+          <afnamedatum>2016-11-15</afnamedatum>
+          <jaargroep>11</jaargroep>
+          <periode>periode 1</periode>
+        </cijferlijst>
+        <cijferlijst>
+          <cijferlijstTypelijst>
+            <naam>Rapport 2</naam>
+            <onderdeel>
+              <naam>Geschiedenis</naam>
+              <score>
+                <waarde>6</waarde>
+                <kwalificatie>Voldoende</kwalificatie>
+              </score>
+              <afnamedatum>2016-01-08</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Wiskunde</naam>
+              <score>
+                <waarde>8</waarde>
+                <kwalificatie>Goed</kwalificatie>
+              </score>
+              <afnamedatum>2016-01-04</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Biologie</naam>
+              <score>
+                <waarde>5</waarde>
+                <kwalificatie>Matig</kwalificatie>
+              </score>
+              <afnamedatum>2015-12-12</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <score>
+              <waarde>6.3</waarde>
+              <kwalificatie>Bevorderd</kwalificatie>
+            </score>
+          </cijferlijstTypelijst>
+          <afnamedatum>2016-01-29</afnamedatum>
+          <jaargroep>11</jaargroep>
+          <periode>periode 2</periode>
+        </cijferlijst>
+      </cijferlijstlijst>
+      <overigdocumentlijst>
+        <document>
+          <bestandsnaam>groepsplan.txt</bestandsnaam>
+          <omschrijving>Groepsplan</omschrijving>
+          <bestandsinhoud>UEsDBAoAAAAAAG1+WkgMsVk+FQAAABUAAAAOAAAAZ3JvZXBzcGxhbi50eHRkaXQgaXMgaGV0
+                        IGdyb2Vwc3BsYW5QSwECPwAKAAAAAABtflpIDLFZPhUAAAAVAAAADgAkAAAAAAAAACAAAAAA
+                        AAAAZ3JvZXBzcGxhbi50eHQKACAAAAAAAAEAGADhtGQqpXDRAUhVYyqlcNEBSFVjKqVw0QFQ
+                        SwUGAAAAAAEAAQBgAAAAQQAAAAAA</bestandsinhoud>
+        </document>
+        <document>
+          <bestandsnaam>diagram.png</bestandsnaam>
+          <omschrijving>diagram leerresultaten</omschrijving>
+          <bestandsinhoud>UEsDBAoAAAAAABiAWkj3rf0a7hUAAO4VAAALAAAAZGlhZ3JhbS5wbmeJUE5HDQoaCgAAAA1J
+                        SERSAAAA4QAAAOEIAwAAAAltIkgAAAHvUExURf////8AAP//AGZm//8A//+zAP+0AP+2AP/A
+                        AP+6AP+8AP+4AP+/AP+xAP/CAKbmtKfosmNj/19f/1xc/6fzpqXpsaftrWlp/6Xvq6Xrr6b0
+                        pWFh/wAAAKDmtFpa/6fwqv//58fH//+8vKXktpfmtFpq///n////+3Nz/5/trZvqsPHx///i
+                        4qGh//+Ojvj4/5jktv/Y2P/Fxf//vYuL////zf9ra4KC///Z///s7M7O////fv8Ahv//3v//
+                    </bestandsinhoud>
+        </document>
+      </overigdocumentlijst>
       <verzorger>
         <voornaam>Pieter</voornaam>
         <voornaam>Johannes</voornaam>
@@ -1345,6 +1919,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geslacht>1</geslacht>
         <!--codelijst 41 7=Biologische moeder-->
         <relatietotkind>7</relatietotkind>
+        <overleden>false</overleden>
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
       <verzorger>
@@ -1354,6 +1929,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geboortedatum>1943-10-28</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>5</relatietotkind>
+        <overleden>true</overleden>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
@@ -1364,9 +1940,93 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geboortedatum>1938-06-12</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>3</relatietotkind>
+        <overleden>false</overleden>
+        <overlijdensdatum>2017-05-01</overlijdensdatum>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
+      <!-- De volgende dingen zijn bedoeld voor VO naar MBO -->
+      <bevorderd>
+        <!--elementcode MAVO/Theor Lw-VMBO-->
+        <elementcode>0400</elementcode>
+        <leerjaar>1</leerjaar>
+        <!--1ste leerjaar-->
+      </bevorderd>
+      <examenresultaat>
+        <soortdiploma>VMBO</soortdiploma>
+        <examenjaar>2015</examenjaar>
+        <datumuitslag>2015-06-04</datumuitslag>
+        <examenuitslag>geslaagd</examenuitslag>
+      </examenresultaat>
+      <resultaatvakkenvo>
+        <vakcode>0111</vakcode>
+        <vakleergebied>Arabische taal (oud)</vakleergebied>
+        <afgerond>false</afgerond>
+        <examenvak>false</examenvak>
+        <werkstuk>
+          <werkstuktitel>Lezen van rechts naar links.</werkstuktitel>
+          <werkstukbeoordeling>voldoende</werkstukbeoordeling>
+        </werkstuk>
+      </resultaatvakkenvo>
+      <resultaatvakkenvo>
+        <vakcode>0311</vakcode>
+        <vakleergebied>filosofie</vakleergebied>
+        <afgerond>true</afgerond>
+        <datumafgerond>2014-07-04</datumafgerond>
+        <examenvak>false</examenvak>
+        <rapportcijfer>7</rapportcijfer>
+      </resultaatvakkenvo>
+      <certificaat>Fotografie van landschappen</certificaat>
+      <certificaat>Tunisch haken</certificaat>
+      <competenties>
+        <competentiereferentie>De leerling is heel assertief en komt goed voor zichzelf
+                    op.</competentiereferentie>
+        <competentiecategorie>Assertiviteit</competentiecategorie>
+        <competentiebeschrijving>leerling heeft een test gedaan waarin assertiviteit werd
+                    aangetoond</competentiebeschrijving>
+        <competentiestatus>Uitstekend</competentiestatus>
+      </competenties>
+      <stage>
+        <begindatum>2013-03-11</begindatum>
+        <einddatum>2013-05-11</einddatum>
+        <soortstage>Maatschappelijke stage</soortstage>
+        <functierol>kantinemedewerker</functierol>
+        <instelling>
+          <naam>Verzorgingstehuis De Windroos</naam>
+          <adreslijst>
+            <adres>
+              <soortadres>bezoek</soortadres>
+              <straat>Bergstraat</straat>
+              <nummer>6</nummer>
+              <toevoeging>b</toevoeging>
+              <!--<aanduiding>BY</aanduiding>
+                            <locatieomschrijving>bos</locatieomschrijving>-->
+              <postcode>5051HC</postcode>
+              <plaats>Goirle</plaats>
+              <gemeente>Goirle</gemeente>
+              <land omschrijving="Nederland">6030</land>
+            </adres>
+          </adreslijst>
+          <communicatielijst>
+            <communicatie>
+              <soort>telefoon</soort>
+              <aanduiding>werk</aanduiding>
+              <nummer>0135315200</nummer>
+              <geheim>false</geheim>
+              <noodnummer>false</noodnummer>
+            </communicatie>
+          </communicatielijst>
+        </instelling>
+        <beoordeling>uitstekend</beoordeling>
+      </stage>
+      <overigvombo>
+        <keuzevervolgopleiding>Allround medewerker mode/maatkleding</keuzevervolgopleiding>
+        <beroepskeuzetest>true</beroepskeuzetest>
+        <portfolio>true</portfolio>
+        <pop>true</pop>
+        <motivatiebrief>true</motivatiebrief>
+        <lobdossier>true</lobdossier>
+      </overigvombo>
     </leerling>
   </huidigeschool>
 </dossier>

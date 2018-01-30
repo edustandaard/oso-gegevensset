@@ -1,13 +1,13 @@
-<?xml version="1.0"?>
-<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+<?xml version="1.0" encoding="UTF-8"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/dossier">
   <metadata>
     <deeldossier>LASLVS</deeldossier>
     <pakketnaam>LeerlingInZicht</pakketnaam>
     <pakketversie>1</pakketversie>
-    <datum>2017-03-02</datum>
+    <datum>2018-01-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
-    <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <standaardversie>2018.1</standaardversie>
+    <validatieversie>2018.1.1</validatieversie>
     <categorie_uitlevering>
       <cat_metadata>VERPLICHT</cat_metadata>
       <cat_ouderinzage>OPT-UIT</cat_ouderinzage>
@@ -104,7 +104,7 @@
     <naamdirecteur>P. de Haan</naamdirecteur>
     <website>www.osotestschool.nl</website>
     <leerling>
-      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Björn</voornaam>
       <voornaam>Johannes</voornaam>
       <voornaam>Martinus</voornaam>
       <voornaam>Franciscus</voornaam>
@@ -210,7 +210,7 @@
         </communicatie>
       </communicatielijst>
       <gba>
-        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Björn</gbavoornaam>
         <gbavoornaam>Johannes</gbavoornaam>
         <gbavoornaam>Martinus</gbavoornaam>
         <gbavoornaam>Franciscus</gbavoornaam>
@@ -540,6 +540,7 @@
         <geslacht>1</geslacht>
         <!--codelijst 41 7=Biologische moeder-->
         <relatietotkind>7</relatietotkind>
+        <overleden>false</overleden>
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
       <verzorger>
@@ -549,6 +550,7 @@
         <geboortedatum>1943-10-28</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>5</relatietotkind>
+        <overleden>true</overleden>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
@@ -559,6 +561,8 @@
         <geboortedatum>1938-06-12</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>3</relatietotkind>
+        <overleden>true</overleden>
+        <overlijdensdatum>2017-05-01</overlijdensdatum>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
       </verzorger>
