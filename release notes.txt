@@ -1,0 +1,20 @@
+Release notes bij OSO technische bestanden versie 1.2.2 van 20151119:
+De bestanden "OSO Codelijsten" en "Validatie XSLT" zijn gewijzigd. 
+
+Deze aanpassing betreft:
+1) Nieuwe code "Nvt" bij codelijst 39. Soort arrangement; omdat dit veld "Soort arrangement" verplicht is en het gegeven niet meer benodigd is richting DUO
+
+
+---
+Eerdere aanpassingen
+ 
+In versie 1.2.2 van 20150716 zijn codelijsten en XSLT gewijzigd:
+1) Nieuwe code "Nvt" bij codelijst 31. TLV Bekostigingscategorie
+2) Nieuwe code "NAZ" bij codelijst 11. Referentiescore
+
+In versie 1.2.2 van 20150529 zijn codelijsten en XSLT gewijzigd:
+1) Nieuwe code "LA" bij codelijst 11. Referentiescores
+2) Business rule OS.T01 (verplichting minimaal 1 toetsresultaat in po-vo-overstap) is vervallen (was voorheen minimaal de eindtoets)
+3) business rule OS.L04 gewijzigd naar "Het adres of adresbuitenland is verplicht indien adres niet geheim is"
+
+In versie 1.2.1 van 20150302 zijn codelijsten, XSLT en XSD gewijzigd.
