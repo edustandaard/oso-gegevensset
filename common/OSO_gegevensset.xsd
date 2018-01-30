@@ -1,0 +1,2868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wijzigingen in afgelopen jaren: 
+	 20170308 Eerste officiele release van versie 2017.1, inclusief wijzigingen:
+	 			versienummer van de namespace aangepast naar "2017" (i.p.v. "2016")
+	 			uitbreiding met optioneel blok "Categorie uitlevering" t.b.v. selectief uitleveren. 
+	 			alle elementen zijn voorzien van documentatie informatie uit het document van de afspraak, tevens herschikking van volgorde (zonder aanpassingen aan elementen)
+	 20161223 opheffen van verplichting van datum eindigend op "07-31" (31 juli) voor TLV einddatum. 
+	 20161128 codelijsten t.b.v. eindtoets eruitgehaald
+     20161128 restriction van EindtoetsStandaardscoreType opgerekt van 0 t/m 1000 (was van 50 t/m 550) 
+	 20160429 fout in verplichting van leerlingrapport hersteld (is nu optioneel conform afspraaktekst)
+	 20160223 versienummer van standaard en validatie aangepast naar <standaardversie> en <validatieversie>
+	 20160120 versienummer van de namespace aangepast naar "2016" (i.p.v. "1.2")
+	          gegevensblok "eindtoets" binnen "eindtoets_basisonderwijs" vervangen door blok "eindtoetsresultaat" conform REP
+	          veld "soort_arrangement" binnen "arrangement" verwijderd
+	          blok "lwoo" en velden "geboortemaand", "postcode4adres" en "medicijngebruik" toegevoegd
+	          verplichting van veld tlveinddatum verwijderd
+	 20150302 gegevensblok "afgenomendoor" uit het blok "eindtoets" verwijderd
+     20150216 namespace hernoemd en veld "niveau_eindtoets" binnen eindtoets_basisonderwijs toegevoegd.
+	 20150126 blokken "arrangement", "opp", "verblijf_opdc" en "eindtoets_basisonderwijs" en velden "motivatie_herzienadvies" en "toestemming" toegevoegd.
+	 20140530 veld "iban" toegevoegd en typering van veld "tijd" gewijzigd van integer naar decimal
+     20140519 verplichting van 2 velden m.b.t. lgf (lgfcvinummer en lgfbrincode) verwijderd zodat deze velden optioneel zijn conform afspraak
+              validatie van nog 5 velden met codelijst (akkoord, lgfindicatierec, rvcindicatie, examenuitslag en beoordelingexamenvak) verplaatst van XSD naar XSLT
+     20140509 enumeratie en restricties van velden met codelijst verwijderd; validatie van codelijsten nu in XSLT
+     20140221 van element "voadviesduoType" is de typering veranderd van integer naar string 
+     
+     *** algemene indeling van de documentatie ***
+	<xs:annotation>
+		<xs:documentation source="semantiek">Korte beschrijvende aanduiding en/of definitie van de betekenis</xs:documentation>
+		<xs:documentation source="implementatie">Aanwijzingen voor implementatie (of gebruik)</xs:documentation>
+		<xs:documentation source="wijzigingen">Wijzigingshistorie</xs:documentation>
+	</xs:annotation>
+-->
+<xs:schema xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <!-- DOSSIER -->
+  <xs:element name="dossier" type="dossierType"/>
+  <xs:complexType name="dossierType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Verzameling van leer- en begeleidingsgegevens van een leerling</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="metadata"/>
+      <xs:element name="overdrachtsoort" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Soort overdracht</xs:documentation>
+          <xs:documentation source="implementatie">Waarde uit Codelijst 29 in bestand "OSO codelijsten", zoals "overstapdossier" of "overdrachtbinnenbrin"</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 De restriction verwijderd; validatie van codelijst 29 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="inzage" minOccurs="0"/>
+      <xs:element ref="huidigeschool"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- ADRES -->
+  <xs:element name="adres" type="adresType"/>
+  <xs:complexType name="adresType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">De gegevens van een adres, inclusief straat, huisnummer, postcode en plaats.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="soortadres" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Soort adres</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “19. Soort adres” in bestand OSO codelijsten, zoals “bezoek”, “post” en “gba”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 19 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="straat">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De straatnaam of de postbus (als het om een postadres gaat).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nummer" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Huisnummer</xs:documentation>
+          <xs:documentation source="implementatie">Als er een waarde ingevuld is, moet deze voorkomen in combinatie met de postcode in de postcodetabel van TNT.</xs:documentation>
+          <xs:documentation source="wijzigingen">Wijzigingshistorie</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="toevoeging" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De huisnummertoevoeging wordt gebruikt als aanvulling op de straatnaam en het huisnummer, bijvoorbeeld als adres Reiger 32A is, wordt hier A
+						ingevuld.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="aanduiding" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De huisnummeraanduiding wordt alleen gebruikt als aanvulling op de straatnaam en het huisnummer. Vaak wordt dit gebruikt bij
+						woonboten.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “18. Huisnummer aanduiding” in bestand OSO codelijsten, zoals “TO” en “BY”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 18 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatieomschrijving" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De locatieomschrijving wordt alleen - indien nodig - gebruikt als aanvulling op de straatnaam en het huisnummer. Als op het adres Reiger 32A
+						een extra aanduiding nodig, is kan dat hier gebruikt worden, bijvoorbeeld: 3-hoog-achter..</xs:documentation>
+          <xs:documentation source="implementatie">Waarde is bijvoorbeeld "3-hoog-achter"</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="35"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="postcode" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De Nederlandse postcode (4 cijfers en 2 letters) of buitenlandse postcode (4 of 5 cijfers).</xs:documentation>
+          <xs:documentation source="implementatie">Geen vast formaat</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="plaats" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De woon-, bezoek- of correspondentieplaats.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gemeente" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De gemeente waar de plaats in valt.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="land" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lgba code (volgens de landenlijst van de GBA) van het land waar de plaats in valt, met attribuut voor omschrijving.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens de landenlijst van de GBA, zie ook OSO codelijsten.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="nonEmptyStringType">
+              <xs:attribute name="omschrijving" type="nonEmptyStringType" use="optional">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Omschrijving van het woonland.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- ARTS -->
+  <xs:element name="arts" type="artsType"/>
+  <xs:complexType name="artsType">
+    <xs:complexContent>
+      <xs:extension base="persoonType">
+        <xs:sequence>
+          <xs:element name="soort" type="nonEmptyStringType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- CIJFERLIJST -->
+  <xs:element name="cijferlijst">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Cijferlijst</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="cijferlijstType"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="cijferlijstType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Cijferlijst</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="cijferlijstTypelijst" type="cijferlijstTypelijstType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Details van de cijferlijst.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="afnamedatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum van cijferlijst.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="jaargroep" type="jaargroepType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Jaargroep van decijferlijst.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periode" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Periode van de cijferlijst.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cijferlijstTypelijstType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details over naam en scores van de cijferlijst.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="naam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Naam van cijferlijst.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="onderdeel" type="onderdeelType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Onderdelen van cijferlijst per onderdeel</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="score" type="scoreType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Totaalscores van cijferlijst, als waarde of kwalificatie.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="onderdeelType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details van het onderdeel (o.a. rapportcijfer) van cijferlijst.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="naam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Naam van het onderdeel van een cijferlijst, zoals “Rekenen” of "Taal".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="score" type="scoreType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Rapportcijfer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="afnamedatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Afnamedatum van het rapportcijfer</xs:documentation>
+          <xs:documentation source="wijzigingen">20111103 toegevoegd o.b.v. datadefinitie</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="jaargroep" type="jaargroepType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Jaargroep of leerjaar van het rapportcijfer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periode" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Periode van het rapportcijfer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scoreType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Score van cijferlijst of onderdeel (rapportcijfer), als waarde of kwalificatie.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="waarde" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Waarde van score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="kwalificatie" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Kwalificatie van score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- COMMUNICATIE -->
+  <xs:element name="communicatie" type="communicatieType"/>
+  <xs:complexType name="communicatieType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">De gegevens van een communicatiesoort, zoals telefoonnummer of e-mailadres.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="soort" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanduiding van soort communicatie.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “4. Communicatie soort” in bestand “OSO codelijsten", zoals “telefoon” en “e-mail”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 4 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- -->
+      <xs:element name="aanduiding" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanduiding of het communicatiemiddel (nummer dan wel e-mailadres) zakelijk of privé wordt gebruikt.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “5. Communicatie aanduiding” in bestand “OSO codelijsten”, zoals “werk”, “prive” en “overig”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 5 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nummer" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het telefoonnummer of e-mailadres.</xs:documentation>
+          <xs:documentation source="implementatie">Een e-mailadres is minimaal 4 en maximaal 256 tekens. Het teken ‘@’ is verplicht en het deel ervoor maximaal 64 tekens (cijfers, letters of
+						teken uit !#$% *+=?^_`{|}~.-). Het deel erna (domeinnaam) alleen cijfers, letters, punten en minnen. Deze voorschriften zijn conform DUO. Aanbeveling: om voor een
+						telefoonnummer alleen cijfers te gebruiken (voor een NL-nummer exact 10 cijfers en voor buitenlands nummer meer cijfers).</xs:documentation>
+          <xs:documentation source="wijzigingen">20160201 De restrictie over het formaat van een e-mailadres toegevoegd</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geheim" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of nummer wel of niet een geheim nummer is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="noodnummer" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of dit nummer een noodnummer is. Scholen hebben doorgaans bij één of twee telefoonnummers geregistreerd dat het in noodgevallen te
+						bereiken is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- DOCUMENT -->
+  <xs:element name="document" type="documentType"/>
+  <xs:complexType name="documentType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Bijlagedocument is een generiek blok.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bestandsnaam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De bestandsnaam van het document dat in het dossier als bijlage wordt meegezonden. </xs:documentation>
+          <xs:documentation source="implementatie">Omdat gebruikers van de betrokken applicaties deze bijlagedocumenten moeten kunnen inzien wordt een lijst met toegelaten bestandstypes
+						voorgeschreven. Alleen bestanden van het type PDF, JPG, PNG, DOC, DOCX, ODF, XLS, XLSX, TXT, PPT en/of PPTX zijn als bijlagedocument toegestaan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="omschrijving" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De omschrijving van de aard van het document.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bestandsinhoud" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De inhoud van het bestand. </xs:documentation>
+          <xs:documentation source="implementatie">Bijlagedocument als Base64 gecodeerd ZIP-bestand</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- EINDTOETS -->
+  <!--
+	<xs:element name="eindtoets" type="eindtoetsType"/>
+	<xs:complexType name="eindtoetsType">
+		<xs:annotation>
+			<xs:documentation source="semantiek">Eindtoets</xs:documentation>
+			<xs:documentation source="implementatie">Dit blok is gestructureerd zoals de andere toetsresultaten.</xs:documentation>
+			<xs:documentation source="wijzigingen">20160120 blok "eindtoets" inclusief eindtoetsType verwijderd nadat 20150302 gewijzigd eb 20150126 definitie blok "eindtoets" toegevoegd</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="toetsidentificatie">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="eldtoetscode" type="nonEmptyStringType">
+							<xs:annotation>
+								<xs:documentation>oso toetscodelijst</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="leergebied" type="nonEmptyStringType" minOccurs="0"/>
+						<xs:element name="toetsnaam" type="nonEmptyStringType" minOccurs="0"/>
+						<xs:element name="toetsversie" type="nonEmptyStringType" minOccurs="0"/>
+						<xs:element name="niveau_eindtoets" type="nonEmptyStringType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="afname" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="afnamedatum" type="xs:date"/>
+						<xs:element name="jaargroep" type="jaargroepType" minOccurs="0"/>
+						<xs:element name="dl" type="xs:integer" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="resultaat" minOccurs="0"/>
+			<xs:element ref="toetsonderdeel" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="opmerking" type="nonEmptyStringType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	-->
+  <!-- EINDTOETSRESULTAAT -->
+  <xs:element name="eindtoetsresultaat" type="EindtoetsToetsType"/>
+  <xs:complexType name="EindtoetsToetsType" final="extension">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details van het eindtoetsresultaat.</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 dit blok en onderliggende elementen toegevoegd; dit blok is afgeleid van gelijknamige element uit REP (d.w.z. overbodige elementen en
+				gegevenswaarden weggecommentarieerd )</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="toetssoort" type="EindtoetsToetssoortType"/>
+      <xs:element name="toetsniveau" type="EindtoetsToetsniveauType"> </xs:element>
+      <!--<xs:element name="toetstype" type="EindtoetsToetstypeType"/>-->
+      <xs:element name="toetsomschrijving" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Omschrijving van de toets.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element name="afn_awbnr" type="EindtoetsAfnAwbnrType"/>-->
+      <xs:element name="datum_afname" type="xs:date">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De datum waarop de eindtoets is afgenomen.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element name="datum_vaststelling" type="xs:date" minOccurs="0"/>-->
+      <!--<xs:element name="compleet_scoorbaar" type="EindtoetsCompleetScoorbaarType"/>-->
+      <xs:element name="wettelijke_ontheffing" type="EindtoetsWettelijkeOntheffingType" minOccurs="0"/>
+      <xs:element name="standaardscore" type="EindtoetsStandaardscoreType" minOccurs="0"/>
+      <xs:element name="toets_advies" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Toetsadvies zoals tekstueel weergegeven op het leerlingrapport</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="EindtoetsToetsAdviesType">
+            <xs:minLength value="0"/>
+            <xs:maxLength value="1024"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--<xs:element name="toets_opg_aantal" type="EindtoetsOpgAantalType" minOccurs="0"/>-->
+      <!--<xs:element name="toets_opg_goed" type="EindtoetsOpgGoedType" minOccurs="0"/>-->
+      <!--<xs:element name="toets_opg_goed_omz" type="EindtoetsOpgGoedOmzType" minOccurs="0"/>-->
+      <!--<xs:element name="toets_perc_land" type="EindtoetsPercType" minOccurs="0"/>-->
+      <xs:element name="onderdelen" type="EindtoetsOnderdelenType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Blok met resultaten per onderdeel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EindtoetsToetssoortType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Soort eindtoets.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “42. Soort eindtoets” in “OSO codelijsten”, zoals bijvoobeeld “0011” (voor CET), “0012” (voor Route 8) en “0013” (voor
+				IEP). Sinds eind 2016 zijn totaal zes eindtoetsen toegestaan.</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 42 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="EindtoetsToetsniveauType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Niveau van de eindtoets.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “43. Niveau eindtoets” in “OSO codelijsten”, zoals bijvoobeeld “B” (voor Basis) en “E” (voor
+				Eenvoudig).</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 43 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="EindtoetsWettelijkeOntheffingType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Indicatie of leerling wettelijke ontheffing heeft voor de eindtoets basisonderwijs. </xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “44. Wettelijke ontheffing eindtoets” in “OSO codelijsten”, zoals J en N voor Ja resp. Nee. Defaultwaarde is “N”: geen
+				ontheffing</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 44 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="EindtoetsStandaardscoreType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Toetsuitslag op de eindtoets als geheel in de vorm van de score.</xs:documentation>
+      <xs:documentation source="implementatie">Sinds eind 2016 is het waardebereik 0 t/m 1000 om de scores van alle toegestande eindtoetsen te kunnen bevatten.</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 restriction opgerekt van 0 t/m 1000 (was van 50 t/m 550)</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1000"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EindtoetsToetsAdviesType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Toetsadvies zoals tekstueel weergegeven op het leerlingrapport.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="EindtoetsReferentieniveauType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Referentieniveau (Meijerink) op onderdeel of domein.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “45. Eindtoets referentieniveaus” in “OSO codelijsten”, zoals “01” t/m “04” voor “Lager dan 1F”, “1F”, “1S” resp.
+				“2F”</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 45 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="EindtoetsOnderdelenType" final="extension">
+    <xs:sequence>
+      <xs:element name="onderdeel" type="EindtoetsOnderdeelType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EindtoetsOnderdeelType" final="extension">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Het resultaat van de afname van het onderdeel van de eindtoets.</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 afgeleid van gelijknamige element uit REP (d.w.z. overbodige elementen en gegevenswaarden weggecommentarieerd )</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="onderdeelcode" type="EindtoetsOnderdeelcodeType"/>
+      <xs:element name="onderdeelomschrijving" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Omschrijving van het onderdeel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element name="ond_opg_aantal" type="EindtoetsOpgAantalType"/>-->
+      <!--<xs:element name="ond_opg_goed" type="EindtoetsOpgGoedType"/>-->
+      <!--<xs:element name="ond_opg_goed_omz" type="EindtoetsOpgGoedOmzType" minOccurs="0"/>-->
+      <!--<xs:element name="ond_score" type="EindtoetsScoreType" minOccurs="0"/>-->
+      <!--<xs:element name="ond_perc_land" type="EindtoetsPercType" minOccurs="0"/>-->
+      <xs:element name="ond_referentieniveau" type="EindtoetsReferentieniveauType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Referentieniveau (Meijerink) op onderdeel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domeinen" type="EindtoetsDomeinenType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EindtoetsOnderdeelcodeType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">De unieke code voor een onderdeel van de eindtoets.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “46. Eindtoets onderdeelcode” in “OSO codelijsten”, zoals 8000 (Taal) of 8001 (Rekenen). Let op, waardebereik beperkt tot
+				onderdelen met referentieniveau(s).</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 46 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="EindtoetsDomeinenType" final="extension">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Blok met resultaten per domein.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="domein" type="EindtoetsDomeinType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Blok met resultaten van een domein.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EindtoetsDomeinType" final="extension">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Het resultaat van de afname van het domein incl subdomeinen binnen een onderdeel van de eindtoets..</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 afgeleid van gelijknamige element uit REP (d.w.z. overbodige elementen en gegevenswaarden weggecommentarieerd )</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="domeincode" type="EindtoetsDomeincodeType"/>
+      <xs:element name="domeinomschrijving" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Omschrijving van het domein.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element name="dom_opg_aantal" type="EindtoetsOpgAantalType"/>-->
+      <!--<xs:element name="dom_opg_goed" type="EindtoetsOpgGoedType" minOccurs="0"/>-->
+      <!--<xs:element name="dom_opg_goed_omz" type="EindtoetsOpgGoedOmzType" minOccurs="0"/>-->
+      <!--<xs:element name="dom_score" type="EindtoetsScoreType" minOccurs="0"/>-->
+      <xs:element name="dom_referentieniveau" type="EindtoetsReferentieniveauType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Referentieniveau (Meijerink) op domein.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--<xs:element name="subdomeinen" type="EindtoetsSubdomeinenType" minOccurs="0"/>-->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EindtoetsDomeincodeType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">De unieke code voor een domein.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde volgens codelijst “47. Eindtoets domeincode” in “OSO codelijsten”, zoals 8050 (Lezen) of 8051 (Taalverzorging). Let op, waardebereik beperkt
+				tot domeinen met referentieniveau.</xs:documentation>
+      <xs:documentation source="wijzigingen">20161128 enumeration in restriction verwijderd; validatie van codelijst 47 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <!-- HANDELINGSPLAN -->
+  <xs:element name="handelingsplan" type="handelingsplanType"/>
+  <xs:complexType name="handelingsplanType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details van een handelingsplan.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startdatum" type="xs:date">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De startdatum van het handelingsplan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="einddatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De einddatum van het handelingsplan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isgerichtop" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanduiding op welk domein, vak, vormingsgebied het handelingsplan is gericht.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="document" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Document met informatie en details over een handelingsplan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- HUIDIGESCHOOL -->
+  <xs:element name="huidigeschool" type="huidigeschoolType"/>
+  <xs:complexType name="huidigeschoolType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Schoolgegevens van de huidige school van de leerling in het dossier (inclusief leerlinggegevens).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="schoolType">
+        <xs:sequence>
+          <xs:element ref="leerling"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- INSTELLING -->
+  <xs:element name="instelling" type="instellingType"/>
+  <xs:complexType name="instellingType">
+    <xs:sequence>
+      <xs:element name="naam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De naam van de instelling/school.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="adreslijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Lijst van adressen van de instelling/school.</xs:documentation>
+          <xs:documentation source="implementatie">Bedenk dat meer dan één adres wordt afgeraden omdat de ontvangende applicatie hierop veelal niet is berekend. En het is onzeker welk adres
+						in dat geval wordt overgenomen. Ook adres van soort “gba” wordt afgeraden.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="adres" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="communicatielijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Lijst van communicatiegegevens (telefoonnummer of e-mailadres) van de instelling/school.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="communicatie" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- INZAGE -->
+  <xs:element name="inzage" type="inzageType"/>
+  <xs:complexType name="inzageType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Inzagegegevens over het dossier.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="voorlopigdossier" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanduiding of het een voorlopig dossier is. Het dossier kan in verschillende stadia (aanmelding, plaatsing en inschrijving) opgevraagd worden.
+						De status is relevant voor de opvrager. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inzage" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Hebben ouders/verzorgers inzage gehad? Met dit gegeven is voor de opvrager helder of de ouders inzage hebben gehad in het dossier. </xs:documentation>
+          <xs:documentation source="wijzigingen">20131128 veld inzage optioneel geworden voor profiel 'Overdracht binnen Brin'</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inzagedatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Met deze inzagedatum is voor de opvrager helder wanneer de ouders/verzorgers het dossier hebben ingezien.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="akkoord" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Gaan ouders/verzorgers (of leerling) akkoord met inhoud. Als de ouders/verzorgers het dossier hebben ingezien, is ook bekend of ze het al dan
+						niet eens zijn met de inhoud ervan. Let op, dit veld betreft de indicatie of ouders/verzorgers het wel of niet eens zijn met de inhoud en niet of ze het eens zijn met de
+						overdracht.</xs:documentation>
+          <xs:documentation source="implementatie">Dit veld bevat waarde volgens codelijst “37. Akkoord”, zoals "Nee", "Ja" en "Onbekend".</xs:documentation>
+          <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 37 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="redennietakkoord" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Als de ouders/verzorgers het niet eens zijn met de inhoud van dit dossier, is er hier ruimte voor een toelichting waarom zij het niet eens zijn
+						met de inhoud.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="toestemming" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Hebben de ouders/verzorgers (of de leerling zelf) toestemming gegeven voor overdracht van het dossier. Als de leerling en/of ouders/verzorgers
+						het dossier hebben ingezien, is ook bekend of ze het al dan niet hebben toegestemd in de overdracht.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “37. Akkoord”, zoals "Nee", "Ja" en "Onbekend". </xs:documentation>
+          <xs:documentation source="wijzigingen">20150126 veld "toestemming" toegevoegd</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- LEERLING -->
+  <xs:element name="leerling">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="leerlingType"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="leerlingType">
+    <xs:sequence>
+      <xs:element name="voornaam" type="nonEmptyStringType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De voornaam van de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voorletters-1" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De voorletter of voorletters van de leerling. Gebruik wel punten maar geen spaties tussen de voorletters (b.v. “Chr.Th.” of
+						“R.A.”.).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voorvoegsel" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Tussenvoegsel (tussen voor- en achternaam) van de leerling, ook wel voorvoegsel genoemd.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde is bijvoorbeeld "van der"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="achternaam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De achternaam van de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="roepnaam" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De roepnaam van de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0">
+        <xs:element name="geboortedatum" type="xs:date" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De geboortedatum van de leerling.</xs:documentation>
+            <xs:documentation source="implementatie">Formaat: EEJJ-MM-DD</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="geboortemaand" type="geboortemaandType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De anonieme geboortedatum van de leerling t.b.v. leeftijdbepaling.</xs:documentation>
+            <xs:documentation source="wijzigingen">20160120 veld "geboortemaand" toegevoegd inclusief omvattende choice statement. </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="geslacht" type="geslachtType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het geslacht van de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="adresgeheim" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of het adres wel of niet geheim is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0">
+        <xs:element name="adreslijst" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De lijst met adressen van de leerling. Container met één of meer adressen conform element Adres.</xs:documentation>
+            <xs:documentation source="implementatie">Bedenk dat meer dan één leerlingadres wordt afgeraden omdat de ontvangende applicatie hierop veelal niet is berekend. En het is onzeker
+							welk adres in dat geval wordt overgenomen.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="adres" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="postcode4adres" type="nonEmptyStringType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De anonieme postcode van de leerling t.b.v. regiobepaling. Bevat alleen de vier cijfers van de postcode van het adres. Let op, gebruik van
+							dit veld bij leerling alleen in plaats van het voorgaande veld “Adresgegevens leerling” (adreslijst).</xs:documentation>
+            <xs:documentation source="implementatie">Waarde is alleen de 4 cijfers van Nederlandse postcode van bestaand adres. </xs:documentation>
+            <xs:documentation source="wijzigingen">20160120 postcode4adres toegevoegd inclusief omvattende choice statement. </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="communicatielijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van communicatiegegevens van de leerling; container met 1 of meer elementen Communicatie.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="communicatie" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="gba" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De gegevens over de naam van de leerling volgens het GBA.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="gbavoornaam" type="nonEmptyStringType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De voornaam of voornamen van de leerling volgens GBA.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="gbavoorvoegsel" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Voorvoegsel van de leerling volgens GBA.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="gbaachternaam" type="nonEmptyStringType">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Achternaam van de leerling volgens GBA.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="gbageboortedatum">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Geboortedatum van de leerling volgens GBA.</xs:documentation>
+                <xs:documentation source="implementatie">Let op, dit veld heeft een andere datumnotatie dan alle andere datumvelden, n.l. “DD-MM-EEJJ”.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="\d{2}-\d{2}-\d{4}"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="adresbuitenland" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Buitenlands adres van de leerling.</xs:documentation>
+          <xs:documentation source="implementatie">Tekstregels van minimale lengte 1 en maximale lengte 35 (per tekstregel).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="35"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="geboorteplaats" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De geboorteplaats van de leerling.</xs:documentation>
+          <xs:documentation source="wijzigingen">20131128 veld geboorteplaats voor leerling toegevoegd</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nationaliteit" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De GBA-code van de nationaliteit van de leerling, met attribuut voor omschrijving.</xs:documentation>
+          <xs:documentation source="implementatie">gba code nationaliteit</xs:documentation>
+          <xs:documentation source="wijzigingen">20131128 veld nationaliteit voor leerling toegevoegd</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="omschrijving" type="nonEmptyStringType" use="optional">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Omschrijving van de nationaliteit, de optionele uitbreiding van het voorgaande veld nationaliteit met de
+										code.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:choice minOccurs="0">
+        <xs:element name="onderwijsnummer" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Onderwijsnummer van de leerling.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="bsn" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Burgerservicenummer van de leerling.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="leerlingid" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Unieke code van de leerling in schooladministratie (LASkey).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="onderwijssinds" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum vanaf wanneer Nederlands onderwijs wordt gevolgd.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="startdatumhuidigonderwijs" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanvangsdatum van het huidige onderwijs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="datuminschrijving" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum van eerste schooldag.</xs:documentation>
+          <xs:documentation source="wijzigingen">20111103 datuminschrijving is optioneel geworden, omdat het in de datadictionary alleen voor LAS verplicht is</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="datumuitschrijving" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum van laatste schooldag.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="teruggeplaatstnaarbrin" type="brincodeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">BRIN-nummer van school waarnaar de leerling is teruggeplaatst vanuit een WEC-school.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="leerlinggewicht" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Actuele leerlinggewicht volgens de gewichtenregeling in het basisonderwijs.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “15. Gewicht”, zoals “0.00”, “0.30” en “1.20”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 15 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nnca" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Code voor indicatie NNCA (Niet Nederlandse Culturele Achtergrond).</xs:documentation>
+          <xs:documentation source="implementatie">Waarde volgens codelijst “10. NNCA”, zoals “0” (=n.v.t.), “1” (=Nederlands) en “2” (Niet-Nederlands).</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 10 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tehuis" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">ndicatie of leerling wel of niet in tehuis woont. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="verzorgersaansprakelijk" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of verzorgers/ouders aansprakelijk zijn voor de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="aansprakelijkeinstelling" type="instellingType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Gegevens van aansprakelijke instelling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overstapadvies" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Gegevensblok over het advies. </xs:documentation>
+          <xs:documentation source="wijzigingen">20131128 gegevensblok overstapadvies is optioneel geworden, omdat alle deelelementen optioneel zijn</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="advies" type="voadviesduoType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Het advies van de school m.b.t. leerling in VO (schooladvies).</xs:documentation>
+                <xs:documentation source="wijzigingen">20111103 het type van het veld gewijzigd in een code</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="wensouders" type="voadviesduoType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">VO advies volgens ouders</xs:documentation>
+                <xs:documentation source="wijzigingen">20111103 het type van het veld gewijzigd in een code</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="wensleerling" type="voadviesduoType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">VO advies volgens leerling</xs:documentation>
+                <xs:documentation source="wijzigingen">20131128 veld wensleerling toegevoegd</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="herzienadvies" type="voadviesduoType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Het herziene schooladvies, zoals na verwerking van de resultaten van de eindtoets basisonderwijs. Alleen indien afwijkend van
+									schooladvies.</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 veld herzienadvies toegevoegd</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="motivatie_herzienadvies" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De motivatie voor herziening van het schooladvies (b.v. “Resultaten van de eindtoets basisonderwijs” of
+									“Foutherstel”.</xs:documentation>
+                <xs:documentation source="implementatie">Alleen indien voorgaande veld "Herzien VO advies" aanwezig is.</xs:documentation>
+                <xs:documentation source="wijzigingen">20150126 veld "motivatie_herzienadvies" toegevoegd</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="profiel" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Profiel dat als extra info kan worden toegevoegd.</xs:documentation>
+                <xs:documentation source="implementatie">Veld heeft waarde uit codelijst “21. Profiel” in bestand “OSO codelijsten”, zoals “basis”, “plus”, “bespreek” en
+									“disharmonisch”.</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 21 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="argumentatie" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Motivering of toelichting bij het VO advies, d.w.z. het schooladvies, het advies volgens ouders en/of het advies volgens
+									leerling.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="contactnodig" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is contact met aanleverende school nodig?</xs:documentation>
+                <xs:documentation source="wijzigingen">20131128 veld contactnodig optioneel geworden voor profiel 'Overdracht binnen Brin'</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="contactpersoon" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De naam van de persoon bij de aanleverende school, die optreedt als contactpersoon voor deze leerling.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="contacttelefoon" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Telefoonnummer van deze contactpersoon.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="contactemail" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">E-mailadres van deze contactpersoon.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="vanpeuterspeelzaal" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of leerling afkomstig is van peuterspeelzaal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="naampeuterspeelzaal" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Naam van deze peuterspeelzaal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voorschools" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Programma en deelname van voorschoolse educatie voor peuters (VVE-peuter).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="codevoorschoolsehistorie" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Code van het soort voorschool, die de leerling gevolgd heeft.</xs:documentation>
+                <xs:documentation source="implementatie">Dit veld heeft waarde uit vocabulaire volgens codelijst “7. Voorschoolse historie”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 7 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="codevoorschoolsprogramma" type="xs:integer">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Code van het VVE programma dat het kind (leeftijd 2-4 jaar) gevolgd heeft op de voorschool.</xs:documentation>
+                <xs:documentation source="implementatie">Dit veld heeft waarde uit vocabulaire volgens codelijst “9. VVE programma” in bestand “OSO codelijsten”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 9 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="voorschoolsemaanden">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Het aantal maanden dat de leerling heeft deelgenomen aan het voorschools programma.</xs:documentation>
+                <xs:documentation source="implementatie">Dit veld heeft waarde uit bereik {1, …, 24}</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                  <xs:minInclusive value="1"/>
+                  <xs:maxInclusive value="24"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="codevoorschoolsetoeleider" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Code van de instantie, die gezin heeft verwezen naar voorschool.</xs:documentation>
+                <xs:documentation source="implementatie">Waarde uit vocabulaire volgens codelijst “6. Voorschoolse toeleider” in bestand “OSO codelijsten”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 6 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="codevoorschoolsedeelname" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Code van de intensiteit van de deelname aan het voorschools programma.</xs:documentation>
+                <xs:documentation source="implementatie">Dit veld heeft waarde uit vocabulaire volgens codelijst “8. Voorschoolse deelname”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 8 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="voorschoolseaanwezigheid" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Het aantal dagdelen per week van deelname aan voorschools programma.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="vroegschools" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Programma en data van vroegschoolse educatie voor kleuters (VVE-kleuter).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="codevroegschoolsprogramma" type="xs:integer">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Code van het VVE programma dat het kind (leeftijd 4-6 jaar) gevolgd heeft op de voorschool.</xs:documentation>
+                <xs:documentation source="implementatie">Waarde volgens codelijst “9. VVE programma”, zoals veld “Code voorschools programma”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 9 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="vroegschoolsdatumingang" type="xs:date">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De startdatum van het VVE programma.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="vroegschoolseinddatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De einddatum van het VVE programma.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="schoolloopbaanlijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Historie van scholen en schooljaren van de leerling in container element met 1 of meer elementen Schoolloopbaan.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="schoolloopbaan" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="zorg" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Zorggegevens over de leerling.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="naamib" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De naam van interne begeleider die betrokken is/was bij de leerling.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="sbobeschikkingsdatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Datum waarop PCL deze beschikking heeft afgegeven voor SBO.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="wsnsnummer" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Nummer van betrokken WSNS (WSNS=Weer Samen Naar School).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="lgf" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Gegevensblok m.b.t. Leerlinggebonden financiering (LGF).</xs:documentation>
+                <xs:documentation source="implementatie">Vanaf 1-8-2014 kunnen geen LGF indicaties meer worden afgegeven en heeft dit gegevensblok LGF inclusief de deelvelden alleen
+									nog historische waarde.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="lgfdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop de CvI (Commissie voor de Indicatiestelling) een indicatie voor SO-LGF heeft
+												afgegeven.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="codelgfonderwijssoort" type="xs:integer">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De code onderwijssoort waar de leerling voor is geindiceerd (LGF).</xs:documentation>
+                      <xs:documentation source="implementatie">Waarde uit codelijst volgens codelijst “3. LGF Onderwijssoort” in bestand “OSO codelijsten”</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 3 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="lgfcvinummer" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">CvI indicatienummer voor de LGF indicatie.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140519 verplichting verwijderd; veld is optioneel</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="lgfindicatierec" type="xs:integer" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">LGF indicatie voor REC; mogelijke waarde is het clusternummer. </xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld heeft waarde uit {1, 2, 3, 4} voor visuele, auditieve, resp. motorische/verstandelijke beperkingen resp.
+												gedragsstoornis volgens codelijst “38. LGF indicatie voor REC” in bestand "OSO codelijsten"</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 38 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="lgfeinddatum" type="xs:date" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop de SO-LGF indicatie afloopt.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="lgfbrincode" type="brincodeType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het Brincode van de betrokken REC dat de indicatie heeft verstrekt.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140519 verplichting verwijderd; veld is optioneel</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="tlv" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit gegevensblok is alleen voor SO, SBO, VSO en PrO scholen en niet voor reguliere PO-scholen en VO-scholen.</xs:documentation>
+                <xs:documentation source="wijzigingen">20131128 blok tlv (toelaatbaarheidsverklaring) toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="tlvingangdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop de Toelaatbaarheidsverklaring geldig wordt.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="tlvswvnummer" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het administratienummer volgens de Basisregistratie Instellingen (BRIN) van het Samenwerkingsverband welke de
+												Toelaatbaarheidsverklaring van de leerling heeft afgegeven.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="tlvcategorie" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De aanduiding van de bekostigingscategorie van de leerling.</xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld heeft waarde volgens codelijst “31. TLV bekostigingscategorie”, zoals Nvt (=niet van toepassing), H
+												(=hoog), M (=middel) en L (=laag).</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 31 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="tlvbeschikkingsnummer" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het nummer dat door het samenwerkingsverband is afgegeven voor het registreren van de toelaatbaarheidsverklaring van de
+												leerling.</xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld is een vrij tekstveld en heeft geen vast format meer.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="tlveinddatum" type="xs:date" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De laatste datum waarop de Toelaatbaarheidsverklaring geldig is. Aanbevolen wordt bij einde schooljaar 31 juli te
+												gebruiken. Let op, dit is niet meer verplicht omdat dit niet altijd geldt. Aanbeveling: Indien einddatum bekend (SBO en S(V)O) ook
+												doorgeven.</xs:documentation>
+                      <xs:documentation source="implementatie">Aanbevolen wordt waarde volgens formaat “EEJJ-07-31” te gebruiken, dit is echter niet verplicht</xs:documentation>
+                      <xs:documentation source="wijzigingen">20161223 typering gewijzigd in xs:date (was einddatumType); 20160120 verplichting van veld "tlveinddatum" verwijderd
+												en typering toegevoegd</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="arrangement" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit blok Arrangement is alleen voor WEC scholen en niet voor reguliere scholen.</xs:documentation>
+                <xs:documentation source="wijzigingen">20150126 blok "arrangement" toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="arrangement_datum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop het arrangement is ingegaan.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <!--<xs:element name="soort_arrangement" type="nonEmptyStringType">
+										<xs:annotation>
+											<xs:documentation source="semantiek">Soort arrangement.</xs:documentation>
+											<xs:documentation source="wijzigingen">20160120 veld "soort_arrangement" verwijderd</xs:documentation>
+										</xs:annotation>
+									</xs:element>-->
+                  <xs:element name="arrangement_brin" type="brincodeType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De BRINcode van de school van inschrijving.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="arrangement_vestigingscode" type="vestigingscodeType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het vestigingsvolgnummer van de school van inschrijving. </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="opp" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit blok OPP (ontwikkelingsperspectief) is alleen voor PO-scholen.</xs:documentation>
+                <xs:documentation source="wijzigingen">20150126 blok "opp" (ontwikkelingsperspectief) toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="opp_ingangdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop het opp is ingegaan.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="opp_einddatum" type="xs:date" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop het opp is geëindigd.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element ref="document" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het document met de beschrijving en inhoud van het ontwikkelingsperspectief.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="verblijf_opdc" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit blok Verblijf OPDC (orthopedagogisch didactisch centrum) is alleen voor PO-scholen.</xs:documentation>
+                <xs:documentation source="wijzigingen">20150126 blok "verblijf_opdc" toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="opdc_ingangdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop het de plaatsing in het OPDC is ingegaan.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="opdc_einddatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop het de plaatsing in het OPDC is geëindigd.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="opdc_brin" type="brincodeType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De BRINcode van de school.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="opdc_vestigingscode" type="vestigingscodeType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De vestigingsvolgnummer van de school.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="pgbdatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Datum waarop Persoonsgebonden Budget is afgegeven.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="pgbomvang" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Omvang van het Persoonsgebonden Budget in euro’s.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="rvc" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Gegevens over Regionale Verwijs Commissie (RVC).</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="centraleproblematiek" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Centrale problematiek van leerling m.b.t. RVC</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="maatregelen" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Genomen maatregelen en resultaat.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="signaleringlwoopro">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Details over signalering LWOO (LeerWegOndersteunend Onderwijs) of PrO (PraktijkOnderwijs).</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="deelgenomenaanonderzoek" type="xs:boolean">
+                          <xs:annotation>
+                            <xs:documentation source="semantiek">Heeft leerling deelgenomen aan onderzoek LWOO of PrO?</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="leerachterstand" type="xs:boolean">
+                          <xs:annotation>
+                            <xs:documentation source="semantiek">Is er sprake van leerachterstand op 2 domeinen bij leerling?</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="lagescoreeindtoets" type="xs:boolean">
+                          <xs:annotation>
+                            <xs:documentation source="semantiek">Score van de Eindtoets van de leerling is laag?</xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="rvcdatum" type="xs:date" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Datum van beschikking door RVC.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20111103 rvcdatum en rvcindicatie zijn niet langer verplicht in de rvc</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="rvcindicatie" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">RVC indicatie</xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld heeft waarde uit {LWOO, PRO} volgens codelijst “17. RVC indicatie” in bestand “OSO
+												codelijsten”.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 17 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element ref="document" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De lijst van documenten met onderzoeksverslag.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="lwoo" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit blok Aanwijzing LWOO is alleen voor scholen die LWOO aanbieden en Aanwijzing LWOO vanuit een SWV VO hebben ontvangen. </xs:documentation>
+                <xs:documentation source="wijzigingen">20160120 blok "lwoo" toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="lwoo_ingangdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek"/>
+                      <xs:documentation source="implementatie"/>
+                      <xs:documentation source="wijzigingen"/>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="lwoo_swvnummer" type="nonEmptyStringType"/>
+                  <xs:element name="lwoo_beschikkingsnummer" type="nonEmptyStringType"/>
+                  <xs:element name="lwoo_einddatum" type="einddatumType" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="upw" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit blok Uitstroomprofiel WEC is alleen voor WEC VSO scholen en dus niet voor PO-scholen en reguliere scholen in het VO. </xs:documentation>
+                <xs:documentation source="wijzigingen">20131128 gehele blok upw (uitstroomprofiel wec) toegevoegd</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="upwingangdatum" type="xs:date">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De datum waarop leerling binnen het uitstroomprofiel is geplaatst.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="upwuitstroomprofiel" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het uitstroomprofiel van de leerling.</xs:documentation>
+                      <xs:documentation source="implementatie">Waarde is volgens codelijst “32. Uitstroomprofiel WEC”, zoals 1 (=Dagbesteding), 2 (=Arbeidsmarkt) en 3
+												(=Vervolgonderwijs)</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 32 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="upwvoelementcode" type="elementcodeType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De elementcode uit de betreffende elementcodetabel VO van DUO geeft de soort onderwijs aan binnen het
+												vo.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="upwleerjaar" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Het leerjaar waarin de leerling zit binnen het vervolgonderwijs.</xs:documentation>
+                      <xs:documentation source="implementatie">Waarde uit codelijst “34. UPW leerjaren”, zoals 1 t/m 6 (voor leerjaar 1 t/m 6)</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 34 in XSLT</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="diagnose" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Gegevens van een door derde vastgestelde diagnose.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="code" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Code van diagnose</xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld heeft waarde uit codelijst “23. Diagnosecode” in bestand “OSO codelijsten”</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 23 in XSLT; 20111103 het identificerende veld 'naam' is
+												vervangen door het veld 'code' in de diagnose. Naam is wel gebleven, maar dient nu ter aanvulling. Daarnaast is er geen vaste lijst meer, maar komen de
+												diagnoses uit de codelijst</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="naam" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Naam van diagnose</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="datum" type="xs:date" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Onderzoeksdatum</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="doorwie" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Persoon die diagnose heeft vastgesteld.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="instantie" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Instantie waarbij deze persoon werkt.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="onderwijsbelemmering" type="nonEmptyStringType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Beschrijving van onderwijsbelemmeringen van leerling; één per veld.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="sterkpunt" type="nonEmptyStringType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Beschrijving van een sterk punten van de leerling; één per veld.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="extrahulpingroep78" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Details over extra geboden hulp in groep 7 of 8.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="domein" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De hulpgebieden waarop extra hulp is geboden.</xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld heeft waarde uit codelijst “12. Domeinen” in “OSO codelijsten”</xs:documentation>
+                      <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 12 in XSLT; 20131128 VIJFTIEN waarden
+												toegevoegd</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="toelichtinghulp" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Toelichting bij de geboden hulp.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20131128 veld toelichtinghulp toegevoegd</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="voortzetten" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Moet de speciale begeleiding voortgezet worden?</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="specialebegeleiding" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is speciale begeleiding verleend?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="begeleiding" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Details van de speciale begeleiding.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="soortbegeleiding" type="nonEmptyStringType">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Welke soort begeleiding heeft plaatsgevonden.</xs:documentation>
+                      <xs:documentation source="implementatie">Bijvoorbeeld “logopedie”</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="begeleidingvoortzetten" type="xs:boolean" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Moet de speciale begeleiding voortgezet worden?</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ambulantstartdatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Startdatum van de ambulante begeleiding (AB) door een WEC school of WEC cluster. Vanaf 1-8-2014 kan geen nieuwe AB meer worden
+									uitgevoerd; na die datum heeft dit gegevensveld alleen nog historische waarde.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ambulantbrincode" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De WEC school die de ambulante begeleiding uitvoert. Vanaf 1-8-2014 kan geen nieuwe AB meer worden uitgevoerd; na die datum heeft
+									dit gegevensveld alleen nog historische waarde.</xs:documentation>
+                <xs:documentation source="implementatie">Waarde is code van 4 karakters (2 cijfers en 2 letters)</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="brincodeType"/>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="ambulantvestigingscode" type="vestigingscodeType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De school die de ambulante begeleiding uitvoert. Vanaf 1-8-2014 kan geen nieuwe AB meer worden uitgevoerd; na die datum heeft dit
+									gegevensveld alleen nog historische waarde.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="begeleidingsplanrec" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Aanduiding of er een begeleidingsplan aanwezig is als uitgangspunt voor de ambulante begeleiding. Vanaf 1-8-2014 kan geen nieuwe AB
+									meer worden uitgevoerd; na die datum heeft dit gegevensveld alleen nog historische waarde.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="vir" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Gegevens over of en reden leerling is ingevoerd in Verwijsindex risicojongeren (VIR). Let op, volgens de wet is vastleggen en
+									uitwisselen van gegevens m.b.t. VIR niet toegestaan. </xs:documentation>
+                <xs:documentation source="implementatie">Dit blok zal op termijn verdwijnen. Gebruik van dit gegevensblok en de twee velden wordt afgeraden.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ingevoerdinvir" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Indicatie of leerling is ingevoerd in Verwijsindex risicojongeren (VIR). Let op, volgens de wet is vastleggen en
+												uitwisselen van gegevens m.b.t. VIR niet toegestaan. </xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld zal op termijn verdwijnen. Gebruik van dit veld wordt afgeraden.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="reden" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Reden in Verwijsindex risicojongeren (VIR). Let op, volgens de wet is vastleggen en uitwisselen van gegevens m.b.t. VIR
+												niet toegestaan. </xs:documentation>
+                      <xs:documentation source="implementatie">Dit veld zal op termijn verdwijnen. Gebruik van dit gveld wordt afgeraden.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="zat" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Of en reden leerling is besproken in Zorg Advies Team (ZAT). Let op, uitwisseling van deze gegevens m.b.t. ZAT zonder specifieke
+									toestemming van ouders/verzorgers is niet toegestaan.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="besprokeninzat" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Indicatie of leerling is besproken in Zorg Advies Team (ZAT).</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="reden" type="nonEmptyStringType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Reden waarom leerling is besproken in Zorg Advies Team (ZAT).</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="medicijngebruik" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">s er sprake van medicijngebruik dat relevant is t.b.v. het leren.</xs:documentation>
+                <xs:documentation source="wijzigingen">20160120 veld "medicijngebruik" toegevoegd</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="artslijst" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Lijst van artsen</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element ref="arts" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="contactoverigeinstanties" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Details over instellingen en contactpersoon waarmee contact is geweest i.v.m. de leerling.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element ref="instelling" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">De naam, adres en communicatieinfo van de instelling, waarmee contact is geweest in verband met de
+												leerling.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="contactpersoon" type="persoonType" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation source="semantiek">Persoonsgegevens van die contactpersoon.</xs:documentation>
+                      <xs:documentation source="wijzigingen">20111103 contactpersoon toegevoegd</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sefunctioneren" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Een verzameling documenten en toelichting over sociaal-emotioneel functioneren van de leerling.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="document" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De verzameling documenten over het sociaal-emotioneel functioneren van de leerling die in het dossier als bijlage worden
+									meegezonden.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="toelichtingsef" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Toelichting over het sociaal-emotioneel functioneren van de leerling.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="verzuim" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Gegevens over aspecten die betrekking hebben op verzuim in de laatste 12 kalendermaanden</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dagdelengeoorloofd" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">PO aantal dagdelen geoorloofd verzuim tijdens de afgelopen 12 maanden. Een dagdeel is ochtend of middag.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="dagdelenongeoorloofd" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">PO aantal dagdelen ongeoorloofd verzuim tijdens de afgelopen 12 maanden. Een dagdeel is ochtend of middag.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="urengeoorloofd" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">VO aantal uren geoorloofd verzuim tijdens de afgelopen 12 maanden.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="urenongeoorloofd" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">VO aantal uren ongeoorloofd verzuim.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="meerdan25percent" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is het meer dan 25% van de lestijd tijdens de afgelopen 12 maanden verzuimd?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="frequentie" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Frequentie van het ongeoorloofd verzuim tijdens de afgelopen 12 maanden. Hierbij wordt iedere aparte registratie van verzuim
+									geteld.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="contactleerplicht" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft contact met leerplichtambtenaar plaats gevonden?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="rmcmelding" type="xs:boolean" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is het verzuim gemeld bij RMC?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="documentLijst" minOccurs="0">
+              <xs:complexType>
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Lijst van documenten met info over het verzuim. </xs:documentation>
+                </xs:annotation>
+                <xs:sequence>
+                  <xs:element ref="document" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="eindtoets_basisonderwijs" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De resultaten van de door de leerling afgenomen eindtoets basisonderwijs.</xs:documentation>
+          <xs:documentation source="wijzigingen">20160120 blok "eindtoets_basisonderwijs" ingrijpend gewijzigd; 20150126 blok "eindtoets_basisonderwijs" toegevoegd</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="eindtoetsresultaat" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Details van het Eindtoetsresultaat.</xs:documentation>
+                <xs:documentation source="implementatie">Let op, dit gegevensblok is afgeleid van Resultaatbericht Eindtoets PO (REP), waarbij het uitgangspunt is dat alleen DUO
+									informatie wordt doorgegeven. Hiertoe is de REP-structuur aanpast, d.z.w. bepaalde verplichte en optionele elementen worden weggelaten en soms is het waardebereik
+									aangepast.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="deelgenomen" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Indicatie of leerling heeft deelgenomen aan de eindtoets basisonderwijs.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element ref="document" maxOccurs="unbounded" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Een als bijlage toegevoegd document over het gedetailleerde eindtoetsresultaat van de leerling. </xs:documentation>
+                <xs:documentation source="wijzigingen">20160429 blok optioneel gemaakt; 20160120 blok t.b.v. het leerlingrapport toegevoegd</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="toetslijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het overzicht van de door de leerling afgenomen toetsen en diens resultaten. Alleen resultaten van landelijk-genormeerde toetsen zijn
+						toegestaan, conform bestand "OSO toetscodelijst".</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="toets" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="handelingsplanlijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van handelingsplannen m.b.t. de leerling.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="handelingsplan" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cijferlijstlijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van cijferlijsten van de leerling.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="cijferlijst" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="overigdocumentlijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van overige documenten met informatie over de leerling.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="document" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element ref="verzorger" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Lijst van ouders/verzorgers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bevorderd" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Details (code en leerjaar) over laatste bevordering.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="elementcode" type="elementcodeType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De registatiecode uit de betreffende elementcodetabel VO van DUO geeft de soort onderwijs aan binnen het vo.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="leerjaar" type="jaargroepType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Dit geeft het leerjaar aan uit de betreffende elementcodetabel VO van voorgaand veld.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="examenresultaat" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Soort diploma en jaar, datum en uitslag van examen.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="soortdiploma" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Soort diploma</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="examenjaar" type="xs:int" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Jaar waarin het examen is afgenomen.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="datumuitslag" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Datum van de uitslag van het examen.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="examenuitslag" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Uitslag van het examen.</xs:documentation>
+                <xs:documentation source="implementatie">Waarde volgens codelijst “35. Examenuitslag” in bestand “OSO codelijsten”, zoals “geslaagd”, “afgewezen” en
+									“herexamen”</xs:documentation>
+                <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 35 in XSLT</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="resultaatvakkenvo" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Details (resultaten/cijfers) van VO vakken.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vakcode" type="nonEmptyStringType">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Vakcode van het vak volgens elementcodetabel VO van DUO.</xs:documentation>
+                <xs:documentation source="implementatie">Waarde is code uit Vakcodetabel conform elementcodeltabel</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="vakleergebied" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Benaming of omschrijving van het vak.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="afgerond" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is het vak afgerond?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="datumafgerond" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Datum waarop vak is afgerond</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="examenvak" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Is het vak een examenvak?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:choice>
+              <xs:element name="beoordelingexamenvak" type="nonEmptyStringType">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Beoordeling van het examenvak als geen cijfer wordt gegeven.</xs:documentation>
+                  <xs:documentation source="implementatie">Waarde uit codelijst “36. Beoordelingexamenvak” in bestand “OSO codelijsten”, zoals “voldoende” en
+										“onvoldoende”.</xs:documentation>
+                  <xs:documentation source="wijzigingen">20140519 restriction verwijderd; validatie van codelijst 36 in XSLT</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="exameneindcijfer" type="xs:int">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Eindcijfer op het examen</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="cijferce" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Cijfer voor Centraal Examen vak</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="eindcijferse" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Eindcijfer op School Examen</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="cijferse" type="xs:decimal" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Cijfers voor School Examen vak</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="rapportcijfer" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Cijfer voor een vak, ndien het cijfer niet in School of Centraal examen is behaald.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="werkstuk">
+                <xs:annotation>
+                  <xs:documentation source="semantiek">Details (titel en beoordeling) van het werkstuk.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="werkstuktitel" type="nonEmptyStringType">
+                      <xs:annotation>
+                        <xs:documentation source="semantiek">Titel van het werkstuk dat als voldoende of goed is beoordeeld.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="werkstukbeoordeling" type="nonEmptyStringType">
+                      <xs:annotation>
+                        <xs:documentation source="semantiek">Beoordeling van het werkstuk, zoals “voldoende”.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="certificaat" type="nonEmptyStringType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van certificaten van de leerling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="competenties" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van competenties van de leerling</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="competentiereferentie" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Referentie naar document waarin de competentiestructuur wordt beschreven.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="competentiecategorie" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Categorie van competentie.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="competentiebeschrijving" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Beschrijving van competentie.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="competentiestatus" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Competentie status: Mate van beheersing van de competentie.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="stage" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van stagen en bijbehorende details (data, soort, rol en beoordeling).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="begindatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Begindatum van stage</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="einddatum" type="xs:date" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Einddatum van stage</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="soortstage" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Soort stage</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="functierol" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Beroep / functie / rol tijdens de stage.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element ref="instelling" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Instelling waarbij stage is verricht</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="beoordeling" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Beoordeling</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="overigvombo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Overige gegevens voor overstap VO-MBO.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="keuzevervolgopleiding" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Keuze van vervolgopleiding</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="beroepskeuzetest" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft de leerling een beroepskeuzetest gedaan?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="portfolio" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft leerling een portfolio?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="pop" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft leerling een persoonlijk ontwikkelingsplan?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="motivatiebrief" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft leerling een motivatiebrief?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="lobdossier" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Heeft leerling een LOB-dossier, t.b.v. Loopbaanoriëntatie- en begeleiding?</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- METADATA -->
+  <xs:element name="metadata">
+    <xs:annotation>
+      <xs:documentation>Metadata over het dossier</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <!--<xs:element name="eldversie" type="nonEmptyStringType">
+					<xs:annotation>
+						<xs:documentation source="wijzigingen">20160223 Dit veld verwijderd</xs:documentation>
+					</xs:annotation>
+				</xs:element>-->
+        <xs:element name="deeldossier" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Geeft aan welk soort deeldossier is aangemaakt.</xs:documentation>
+            <xs:documentation source="implementatie">Waarde uit Codelijst 33 in "OSO codelijsten", zoals "LAS" of "LASLVS"</xs:documentation>
+            <xs:documentation source="wijzigingen">20140509 De restriction verwijderd; validatie van codelijst 33 in XSLT; 20131128 Een aantal waarden verwijderd</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="pakketnaam" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De naam van het softwarepakkket (b.v. leerlingadministratiesysteem) dat het dossier maakt. Uitwisselende partijen kunnen dit gebruiken bij
+							een probleemanalyse als het inlezen van het dossier niet goed gaat.</xs:documentation>
+            <xs:documentation source="implementatie">Vrije tekst</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="pakketversie" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Het versienummer van het softwarepakket dat het dossier maakt. Dit kan bij het opsporen van problemen relevant zijn.</xs:documentation>
+            <xs:documentation source="implementatie">Vrije tekst</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="datum" type="xs:date">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Datum van aanmaak van het dossier.</xs:documentation>
+            <xs:documentation source="implementatie">Vrije tekst</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <!--<xs:element name="xsdversie" type="nonEmptyStringType">
+					<xs:annotation>
+						<xs:documentation source="wijzigingen">20160223 veld verwijderd</xs:documentation>
+					</xs:annotation>
+				</xs:element>-->
+        <xs:element name="standaardversie" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Versienummer van de standaard zoals het dossier is samengesteld en gestructureerd in het XSD. Uitwisselende partijen kunnen hiermee
+							lokaliseren welke versie van het XSD is gebruikt.</xs:documentation>
+            <xs:documentation source="implementatie">De waarde voor deze versie van de standaard is “2017.1”</xs:documentation>
+            <xs:documentation source="wijzigingen">20160223 Dit veld toegevoegd in versie 2016.1</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="validatieversie" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Versienummer van de validatie zoals het dossier is samengesteld en gestructureerd conform het XSLT. Uitwisselende partijen kunnen hiermee
+							lokaliseren welke versie van het XSLT is gebruikt.</xs:documentation>
+            <xs:documentation source="implementatie">Alleen officiele versienummers worden toegestaan, zoals “2017.1.1” of later.</xs:documentation>
+            <xs:documentation source="wijzigingen">20160223 Dit veld toegevoegd in versie 2016.1</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <!-- 20170308 Dit blok toegevoegd -->
+        <xs:element ref="categorie_uitlevering" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="wijzigingen">20170308 Dit blok toegevoegd in versie 2017.1</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="overstap" type="nonEmptyStringType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Soort overstap/dossier; hiermee wordt aangegeven wat voor soort overstap of dossier het is.</xs:documentation>
+            <xs:documentation source="implementatie">Waarde uit Codelijst 16 in "OSO codelijsten", zoals "POVO" of "POPO"</xs:documentation>
+            <xs:documentation source="wijzigingen">20140509 De restriction verwijderd; validatie van codelijst 16 in XSLT; 20131128 De veld is optioneel geworden t.b.v. profiel 'Overdracht
+							binnen Brin'</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- 20170308 Dit blok toegevoegd -->
+  <xs:element name="categorie_uitlevering">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Aanduiding van de uitlevering van de categorieen van de gegevens t.b.v. selectief uitleveren.</xs:documentation>
+      <xs:documentation source="wijzigingen">20170308 Dit blok en deelelementen in versie 2017.1 toegevoegd.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cat_metadata" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Metadata”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_ouderinzage" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Ouderinzage”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_school" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “School”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_leerling" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Leerling”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_oudersverzorgers" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Ouders/Verzorgers”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_vve" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “VVE”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_schoolloopbaan" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Schoolloopbaan”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_overstapadvies" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Overstapadvies”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_zorgenbegeleiding" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Zorg en Begeleiding”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_verzuim" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Verzuim”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_eindtoetsbo" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Eindtoets BO”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_toetsresultaten" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Toetsresultaten”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_handelingsplannen" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Handelingsplannen”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_cijferlijsten" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Cijferlijsten”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_vombo" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “VO-MBO”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="cat_bijlagedocs" type="categorieType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Aanduiding voor de categorie (hoofdblok) “Bijlagedocs”.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- 20170308 bloktype toegevoegd -->
+  <xs:simpleType name="categorieType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Aanduiding voor een categorie (hoofdblok) t.b.v. selectief uitleveren.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde uit codelijst “48. Categorie uitlvering”, zoals “VERPLICHT”, “VERBODEN”, “OPTIONEEL” en “OPT-UIT”.</xs:documentation>
+      <xs:documentation source="wijzigingen">20170308 Dit bloktype in versie 2017.1 toegevoegd</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <!-- SCHOOLLOOPBAAN -->
+  <xs:element name="schoolloopbaan" type="schoolloopbaanType"/>
+  <xs:complexType name="schoolloopbaanType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Enkelvoudig element in de schoolloopbaan van een leerling.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="schooljaar">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Schooljaar van het element in de schoolloopbaan.</xs:documentation>
+          <xs:documentation source="implementatie">Waarde is tekst van 9 karakters volgens patroon “EEJJ-EEJJ”. Bijvoorbeeld “2012-2013”.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="schooljaarType"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="groepscode" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De code van de groep waarin de leerling geplaatst is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="groepsnaam" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De groepsnaam: omschrijving van de groep.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="jaargroep" type="jaargroepType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De jaargroep/leerjaar van de groep waarin de leerling onderwijs volgt.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="begindatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum waarop de leerling in de groep instroomt.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="einddatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Datum waarop de leerling de groep uitstroomt.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="brincode" type="brincodeType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het brincode van de school.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vestigingscode" type="vestigingscodeType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het vestigingsnummer van de school.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schoolsoort" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Schoolsoort</xs:documentation>
+          <xs:documentation source="implementatie">Bijvoorbeeld de waarde “SO”.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schooltype" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Schooltype</xs:documentation>
+          <xs:documentation source="implementatie">Bijvoorbeeld de waarde “REC3”.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voelementcode" type="elementcodeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De registatiecode uit DUO VO elementcodetabel dat het soort onderwijs aangeeft binnen het VO.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voelementomschrijving" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Omschrijving van de VO-elementcode in voorgaand veld.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schoolsoortomschrijving" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Nadere omschrijving van de schoolsoort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- TOETS -->
+  <xs:element name="toets" type="toetsType"/>
+  <xs:annotation>
+    <xs:documentation source="semantiek">Toetsresultaat</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="toetsType">
+    <xs:sequence>
+      <xs:element name="toetsidentificatie">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het blok over identificatie van de toets.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="eldtoetscode" type="nonEmptyStringType">
+              <xs:annotation>
+                <xs:documentation source="semantiek">OSO toetscode, de unieke code die aangeeft om welke toets en toetsversie het gaat. Alleen landelijke toetsen volgens vastgestelde
+									normering komen op deze toetscodelijst.</xs:documentation>
+                <xs:documentation source="implementatie">Dit veld heeft waarde uit vocabulaire in bestand “OSO POVO toetscodes”. Let op, hier alleen de toetscodes van toetsen
+									gebruiken, geen onderdelen. Dus waarvan kolom “Onderdeel” in de toetscodelijst niet waarde “ja” heeft.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="leergebied" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Het domein, vak of leergebied van de toets. Bijvoorbeeld “rekenen”.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="toetsnaam" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De naam van de toets.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="toetsversie" type="nonEmptyStringType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Naam van toetsversie.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="afname">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Details m.b.t. de afname van de toets.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="afnamedatum" type="xs:date">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De datum waarop de toets is afgenomen.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="jaargroep" type="jaargroepType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De jaargroep/leerjaar waarin het resultaat is afgenomen. </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="dl" type="xs:integer" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">De didactische leeftijd (DL) op de datum van afname (in maanden onderwijs gerekend vanaf aanvang groep).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="afgenomendoor" type="afgenomendoorType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation source="semantiek">Gegevens over de persoon die de toets heeft afgenomen.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element ref="resultaat">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Resultaat van toets</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="toetsonderdeel" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Onderdeel van toets</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="opmerking" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Opmerking of toelichting bij het toetsresultaat.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="afgenomendoorType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Gegevens over de persoon die de toets heeft afgenomen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="naammedewerker" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Naam van de medewerker die de toets heeft afgenomen.</xs:documentation>
+          <xs:documentation source="wijzigingen">2010/2011 gewijzigd van 'afgenomendoor' naar 'naammedewerker'</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="functie" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Functie van die medewerker.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="werktbijinstelling" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De instelling of school, waar de medewerker toe behoort. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="instelling"/>
+            <xs:element ref="school"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="resultaat">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Resultaat van toets of toetsonderdeel</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="toetsscore" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Scores van toetsafname (ruwe scores)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="referentiescore" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Referentiescores (afgeleide scores)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="document" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Een als bijlage toegevoegd document over het resultaat van de toetsafname.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="toetsonderdeel">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Toetsonderdeel</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="eldonderdeelcode" type="nonEmptyStringType">
+          <xs:annotation>
+            <xs:documentation source="semantiek">OSO toetsonderdeelcode, de unieke code die aangeeft om welk toetsonderdeel en versie het gaat.</xs:documentation>
+            <xs:documentation source="implementatie">Veld met waarde uit vocabulaire volgens OSO POVO toetscodes. Let op, hier alleen de toetscodes van toetsonderdelen gebruiken. Dus
+							waarvan de kolom “Onderdeel” in de toetscodelijst de waarde “ja” heeft.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="onderdeelnaam" type="nonEmptyStringType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation source="semantiek">De naam van het toetsonderdeel.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="resultaat">
+          <xs:annotation>
+            <xs:documentation source="semantiek">Het resultaat van de toetsafname van het toetsonderdeel.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- REFERENTIESCORE -->
+  <xs:element name="referentiescore" type="referentiescoreType"/>
+  <xs:complexType name="referentiescoreType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Referentiescores (afgeleide scores)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codereferentiescore" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Code van referentiescore</xs:documentation>
+          <xs:documentation source="implementatie">Dit veld heeft waarde volgens codelijst “11. Referentiescore” in bestand “OSO codelijsten”, zoals “AE”, “CAE”, “IV”, “CIV”, “DLE” en
+						“ERK”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 11 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codevergelijkingsgroep" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Code van vergelijkingsgroep</xs:documentation>
+          <xs:documentation source="implementatie">Dit veld heeft waarde uit vocabulaire volgens codelijst “22. Vergelijkingsgroep” in bestand “OSO codelijsten”, zoals “BB+”, “BB”, “KB”,
+						“GT”, “HAVO”, “VWO” en “Landelijk”.</xs:documentation>
+          <xs:documentation source="wijzigingen">20140509 restriction verwijderd; validatie van codelijst 22 in XSLT</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="waarde" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Aanduiding van waarde van referentiescore.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="kwalificatie" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Extra veld voor nadere kwalificatie.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- SCHOOL -->
+  <xs:element name="school" type="schoolType"/>
+  <xs:complexType name="schoolType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details van een school</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="instellingType">
+        <xs:sequence>
+          <xs:element name="brincode" type="brincodeType">
+            <xs:annotation>
+              <xs:documentation source="semantiek">De BRIN-code van de huidige instelling.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="vestigingscode" type="vestigingscodeType">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Een aanvulling op het BRIN-code waarmee de vestiging (of locatie) van de onderwijsinstelling onderscheiden kan worden, bestaande uit 2
+								cijfers.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="aanleverpunt" type="nonEmptyStringType">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Aanleverpunt van de school</xs:documentation>
+              <xs:documentation source="implementatie">Bijvoorbeeld de waarde “0” of “1”</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="soort" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Soort school</xs:documentation>
+              <xs:documentation source="implementatie">Bijvoorbeeld de waarde “SO”.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="type" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Schooltype</xs:documentation>
+              <xs:documentation source="implementatie">Bijvoorbeeld de waarde “REC3”.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="naamdirecteur" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Naam van de directeur van de school.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="website" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Webadres van de website van de school.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- TOETSSCORE -->
+  <xs:element name="toetsscore" type="toetsscoreType"/>
+  <xs:complexType name="toetsscoreType">
+    <xs:sequence>
+      <xs:element name="aantalopgaven" type="xs:int" minOccurs="0"/>
+      <xs:element name="aantalgoed" type="xs:int" minOccurs="0"/>
+      <xs:element name="aantalfout" type="xs:int" minOccurs="0"/>
+      <xs:element name="aantalgelezen" type="xs:int" minOccurs="0"/>
+      <!-- 20140530 typering van veld 'tijd' gewijzigd van integer naar decimal -->
+      <xs:element name="tijd" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>in seconden</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vaardigheidsscore" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="codevaardigheidsschaal" type="nonEmptyStringType" minOccurs="0"/>
+      <xs:element name="betrouwbaarheidsinterval" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="bivlaag" type="xs:decimal"/>
+            <xs:element name="bivhoog" type="xs:decimal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- VERZORGER -->
+  <xs:element name="verzorger" type="verzorgerType"/>
+  <xs:complexType name="verzorgerType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Details van ouder/verzorger</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="persoonType">
+        <xs:sequence>
+          <xs:element name="relatietotkind" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">De relatie van de verzorger tot het kind.</xs:documentation>
+              <xs:documentation source="implementatie">Dit veld heeft waarde uit codelijst 41 “Relatie tot kind” in bestand “OSO codelijsten”, zoals 1 (=Vader), 2 (=Moeder) en 3
+								(=Voogd)</xs:documentation>
+              <xs:documentation source="wijzigingen">20160120 Dit veld heeft sinds versie 2016.1 een waarde uit codelijst</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="wettigevertegenwoordiger" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Indicatie of deze verzorger de wettelijke vertegenwoordiger van de leerling is.</xs:documentation>
+              <xs:documentation source="wijzigingen">2010/2011 spelling van 'wettigevertegenwoordiger' aangepast</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="banknummer" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Banknummer van de verzorger.</xs:documentation>
+              <xs:documentation source="implementatie">Aanbevolen wordt dit verouderde veld niet meer te gebruiken, gebruik hiervoor het veld "Iban"</xs:documentation>
+              <xs:documentation source="wijzigingen">20140530 is het vervangende veld "Iban" toegevoegd</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="iban" type="nonEmptyStringType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation source="semantiek">Internationale banknummer van de verzorger. IBAN is de afkorting voor International Bank Account Number. </xs:documentation>
+              <xs:documentation source="implementatie">Het IBAN van Nederlandse bankrekeningnummers bestaat uit 18 tekens (cijfers en letters) en het verouderde bankrekeningnummer komt
+								er in voor.</xs:documentation>
+              <xs:documentation source="wijzigingen">20140530 dit veld toegevoegd</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- ALGEMENE ELEMENTTYPEN EN GROEPEN -->
+  <xs:simpleType name="brincodeType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">BRINcode veldtype: Identificatie van elke onderwijsinstelling aan de hand van het Basis Registratie Instellingen-nummer (BRIN), in een vier tekens
+				lange alfanumerieke code (BRIN-code).</xs:documentation>
+      <xs:documentation source="implementatie">Waarde is een alfanumerieke code van 4 tekens, bestaand uit 2 cijfers en 2 letters, zoals "99XX"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9][A-Z][A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="einddatumType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Einddatum veldtype: De laatste datum van het schooljaar: 31 juli.</xs:documentation>
+      <xs:documentation source="implementatie">Formaat altijd volgens “EEJJ-07-31”</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 type "einddatumType" toegevoegd</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date">
+      <xs:pattern value="[0-9][0-9][0-9][0-9]-07-31"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="elementcodeType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Elementcode veldtype</xs:documentation>
+      <xs:documentation source="implementatie">Waarde is de vier-cijferige registratiecode van de opleiding in deze tabel.</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 type "elementcodeType" toegevoegd voor enkele velden</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9][0-9][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="geboortemaandType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Geboortemaand veldtype: De anonieme geboortedatum van een persoon t.b.v. leeftijdbepaling.</xs:documentation>
+      <xs:documentation source="implementatie">Formaat: EEJJ-MM</xs:documentation>
+      <xs:documentation source="wijzigingen">20160120 type "geboortemaandType" toegevoegd; alternatief patroon: [12][0-9][0-9][0-9]-[0-3][0-9]</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\p{Nd}{4}-\p{Nd}{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="geslachtType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Geslacht veldtype</xs:documentation>
+      <xs:documentation source="implementatie">Dit veld heeft waarde uit {0, 1, 2} voor onbekend, vrouw resp man volgens codelijst “14. Geslacht” in bestand “OSO codelijsten”</xs:documentation>
+      <xs:documentation source="wijzigingen">20140509 min en max in restriction verwijderd; validatie van codelijst 14 in XSLT</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer"/>
+  </xs:simpleType>
+  <xs:simpleType name="jaargroepType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Jaargroep veldtype</xs:documentation>
+      <xs:documentation source="implementatie">Dit veld heeft waarde volgens codelijst “13. Jaargroepen - leerjaren”, zoals “P” (=Peutergroep), “0” (=PO groep 0), “1” t/m “8” (=PO jaargroep 1
+				t/m 8), “11” t/m “16” (=VO jaargroep 1 t/m 6) en “S” (=SBO/SO/VSO).</xs:documentation>
+      <xs:documentation source="wijzigingen">20140509 enumeration in restriction verwijderd; validatie van codelijst 13 in XSLT; 20131128 VIJFTIEN waarden toegevoegd</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="nonEmptyStringType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Niet-leeg veldtype</xs:documentation>
+      <xs:documentation source="implementatie">Veld heeft minimale lengte van 1</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:group name="persoonGroep">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Groep van Persoon</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="verzorger"/>
+      <xs:element ref="arts"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="persoonType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Persoon bloktype: Persoonsgegevens van die contactpersoon.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="voornaam" type="nonEmptyStringType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De voornaam of voornamen van de persoon.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voorletters-1" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De voorletter(s) van de persoon. Er mogen geen spaties tussen de voorletters.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voorvoegsel" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Een eventueel voorvoegsel van de persoon.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="achternaam" type="nonEmptyStringType">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De achternaam van de persoon. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="roepnaam" type="nonEmptyStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De roepnaam van de persoon.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geboortedatum" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De geboortedatum van de persoon.</xs:documentation>
+          <xs:documentation source="implementatie">Formaat: EEJJ-MM-DD</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geslacht" type="geslachtType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Het geslacht van de persoon.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="adresgeheim" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">Indicatie of het adres van de persoon wel of niet geheim is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="adreslijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De adressen van deze persoon.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="adres" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="communicatielijst" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="semantiek">De lijst van communicatiegegevens van deze persoon.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="communicatie" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="schooljaarType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Schooljaar/leerjaar veldtype</xs:documentation>
+      <xs:documentation source="implementatie">Waarde is tekst van 9 karakters volgens patroon “EEJJ-EEJJ”. Bijvoorbeeld “2012-2013”.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="vestigingscodeType">
+    <xs:annotation>
+      <xs:documentation source="semantiek">Vestigingscode veldtype: Een aanvulling op het BRIN-code waarmee de vestiging (of locatie) van een onderwijsinstelling onderscheiden kan worden,
+				bestaande uit 2 cijfers.</xs:documentation>
+      <xs:documentation source="implementatie">Waarde is 2 cijfers, zoals "99"</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="voadviesduoType" final="restriction">
+    <xs:annotation>
+      <xs:documentation source="semantiek">VO advies veldtype: Advies voor VO volgens door DUO toegestane codelijst</xs:documentation>
+      <xs:documentation source="implementatie">Veld heeft waarde uit DUO codelijst volgens codelijst “2. Advies VO” in bestand “OSO codelijsten”</xs:documentation>
+      <xs:documentation source="wijzigingen">20140509 pattern [xs:pattern value="01|10|2[0-9]|3[0-7]|4[0-5]|5[0-3]|6[0-1]|70|80"/] in restriction verwijderd; validatie van codelijst 2 in XSLT;
+				20140221 typering veranderd van integer naar string; 20131128 waardebereik iets verruimd om code 80 kwijt te kunnen; 20111103 iets verruimd om code 50 kwijt te
+				kunnen</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <!-- EXTRA / ONGEBRUIKTE ELEMENTEN -->
+  <xs:element name="dossiers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dossier" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+        <xs:element ref="terugkoppeling" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="terugkoppeling">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metadata"/>
+        <xs:element name="voschool">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="school"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="leerlingmatching">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="leerlingid" type="nonEmptyStringType"/>
+              <xs:element name="voornaam" type="nonEmptyStringType" maxOccurs="unbounded"/>
+              <xs:element name="tussenvoegsel" type="nonEmptyStringType" minOccurs="0"/>
+              <xs:element name="achternaam" type="nonEmptyStringType"/>
+              <xs:element name="geslacht" type="geslachtType"/>
+              <xs:element name="geboortedatum" type="xs:date"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="terugkoppelinformatie" type="terugkoppelinformatieType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="terugkoppelinformatieType">
+    <xs:sequence>
+      <xs:element name="tiperschooljaar" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="schooljaar" type="schooljaarType"/>
+            <xs:element name="begindatum" type="xs:date"/>
+            <xs:element name="einddatum" type="xs:date"/>
+            <xs:element name="groepsnaam" type="nonEmptyStringType" minOccurs="0"/>
+            <xs:element name="jaargroep" type="jaargroepType"/>
+            <xs:element name="iltcode" type="nonEmptyStringType"/>
+            <xs:element name="iltomschrijving" type="nonEmptyStringType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="vertrek" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vertrekdatum" type="xs:date"/>
+            <xs:element name="vertrekreden" type="nonEmptyStringType" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

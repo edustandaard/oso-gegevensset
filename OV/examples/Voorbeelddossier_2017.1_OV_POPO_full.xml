@@ -1,0 +1,1971 @@
+<?xml version="1.0"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+  <metadata>
+    <deeldossier>LASLVS</deeldossier>
+    <pakketnaam>LeerlingInZicht</pakketnaam>
+    <pakketversie>1</pakketversie>
+    <datum>2017-03-02</datum>
+    <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
+    <standaardversie>2017.1</standaardversie>
+    <validatieversie>2017.1.1</validatieversie>
+    <categorie_uitlevering>
+      <!-- codelijst 48 categorie: VERPLICHT, OPTIONEEL, VERBODEN of OPT-UIT  -->
+      <cat_metadata>VERPLICHT</cat_metadata>
+      <cat_ouderinzage>VERPLICHT</cat_ouderinzage>
+      <cat_school>VERPLICHT</cat_school>
+      <cat_leerling>VERPLICHT</cat_leerling>
+      <cat_oudersverzorgers>VERPLICHT</cat_oudersverzorgers>
+      <cat_vve>OPTIONEEL</cat_vve>
+      <cat_schoolloopbaan>VERPLICHT</cat_schoolloopbaan>
+      <cat_overstapadvies>VERPLICHT</cat_overstapadvies>
+      <cat_zorgenbegeleiding>VERPLICHT</cat_zorgenbegeleiding>
+      <cat_verzuim>OPTIONEEL</cat_verzuim>
+      <cat_eindtoetsbo>OPTIONEEL</cat_eindtoetsbo>
+      <cat_toetsresultaten>OPTIONEEL</cat_toetsresultaten>
+      <cat_handelingsplannen>OPTIONEEL</cat_handelingsplannen>
+      <cat_cijferlijsten>OPTIONEEL</cat_cijferlijsten>
+      <cat_vombo>VERBODEN</cat_vombo>
+      <cat_bijlagedocs>OPTIONEEL</cat_bijlagedocs>
+    </categorie_uitlevering>
+    <!--codelijsat 16: POPO-->
+    <overstap>POPO</overstap>
+  </metadata>
+  <!-- codelijst 29 overdrachtsoort: overdrachtbinnenbrin of overstapdossier -->
+  <overdrachtsoort>overstapdossier</overdrachtsoort>
+  <!--inzage niet verpliocht bij overdrachtbinnenbrin-->
+  <inzage>
+    <voorlopigdossier>false</voorlopigdossier>
+    <inzage>true</inzage>
+    <inzagedatum>2016-03-31</inzagedatum>
+    <akkoord>Nee</akkoord>
+    <redennietakkoord>Teveel zorggegevens in het dossier</redennietakkoord>
+    <toestemming>Ja</toestemming>
+  </inzage>
+  <huidigeschool>
+    <naam>Testschool</naam>
+    <adreslijst>
+      <adres>
+        <!-- bezoek: codelijst 19 -->
+        <soortadres>bezoek</soortadres>
+        <straat>Langestraat</straat>
+        <nummer>66</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de groenteboer</locatieomschrijving>-->
+        <!-- postcode beetje aangepast, spatie ertussen-->
+        <postcode>1811 JJ</postcode>
+        <plaats>Alkmaar</plaats>
+        <gemeente>Alkmaar</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+      <adres>
+        <!-- post: codelijst 19 -->
+        <soortadres>post</soortadres>
+        <!-- onhandig om zo de postbus in te vullen -->
+        <straat>Postbus</straat>
+        <nummer>12</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de slager</locatieomschrijving>-->
+        <postcode>7603WG</postcode>
+        <plaats>Almelo</plaats>
+        <gemeente>Almelo</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+    </adreslijst>
+    <communicatielijst>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- werk: codelijst 5 -->
+        <aanduiding>werk</aanduiding>
+        <nummer>0701111111</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- e-mail: codelijst 4 -->
+        <soort>e-mail</soort>
+        <!-- prive: codelijst 5 -->
+        <aanduiding>prive</aanduiding>
+        <nummer>testschool@kennisnet.nl</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- overig: codelijst 5 -->
+        <aanduiding>overig</aanduiding>
+        <nummer>0107890123</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>true</noodnummer>
+      </communicatie>
+    </communicatielijst>
+    <!--sommige systemen kunnen niet omgaan met brincode 00YY,
+        omdat het geen geldig BRIN is.-->
+    <brincode>00YY</brincode>
+    <vestigingscode>00</vestigingscode>
+    <aanleverpunt>1</aanleverpunt>
+    <soort>SO</soort>
+    <type>REC3</type>
+    <naamdirecteur>P. de Haan</naamdirecteur>
+    <website>www.osotestschool.nl</website>
+    <leerling>
+      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Johannes</voornaam>
+      <voornaam>Martinus</voornaam>
+      <voornaam>Franciscus</voornaam>
+      <voorletters-1>L.J.M.F.</voorletters-1>
+      <voorvoegsel>van de</voorvoegsel>
+      <achternaam>Berg</achternaam>
+      <roepnaam>Daan</roepnaam>
+      <geboortedatum>2003-03-17</geboortedatum>
+      <!--<geboortemaand>2003-03</geboortemaand>-->
+      <!--man: codelijst 14-->
+      <geslacht>2</geslacht>
+      <adresgeheim>false</adresgeheim>
+      <!--BR: Indien een adres van leerling geheim, is ieder leerlingadres in overstapdossier verboden 
+                (d.w.z. dit element is verboden wanneer adresgeheim waarde “true” heeft).-->
+      <adreslijst>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>bezoek</soortadres>
+          <straat>Hoofdstraat</straat>
+          <nummer>136</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- <aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de visboer</locatieomschrijving>-->
+          <postcode>7311BA</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>post</soortadres>
+          <straat>Hoogstraat</straat>
+          <nummer>34</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- TO: codelijst 18 -->
+          <!--<aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de bakker</locatieomschrijving>-->
+          <postcode>1391BV</postcode>
+          <plaats>Abcoude</plaats>
+          <gemeente>Abcoude</gemeente>
+          <land omschrijving="een heel klein land">6030</land>
+        </adres>
+        <adres>
+          <soortadres>gba</soortadres>
+          <straat>Adelaarslaan</straat>
+          <nummer>152</nummer>
+          <toevoeging>b</toevoeging>
+          <!--     <aanduiding>BY</aanduiding>
+                    <locatieomschrijving>de kapper</locatieomschrijving>-->
+          <postcode>7331GJ</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+      </adreslijst>
+      <!--BR: In overstapdossier is dit postcode4adres verboden bij een leerling-->
+      <!--<postcode4adres>7311</postcode4adres>-->
+      <communicatielijst>
+        <!--BR: Indien de communicatieinfo van de leerling geheim is, is de overdracht van die comunicatieinfo verboden. 
+                    Omdat het veld “Nummer of adres” verplicht is, zal een vaste geheimwaarde worden overgedragen. 
+                    (d.w.z. indien een communicatieinfo geheim is, 
+                    zal de geheimwaarde “geheim@geheim.geheim” voor e-mail of de geheimwaarde “9999999999” voor telefoonnummer in het veld nummer worden overgedragen).-->
+        <communicatie>
+          <!-- telefoon: codelijst 4 -->
+          <soort>telefoon</soort>
+          <!-- prive: codelijst 5 -->
+          <aanduiding>overig</aanduiding>
+          <nummer>9999999999</nummer>
+          <!-- let op: geheim -->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>0235257739</nummer>
+          <geheim>false</geheim>
+          <!-- let op: geheim -->
+          <noodnummer>true</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>werk</aanduiding>
+          <nummer>0666362828</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>geheim@geheim.geheim</nummer>
+          <!--In een overdracht-binnen-brin is geheime communicatieinfo over 
+                    e-mail verplicht middels de geheimwaarde "geheim@geheim.geheim".-->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>leerling@leerling.nl</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+      </communicatielijst>
+      <gba>
+        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Johannes</gbavoornaam>
+        <gbavoornaam>Martinus</gbavoornaam>
+        <gbavoornaam>Franciscus</gbavoornaam>
+        <gbavoorvoegsel>van de</gbavoorvoegsel>
+        <gbaachternaam>Berg</gbaachternaam>
+        <gbageboortedatum>17-03-2002</gbageboortedatum>
+      </gba>
+      <adresbuitenland>10 Downing St, London SW1A, UK</adresbuitenland>
+      <bsn>613543439</bsn>
+      <!--<onderwijsnummer>101211151</onderwijsnummer>-->
+      <leerlingid>LN094837</leerlingid>
+      <onderwijssinds>2006-03-17</onderwijssinds>
+      <startdatumhuidigonderwijs>2007-03-17</startdatumhuidigonderwijs>
+      <datuminschrijving>2005-01-04</datuminschrijving>
+      <datumuitschrijving>2016-07-31</datumuitschrijving>
+      <!-- codelijst 15: leerlinggewicht-->
+      <leerlinggewicht>1.20</leerlinggewicht>
+      <!-- codelijst 10: nnca-->
+      <nnca>1</nnca>
+      <tehuis>false</tehuis>
+      <verzorgersaansprakelijk>false</verzorgersaansprakelijk>
+      <aansprakelijkeinstelling>
+        <naam>De Zonnestraal</naam>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Loosduinsehoofdstraat</straat>
+            <nummer>599</nummer>
+            <toevoeging>a</toevoeging>
+            <!--<aanduiding>TO</aanduiding>
+                        <locatieomschrijving>Blokker</locatieomschrijving>-->
+            <postcode>2552AE</postcode>
+            <plaats>Den Haag</plaats>
+            <gemeente>'s Gravenhage</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>overig</aanduiding>
+            <nummer>0704400433</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+      </aansprakelijkeinstelling>
+      <overstapadvies>
+        <!-- codelijst 2: advies vo -->
+        <!-- 40: VMBO GL -->
+        <advies>40</advies>
+        <!-- 42: VMBO GL t/m  VMBO TL -->
+        <wensouders>42</wensouders>
+        <!-- 50: VMBO TL -->
+        <wensleerling>50</wensleerling>
+        <!-- 44: VMBO GL t/m  HAVO-->
+        <!--<herzienadvies>44</herzienadvies>-->
+        <!--<motivatie_herzienadvies>Leerling maakte goede eindtoets</motivatie_herzienadvies>-->
+        <!-- codelijst 21: profiel -->
+        <profiel>plus</profiel>
+        <argumentatie>De leerling werkt hard.</argumentatie>
+        <contactnodig>true</contactnodig>
+        <contactpersoon>Mevr. Smits</contactpersoon>
+        <contacttelefoon>0709876543</contacttelefoon>
+        <contactemail>smits@school.nl</contactemail>
+      </overstapadvies>
+      <vanpeuterspeelzaal>true</vanpeuterspeelzaal>
+      <naampeuterspeelzaal>De Triangel</naampeuterspeelzaal>
+      <!-- voorschools en vroegschools alleen in POPO -->
+      <voorschools>
+        <!-- codelijst 7: 2=Kinderdagverblijf -->
+        <codevoorschoolsehistorie>2</codevoorschoolsehistorie>
+        <!-- codelijst 9: 4=KO totaal -->
+        <codevoorschoolsprogramma>4</codevoorschoolsprogramma>
+        <voorschoolsemaanden>8</voorschoolsemaanden>
+        <!-- codelijst 6: 6=Consultatiebureau -->
+        <codevoorschoolsetoeleider>6</codevoorschoolsetoeleider>
+        <!-- codelijst 8: 5=Onbekend -->
+        <codevoorschoolsedeelname>5</codevoorschoolsedeelname>
+        <voorschoolseaanwezigheid>4</voorschoolseaanwezigheid>
+      </voorschools>
+      <vroegschools>
+        <!-- codelijst 9: 2=Piramide -->
+        <codevroegschoolsprogramma>2</codevroegschoolsprogramma>
+        <vroegschoolsdatumingang>2005-08-01</vroegschoolsdatumingang>
+        <vroegschoolseinddatum>2006-07-31</vroegschoolseinddatum>
+      </vroegschools>
+      <vroegschools>
+        <!-- codelijst 9: 6=Een combinatie van programma's -->
+        <codevroegschoolsprogramma>6</codevroegschoolsprogramma>
+        <vroegschoolsdatumingang>2006-08-01</vroegschoolsdatumingang>
+        <vroegschoolseinddatum>2007-07-31</vroegschoolseinddatum>
+      </vroegschools>
+      <schoolloopbaanlijst>
+        <schoolloopbaan>
+          <schooljaar>2006-2007</schooljaar>
+          <groepscode>1a</groepscode>
+          <groepsnaam>instroomklas</groepsnaam>
+          <jaargroep>1</jaargroep>
+          <begindatum>2007-03-17</begindatum>
+          <einddatum>2007-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!-- hieronder 3 regels uitcommentariëren als bron geen VO-->
+          <voelementcode>0011</voelementcode>
+          <voelementomschrijving>Ljvb op HAVO/VMBO-Th/Gm Lw</voelementomschrijving>
+          <schoolsoortomschrijving>HAVO/VMBO-Th/Gm Lw</schoolsoortomschrijving>
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2007-2008</schooljaar>
+          <groepscode>1/2</groepscode>
+          <groepsnaam>combinatieklas</groepsnaam>
+          <jaargroep>1</jaargroep>
+          <begindatum>2007-08-01</begindatum>
+          <einddatum>2008-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!-- hieronder 3 regels uitcommentariëren als bron geen VO-->
+          <voelementcode>0012</voelementcode>
+          <voelementomschrijving>Ljvb op VMBO-Gm Lw</voelementomschrijving>
+          <schoolsoortomschrijving>VMBO-Gm Lw</schoolsoortomschrijving>
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2008-2009</schooljaar>
+          <groepscode>2b</groepscode>
+          <groepsnaam>groep 2</groepsnaam>
+          <jaargroep>2</jaargroep>
+          <begindatum>2008-08-01</begindatum>
+          <einddatum>2009-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2009-2010</schooljaar>
+          <groepscode>3</groepscode>
+          <groepsnaam>groep 3</groepsnaam>
+          <jaargroep>3</jaargroep>
+          <begindatum>2009-08-01</begindatum>
+          <einddatum>2010-07-31</einddatum>
+          <brincode>14AI</brincode>
+          <vestigingscode>02</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2010-2011</schooljaar>
+          <groepscode>4</groepscode>
+          <groepsnaam>groep 4</groepsnaam>
+          <jaargroep>4</jaargroep>
+          <begindatum>2010-08-01</begindatum>
+          <einddatum>2011-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2011-2012</schooljaar>
+          <groepscode>5</groepscode>
+          <groepsnaam>groep 5</groepsnaam>
+          <jaargroep>5</jaargroep>
+          <begindatum>2011-08-01</begindatum>
+          <einddatum>2012-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2012-2013</schooljaar>
+          <groepscode>6</groepscode>
+          <groepsnaam>groep 6</groepsnaam>
+          <jaargroep>6</jaargroep>
+          <begindatum>2012-08-01</begindatum>
+          <einddatum>2013-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2013-2014</schooljaar>
+          <groepscode>7</groepscode>
+          <groepsnaam>groep 7</groepsnaam>
+          <jaargroep>7</jaargroep>
+          <begindatum>2013-08-01</begindatum>
+          <einddatum>2014-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2014-2015</schooljaar>
+          <groepscode>8</groepscode>
+          <groepsnaam>groep 8</groepsnaam>
+          <jaargroep>8</jaargroep>
+          <begindatum>2014-08-01</begindatum>
+          <einddatum>2015-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2015-2016</schooljaar>
+          <groepscode>8</groepscode>
+          <groepsnaam>groep 8</groepsnaam>
+          <jaargroep>8</jaargroep>
+          <begindatum>2015-08-01</begindatum>
+          <einddatum>2016-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <!--Onderstaand stuk is voor VOVO-->
+        <!--<schoolloopbaan>
+                    <schooljaar>2014-2015</schooljaar>
+                    <groepscode>1g</groepscode>
+                    <groepsnaam>1 LWOO</groepsnaam>
+                    <jaargroep>1</jaargroep>
+                    <begindatum>2014-03-17</begindatum>
+                    <einddatum>2015-07-31</einddatum>
+                    <brincode>00YY</brincode>
+                    <vestigingscode>00</vestigingscode>
+                    <schoolsoort>VSO</schoolsoort>
+                    <schooltype>LWOO</schooltype>
+                    <voelementcode>0041</voelementcode>
+                    <voelementomschrijving>Lj LWOO vb op Bbg Lw</voelementomschrijving>
+                    <schoolsoortomschrijving>leerwegondersteunend onderwijs</schoolsoortomschrijving>
+                </schoolloopbaan>-->
+        <!--<schoolloopbaan>
+                    <schooljaar>2015-2016</schooljaar>
+                    <groepscode>2f</groepscode>
+                    <groepsnaam>2 LWOO</groepsnaam>
+                    <jaargroep>2</jaargroep>
+                    <begindatum>2015-03-17</begindatum>
+                    <einddatum>2016-07-31</einddatum>
+                    <brincode>00YY</brincode>
+                    <vestigingscode>00</vestigingscode>
+                    <schoolsoort>VSO</schoolsoort>
+                    <schooltype>LWOO</schooltype>
+                    <voelementcode>0041</voelementcode>
+                    <voelementomschrijving>Lj LWOO vb op Bbg Lw</voelementomschrijving>
+                    <schoolsoortomschrijving>leerwegondersteunend onderwijs</schoolsoortomschrijving>
+                </schoolloopbaan>-->
+      </schoolloopbaanlijst>
+      <zorg>
+        <naamib>Mevr. Koppenol</naamib>
+        <sbobeschikkingsdatum>2012-02-01</sbobeschikkingsdatum>
+        <wsnsnummer>345</wsnsnummer>
+        <!-- Vanaf 1-8-2014 kunnen geen LGF indicaties meer worden 
+                    afgegeven en heeft dit gegevensblok LGF inclusief de 
+                    deelvelden alleen nog historische waarde.-->
+        <lgf>
+          <lgfdatum>2010-03-12</lgfdatum>
+          <!-- codelijst 3: 33=onderwijs aan ZML-kinderen -->
+          <codelgfonderwijssoort>33</codelgfonderwijssoort>
+          <lgfcvinummer>2006-4-0123</lgfcvinummer>
+          <!-- codelijst 38: 4=gedragsstoornis -->
+          <lgfindicatierec>4</lgfindicatierec>
+          <lgfeinddatum>2015-03-12</lgfeinddatum>
+          <lgfbrincode>00YY</lgfbrincode>
+        </lgf>
+        <tlv>
+          <tlvingangdatum>2016-04-04</tlvingangdatum>
+          <tlvswvnummer>PO00YY</tlvswvnummer>
+          <!-- codelijst 33: L=Laag -->
+          <tlvcategorie>L</tlvcategorie>
+          <!-- tlvbeschikkingsnummer geen vast format meer. 123456-2015-00013 -->
+          <tlvbeschikkingsnummer>55667788abcd</tlvbeschikkingsnummer>
+          <tlveinddatum>2017-07-31</tlveinddatum>
+        </tlv>
+        <arrangement>
+          <arrangement_datum>2015-01-28</arrangement_datum>
+          <!--<soort_arrangement></soort_arrangement>-->
+          <arrangement_brin>00YY</arrangement_brin>
+          <arrangement_vestigingscode>00</arrangement_vestigingscode>
+        </arrangement>
+        <arrangement>
+          <arrangement_datum>2015-01-28</arrangement_datum>
+          <arrangement_brin>00YY</arrangement_brin>
+          <arrangement_vestigingscode>00</arrangement_vestigingscode>
+        </arrangement>
+        <opp>
+          <opp_ingangdatum>2015-05-04</opp_ingangdatum>
+          <opp_einddatum>2016-05-04</opp_einddatum>
+          <document>
+            <bestandsnaam>opp.docx</bestandsnaam>
+            <omschrijving>ontwikkelingsperspectief</omschrijving>
+            <bestandsinhoud>UEsDBBQAAAAIABuNWUjwg+rCfFMAAMxhAAAIAAAAb3BwLmRvY3jsWGN7ZUESvrFtc2Nn4mxs
+39i2zUkysTNxJrZt2+bEyY2TiW3srPHsP9itD/2c7j6nu0699VZVt5IsBCQmABoACwAAyADe
+EGHASTAAgOR3FwMAC64j6mDvambvaqDq5WjmosfkaWdLmg8JTpMLAAf8X/6npTFZ0WFBCHXo
+UuorjE3N6FYShAiNAkoRYR66sOPmWewe1qtiR2Lz80P0+SDdoimEPVPK7n3n4+2Ep7nXu6W8
+Ewqr1aW1uxqjJpiCd9FmszloKWf8sVKKJhN9mK90lRi9Q7/Lr0n3EqIwsFyvXCsKV8Ax2xRB
+vXAcxtF1/skSan6m9UB4NMcY4e3c+DpW9hKVMGXFqvbnDcUXY4vaVt/CdQhpyERNJ3b+Fa+f
+csGGjZhShW9bZYK640Gi4snv7GU/ybrIEIepidoTewgIT7qVvgDpaS7EBmf60aH9r4BOBwfT
+83yqJWZU3L4LlnAmviXY+alx6Gb28hzZmnmb8f6Rohfo3q8D+NVoZ3p3ZHpTw3jifH8MLzWa
+dIzMm+k/P4Mmn5tx98cepvGlCycm39kS8vYKFH6Ue73EX18vBpPWy3FAzBhH7sJnyF483ATE
+3wiM7D861E26GfDSWKARG97eG2MqDjaQxjwe8+vv9pAUNaBuL4bgxo5rBWMHB3L7g/O/QsPs
+VPqLNngzckJPH7/5244DeRECGr99e1x+lr5jK2GwUn00ScXWfvu+LGBfWd1eSOQ43ElEZIU3
+PY3X7lYhJO9569dV4/eb6p+fEIB/DwLE8fgtt7+fFH5zHOF3EDBwNrN1YWb6c/t/8v9f/izR
+CesyEMKIoZdQIKNRX651ePL51S2pPA/yU4jgtDMwD+TJwrXurgLSdqV1/cO7ownFpYygjEW+
+En7oGiOtn7krGYaSIBtPu5YoGCWtUZ30QAskyelaK3uHJWb++KQ8/mjWivzdhlBhSgFyc/ba
+At2Q0W7V9jhCaTiV7/GTBPfRFe3dI3caEOlpxWtaSFYWl0JNI5qcBkvIelz4fvDmlysTEVij
+MEYOq0zGdLbSw84x1rT3DPi2LDN/yIo3roTn3LbK/3kv9mkQFRvCAJcHFzFz+9UtE0JbH8V1
+Nd9rpIaPhEyLAdvX51U0qIHZUuC/cqQh/S3S4/eMOjQAQAiABfNwcDZl/itRTB1M3Ox+58w/
+J8u/kwbsN2nAAP/jUpksrNLPghpyOf1Ewtu2rqSqFNYvnrVT7raPPy+/XifNO5Z/cxmjKoMG
+m6rL28C8sFlTs748dqazNEeNq2OVnEBJHAeLuexVFJnUaTaj4UFZP6o6bV1F+gebWlPOrs4f
+nUJTs5umE+V18af5tjIyg4cByhOycZPD7WAHCsGcCXn08sIEw4KaYK7cuNGlvx5JF7qy5/gV
+I9KO7P2a7Tf2b7uaULHCJKc00DGJ8YSFD2QKfIJpTIoBcmPqEUTUeSNo1aLkmrrLvt+aH2JI
+wgiZG4f9sV0TUIxx0UWq9tGjdeo2fY4pScTQ0QNrGKzbHGu6dEK5i7Nk6CHTniwlyKy6DZ/h
+w6cTt5wfxEik0BdxXEFMZ/yrSa4u9+1OBPNIPoZD6tcv2/30uuqwVSwmE+1H4tTPNPYKQqOR
+BHZNvT9spNcrX6ZKr/0Q5zlRt+gZcoIBsV2+3Nw3Ths529zo40dBDZApQU5En8YNVR0huT7+
+Qb9QAP/NcUmjfagPfzttrAYAgPZ75M+O+28uu6+j5bAugerHPPtZu62CsNhujRtgSCvkiyl8
+Khaz1/19NL7xXn8rKPLDNxTzD3zJGCzNmXpiioVS54QgQr4OPn7fdyC8er6bbgVw6fKOLZRu
+GUrjFuh+u3NzrDacCaP2bRZechVe78H77VaxZMIo75YU6CVBmUTAJC8wjr2VYdRyegMl40g0
+5lKRlf2sUG2mMWPOP3KhvJ7Pd3zvc59Vxyt5FA7CK0XXXYpL7FhsFBbvNF+TuaouOO+k79uC
+dhFbRPIUOAh8xZq7yLIdPQZiV+JzghPZQZWHIi6Dc6ROwXYUDFF8XaaYIYC0jtWLCjSdHWds
+bdPYK1uUGhqSKLyxkUlStv1o+fK+R+Snk7y+sr3RnyDnpOgYtkFhiHkqrFzpVHrm4/DzU+Xs
+sbtYziQ+clA9lJP867QLRQRkdbNpNvSUqCMtefYeyF+baFKdcCBH8jymfXO+HPyWgPI0azH+
+UYnjUR7SXeTRGwyanep2J6NtHrs4kFL74bvWQfzqj4QhVZyKE+sVZ6mxYk/Bce+uqIm+1TGS
+1cO5YBGHox2eaVLYnlfzm22gvJfx6USTARxlwh/CgQ+pnO+VfALn6Ef3Pq80LdaFJD0qfmMO
+DkAlWG5R6TnDC55pTbhIrFHI/KqtOoMteaoedTFf+XRcDUT3+44nX0dOz1i/oImt59UK/D4J
+PwvSGjFNZGl0ES9HOVqf9z3fUsOwbbcitp3OJU2h90d8FFVJrmUk0vtTzt7GPFEl1QgfzQhJ
+EdwoZLuI1ScHOyDbeLhwvQiCXdpetm8okbBFU7beyjinn5klPxnzYBPMKYFat2VTSn+McL7D
+0L0Ils/uMzdpj7iSQIlWhC6eb620ISoYOE3rTjV8lqj4t3ltfLTZCMOPFmHYOKsf+kLEupCI
+mB7kcJDGhUJ2WJpyIu+wxVz7LpZkMU8O5QHqzSs2SI44rTZD95KVYDIKE18RpI9JyMDhBUre
+jjzJXYTo2c9+PlsRUCLtjfz4+Mwb7UGAyfiw0L22kqJ4FA/3hW1bhum4Af6IPrrdra0CGTkI
+1yf49MIKveFkLldRZadW+5PT5Midj0Dm5P9EI+V+QqcpsmKRwHJNHH2pUUNes7mOOnFE+HSd
+94v2JeHlq+c/8qwdcuDFAD2ivL5s7DEV1l9CsYIbBpTXWmKsvn5XeuBm0PbaQtG8K8+9oXT9
+DjzXFa6NOHtkC99+ZG9U81GXMh1JnK+N3oE+WmxJkUAVuwJLU0JslBHzqXopg5orqjsiMtlV
+tGqayD97wzsHL3Y+5mtRugmU6T08nH3NJTcVtfbPJ85V9zouiupD7gCfBAaYoBYQMaXpo1Lt
+UKQuoohWBSzSrIxz+2RRKhnKmClDAo5tVU++LEmxwg/6z82VQAgXKtP4+6NwXy2hCo8MlBHG
+yhJTQFY3Zt2o+z3O35KraIv/gDy2IciRMusV8oqu0+fej9mldg//Cv7nwLOvZeCwxoL6SQfM
+buHsFQNL5k+aL0dJVpp74U17AsdWOMuy03z85aGg3ezmK4RfUXVA6+7sfjF99PqYkYv2ZhSw
+8GXikOt99YpuivkRQzfXX0q9JvHddGT/S8jL3pGZd7ZBNonA+r7OH6glGsCLyyRYvvFJ3Q4m
+rqTMXuYDy5xjpfhWqeULJYKSZCdmX94t+V5uNL7uk4b88aTmNj3nOMdhwg9b6MknhB4t5A4s
+mBmMvrSqor0cECJugQLKZ1H/6jb7cwCGetJmwoC2qQrXngBGNlvN0fmCFslaPf723bmiWrPO
+rmsbgbFtCOIgQrd+V++PmIfwFSzwv0SDCyTrTJLZgaMkpKQ8tFpqNIuoYXCQSn3Q1rHf4gtN
+wTC3b3VkZHoH0dNFngL4lAE3mujstWBnucbo0SaZQzuIsjIAuf7I4Lk5ShECDSilSAlghFR/
+UCkETW4hpHAleUQcGf8Ah1mV00Z4QSu3XYkxkpMrHThu9wAvuuLTx5E+q8kuqsBgTI5On/5y
+mUML1KdbENO31SC+8Y0P0bGYXQGIk/KnucZDEd1nydyljfExTfhvBdFXhXnZqGj07fTdbqUm
+Y7fp2kei/SKYAUQegdeUAmAigha86TLM356uPoYU/B4yCqgptX3CV4WMcGAy24Q7joI+Ki+d
+4gXzjo5SZbX3pV+5Vu9tFwF7BIaEV2Cw7sHtAHJbMjtk1Z+yGVQr24yeIyOM/fnLE5diTTnF
+XVvcBC+fdpb8hEgSfro0Cj8mAx6yvYir5sVuypaVcjUdwqNSf8loVZTnuMAdMBvoPBT/Eud8
+6EiVAaJcsOjxrcs1pDSJSIuKzTy9i3NaG7iobeRfecZhcjAEM4bv9NVqiZ3YcqzmvtIP5aSD
+MToRh0z5/9ekKAvjZjj3uz5rhgIA0P+eFM0dHFztHVzNXP6cFQuT+uz3SFFDL+nviRgu4FrL
+85OxSpQzmk+I1zdhcnFHaMyhwWK5HAwcjamrCkrtmHAhbqcE2RFv1z/bFTjneUPiEl3HpciF
+DfMMkxP9/Umoe6R3+cMCl2HZqHV+jZ7vnix3TsmIoRwXyYJD6C7hxyeO+yQCT8T+wOGhUhUs
+HlaUA7+IOaEMJ63TCNVlTntqPpwfNw0V9kjIuRH/R4XvVpaUkAZ/0J7qysjXA06dt7MmCnFt
+VHCp0fcg2XKesv5IHBZpxvmCBymeaEtt+fmL8YwmEsPPI0UWMyZlm+/74jivpZBjMlsYi58M
+Apl6V+FUGyln+8VME1UX3jOByIcMUkpKSx4mzDasBzne0LTUcgf/4Atx+Uvaj3qXvjN6dLSg
+0Bqpp+MGjfy2QLDbhkVCaq7GwT88vo4Zm0DzSOhJ+ITe90ZmPSOZ2S65bTlZXuh8A552q29I
+JVjG/7EGwOhfEZTP2SW9G0MZVbBMbsXew2G0LD3A+GgpraksrkBl5TEbDLoixGLmMTrbuX7x
+c8dRdJWV1bopfpDkQ7Pb28bxR12an7bKHKnTuQjtwzrn6m/+dfhO4a6cL3QFn15dZiA4YZZa
++kdpgRIm2Iui9iG+/+oA70e7p/2/HSAJ6l+qIjN703/BH6Q4QIo6ApJ/I8Hf4ipljbJaSjte
+fDr5Lgig1Ys4iAXobfozn6/ZV0/kX4Qobws8/jG24/k8lamgqVGBrJAymw1dGvUHrWbR/vu5
+k7Mo+RGPaadYHO2qlKQ9TirOLW98HJj3r/xvgNRFicLCqy3KJF6g1NSmKr3RnNFFCTjHEL+G
+yDy+nUSN5uRaWh1NoUsf6I9hHB6FA79YkWKCt+klK9o8VBrpy9veKycpZ5EeT0STxx3AM6a8
+EYsL6+NcA6mCcocpV+FPBLpCiMSdBi+XnCPy59G/nsZra0EjwVYrmeMM+1uRDeanNgpgDWqn
+vretDS5T+IuO9oz1zd/wFhrDEO7E6ko0c8wfPBCnv13Ue0tFr5YZtkd/CRcecKB8u1uln9Pt
++/YM+nlmYF8a7rL1mDg0jugczfv9ATEHooJ2UpDGpKH55kHUxR88WuaxaVsiQSpq3wvK8lkS
+D/Pntdtip1T9CkdUqcLbcLA8NVLLRsEfjKTNaNMGz3kw/ETZx/WV+1cG9n6+n1XzzDExmk1X
+zF+efzFdR4SIZTps1EMosDrSy+ClEiH1hFLTaaoJC1zh8Y5NULREsH51b3+C/m+A063Gp3f+
+BvwBEgBA/TvglmZGpmbOrH/Fe8p+nQVx5BLiATn0IuKMfEq5QAFlihOzA/P0BVDOOCJCCYwz
+7fB6Vf6Q0cARF2RKIYsQ/JCO7Oz0VmWzbnUDd5VIMJMjr3ahCd6y2P8A1QyFik2z67HApVvs
+jxK1rfl9uq8WqxlRNC4x2clnx/+mu/LJTST9YYrMPjZhkl9aUL5SCvlRI5TObAN3RIegCdnR
+dF6FTTHB4eg3FRd83Oo5DTh11ssUw0dVVp/SKfBfoV7XpIVXkqYjp2gQeGVVCjDCUdJKLNI+
+wgNs2itamDVP54weccuRNiCvwhTZRcCaWn9m/xMDkmilhPSUjvAXmdhH7cRK84/iOJBKUJYZ
+Y8ouZOaOvrTEHAHt6hHZ4qPqz9RBSj/6H3nkYKxWnt+DP31jZTAxvPu/MnHMJEZNXSU/vq+L
+2FHxSHyNcS9AwaC/24dJGjqtvs0OOxSA/NF0oTeESB0/vpDRBT1BTElnnaiGqU+5upvJAszY
+/Ur7YQ7Z4YJRM+NUjKjDp1+v/fI8Zreife73pqv3GKezXnfxBnRutP8xOUrCkk2SSf0lE05v
+O2D/D7vYY0OH/LYqdyRyA2u+TtZ2Of+V2k3yGyrmv1G++Q0z1t+RdrU0szP7a/sXuPc17RzW
+OVE/BAw/A7Yfl1JA6ATAyMY6VkN6lkG8h7QUS2kkeTjKxC+ffh6SMikMLU7aJq8sMOFVCwU+
+/rEWBr5P7Spn0vg6SbyHc69kFsrUZtrHDIf+mzVbes7mWbNlSkUprP7xKf6tH/ep9HWObRvS
+0DM2HaisM1kV2EEB8kIMZ6/1CfgXdrINGMhM8pxSMZ7QXXwcuEhhDX0KmOnsjO65Dx5lbkZN
+rm/tS52qufp8UYFiaRwnyZI7v+sNUpv6KWqzlUQlVpKFKJTqGmhjNMD4vRO9N5QuoBClILt7
+zplwSjJGAJxmeURPzgKHq+X3czhlgNBLMx+vDulnXY0Pd6cWk4awB8K+YKyPALPF03Ifxuge
+9R/fho73nNl+bcPtXy8Q+zW148bmI2cLEQvyBX7eOdWfbcMlVYgI3s2KeladWBKMNqv2EIUY
+gL854yZdApXei71mB5sXL/iqGjEMZBrAEY2THUPML4oSdOKFErd+iNA0kmIrN+7rJ61AoP24
+KF3HeqlsfzzpnRdginR+7CJtCVG2eczfJ0nZbSyim8eCvQbu1th6qh5csZo2BU1E51r8oN0E
+hUwst5WSSqJJ/iENqZx9onx++KvUbkE7GoqXe3aLCkOHYinWhUsaNG9Ba7V9Qeho1lxwKVIM
+sK9seBhHmDb4nWKY3PXE1AatTeJ8oW4pGNHsLAy6nypj9klu2zDWnEV47ktDhBLbUOcrUCM1
+pNxxGn1Vt5BtEXbvYpkGP1F267sfKW6YA3ThCb2WjVZGwVpOrbtM/NohFYhFQ+PSolzV46pb
+RmoTgpduk6pk/ozn8PaX5bgWefkPByOGvhE9KLUW3j25UsTYi0E80ENNQppmd81hJ3KlbKCl
+5oQPmMehkFllBxbnY5Vwiwg9XUxK52cBbeG9Llgwsg2MdzrOnqxl6OckwqhJS6NzR3KEDU7H
+H/o2nidYZCYkqad4FXNWJf6Yzgd2MKIe4jnf3/5jQawXAcNlknPzBPlIqP0hW4ybGad8XBy3
+RWpOabhWfa7S7mtuRYoP6joQRNvaEiaSJKhCc875EP/pINJ3K2bNo1AHDsewJsFiKjMpu3eD
+XqyUjDM23tst2gDRHtLn2reX3teueCkhsNNxlLks3MhUv7GJhccOlSnJxKX8AWcS0X6JZQbk
+7uiUwcIEArUv1sY7uuIVlTf3EDN3Vqe1kKsUFiijwfqJHgweeVksE3cSFg51LBI4JFOOenu6
+nj3ZRJU2eeQQ5LM+h8XH1T1ur2cW9u7UfhmGDBC8ctgoN4BHN8UGeuW+o7RfDRcsKVbqDxZY
+nROq1pGwwmaElKIzWTyhTPf0U8ooE+wFeBts9dmaXcmjJguvC2n03EbBDID9CiHQzOyc5cIo
+vylDqsAwrxKonOn8xemOkhCTnaV8yUXVoTXdfsiry29RLxrK1/ZQ71CMT+cjBUS1O71kU8V9
+mct7XxBqewYP6Q6psfw+rmVN9fwTD+y8h4oY8Nwl7n33QvJfAxOY8h8VCpEBgGz+f6k5XMxc
+Xa3sLf5SczTqaLlQjMT7gcLfURD5L8PdSDSBsRe8S86WlCG0PU9IkN5SwYAv+WDIHB/3rxyx
+edy3Tf1GYTlSqu5qZgdZWsmgj18t54eHJlyES+8X9lQ9aA0Z9i1nGqebe5tnDj2LHkbuLtxM
+7hVDxSA3jwbFTaOHksuP155u3zSS9j20HCL72sELFhDTpbniyJ6fn4+PpoDb+tBOhh/oHPA2
+i7I+hCYYNrJ+bvx07/Vpv+rwGLX3YtSlRSK4SUe2cVYv58/lQ+x+O4F+2Xx6MEvygjLiNN75
+eWXUdcbkX80e6m8Oup3cYM5p2bzwXLt2P+bszQMRZS+9Drg1nfe048c+uert75EQ7e65u7xf
+iEcKvtw4b6T6afpmX8/kcimsoLzX8xH25p4fft04N+567Yz+YsB4l7YI+rbYctTlMFLEohe5
+4F/zg4TTYIp6Q8DlOux+oBZ32jYUEK1pm3p7SeLxXuu5IlSqX5jmCxPxIglycNA/fLXXDJRG
+lSQzb6EAhP0S3CDBGUHeHuhet1W4adtwjdp8jhq4Xih+9ao7PZFeOfF2OYP++uYEJuaLah5K
+EjV16Pd24cgVlNkzmToTZtLjyw4Z0bu0TMbj56b9cvV+4QCT653+uMgoAdXm54a//kcHkvad
+ibk9z14uUNWSaAt/dh3hz6OSTYMcD43gbuiPTlzs7wPGn1/ex74vZzGv+HaNMlNga267ZsZb
+Dpx+pM6Z9Cz7+/lULiyTLIfdX8Y64utEN24GKJUEvbeuZMN57y6Wv9Z6bhHW7f0x5W0SgDZj
+6/3S6H/CgqX96LGSSL9B4xPKnOO49YeUHhBzSq7CicdIHki3R+de8GEEcp1VqJGZvjr0tWSo
+e+IoBgXkuz6DstcLlTgwNeL1SBBcplP1vdbs9d664+ncvjiYZ8f1lc3/xToi9TmsW/DixeTx
+lmUcdI9zpVlzYX6573XJHKrYH3lfPXDUtml/3z57MIJz2knUxXRrvrtqGNua+dkhSGDA0Ajx
+fml+NBcl7AuqaQc654Tda2jzlh3sBSc2C+EpVu4T3DtiD3j/zDI9oQRg8bcbfBbYuFf0COUt
+scxRQ38S4L6hgaOSwO4rOjL2fF3zaNIhzCFD+sybUgDX4Dp9f71nuRt47MCqHOjpwBPbT866
+6qSHPZ/4+nZUE9dOTxBMo/aH5WwrVhEDMpFwJXzkeAVVZNY5l/BF1ivfxofsywK38uwLk+DJ
+CFG5CrYwzRyEEM008JFeuiymjx2EE81Tme0KHhPMEE8z9pw9NTFPZ+UI5odriago2idwdFc+
+VuqnJfnJa/HrRE4RjsylmNtYUe1fE0OlfgE68/OO9tQUXwSt2JYcPyhtSh6c6pwR669STOK6
+ajN5xc37ylTEazNd1BTGhO+BQMTCuJh8dPIirPhsSRkDHqTC+chTFNJVoF3SuPiU00K9qQxR
+mdm9Kk6hu74e4osOT5yEj+y9Kv4yJJ1aLaPdrktmKkYrTw1jSWmqsrIPaZASRiNyf9Mbf595
+tSBbayUPdN9IxC1AuZRp1HIC0n6OKzCnBOgVuMQ4+YfUIGxzOfYOCh1qwp9QaaZLuiKRV7qn
+ZqxqzqtgwT54WiFlXxV+uotUV8CdDxKCnA3yIc/AksX+YEfBLQZ3VJZNV9TP0epVgSCDR1uK
+BFZoKWNT5BZLCFEgtutSadd2RmORWeJc1VmKdFAWaOwEKu28Dp3Xhopv81AXTk65xJDLKI0u
+37bed40it/bLPk4q4RTjGKcUKLku2zmyEocnDFKXtsdQ+315hJ6QRZsJrbY/+FimwlsSkp7b
+FPriiG9p5lpcX5CsEqCNUyVOi4EKldNnG84ZR+ytbOe2rvRZUOXA3yS1ppVBK97kIq2yOqcv
+4SGNALKmIE3zETpvQnvj35IaYL1q3o/w1aV/8upUZARR9zqoVC0DNUbaUPXoMqFjHnX9XSts
+cttzdXRafUW5z9p0T02/tBi3w58+Cahh2tc4KWTRbPZCLGr/6MRbsYnliC66iZ0G5tuVgSQ2
+9AgPmlnz479yYOKBJ3sWQrIqwbFCT0ffYALWlbPB5x0dzDNpkJrIoKmAzoiZask3I54abVVs
+wk1pC4yt3MJcg1L8fux9JVLnTVampRiouM4KWdCYB29WmfOqR3L0eYiqItpWFEeKFfmHbGsn
+mdxVOgu6CEAHxoQx/dtSjDhjbqT6mngTpSb4TN6fVNkFOjvJBa4QkH0IBcik8vnN4zJiyF+b
+4hdVZRkC8aVnTJKF0aVYZ4dd2rW2J//YzoHdJ6iHJCy/j1phWogZUqAYsWeut6sc0tpx8zai
+XYNwH8OSH7kOcVrcGY3EeYO7BH3ZtlmHNoYpaCUGO+aFn7euKmtr8seWlOamsiJnu50Zr247
+IML283f52hTd8sja+DUuBAQHAioYhV4TpVdoqX1q8WHI5pufcaQqZc5S8W3R/cq0kmV7uUX8
+IGhT8hoPbU/iP/LYhexo2pDgK0Ds33cmHEQjI5WUXke8olsI88QGhIjnZ7rof8kskXLKL3He
+jlt2KXPuowgoyYzqv/FOjlK/XQFxcN5uTHJUMy4qt0K7J4lqDxLouqOfgY3gx41bxdkeANNl
+u+UMv7WD1xS15Ze45mmyk5Gp0VT3VfebASeOtqc8k0I3Nr15R2TRMIoCUtWdNgCsKdqszF1H
+wBiNdrUkBP2o0ffM5fId1pDlK9w3fmhx2hOrLoxQjZ5OlZ/K78LSyy5T4IXOKMfAnkPt3T+i
+t4/fwcRJ6CAL689YEUXTLt54ieliHFmdi0HNWlB7mq1rBMMk8QqPqlKRrkFZYwShI43w0rAD
+feC112TKMOL8HLOhk8K99Bg0K8CbyPqsVDHxcALZ++dHmXrTnEC4+TL8ArDhKJ7vpF+Uud4K
+Y5z4K5C33YvSsbRN+79oo8A9oxwR5uvryyKIiw9o0LcfpJCrBmhTFFkOeXFXVdhgxdhD1Htn
+d0mS6WQvSBiZFlOHTFhz2wPhNco8YtE5LOhg0JgttAUk5cW3gBO4x9IUTK+EP3MsMSf5Cywb
+t5pU3QG0gdqRx0DeA5fAH60j3+piO0O/D+xH3Ao1sTUtO01alclHl+ooOIK1lPA7hyMFuk3n
+nMkU3mAj9NPRFdTh6mIraeNUMIy0kyIdNjJN367ZiWFF6BRqOnlIdblU6qtFClMk79aZUXTt
+c9F+E9OvESFb+fKVxIytp81meJ40WV8Is4fZytDQixCkSZkU65QnbDl2WT4yD12T90XqD/Ax
+KI4BUfvhF3tA/wLOQmGhyS688Qgr46Y6ZUVGKBG3vopc+SB8+BLLAu2LIILB8YTLBXL8vS9S
+6MvoSdDS+WwSZEP5+dxgaa1dtuVM/O121wCgyruVE/OgGaZ4WX+DUnBmqSH7hnYId/YhAqNY
+kgWJFCt6T5N1lWL2WtyS1djpx7deJJWNzBh+eMusARVMXmryncOjgJHd+iAElqHTCLs7r13+
+mNkNmBakeg9rI0mpAa+1p8kKNLsKavvXtaU/fHzkTkkVc+PUI6Vp1zVvL6mpROaf9NmUM+bj
++4muqHeu5+pK9Uv7fY8v/NHqJTVLz+TwTU5VIVGEVEQxHdXgNt16XoaT0CZmHX6cp3A6dPnM
+sS+P/yePEN0M2IJma+HSH/oSdE7AMMr5dBvQB2N06vbtDmpilYWYRKv84WkOgWUysB86yBH5
+V8uItCeDVf79m5jfg5WDHtVUJVT28Ilvi6LrmWJaAddpNeqFhzUzQviqy2kplBvDCoZ6TmjS
+f2CloOJazNnlUT54NcUse5Zmry5/ntJbykU+sFra4vbOtq3c/7lk6zQi8iuF0dmU7rq1Epbf
+ZYo4GUchiDRDqGCaUHUXjbL/IoKgf6PUmNu+lPuKhpFL4GoFPW6QIiz6MThkLS46HWJm0AU9
+4DUkE4vYjcULovBKRn16yckAXGqnhR+PS5RfYlycU1cWUNZpnLKDo60A0em/t8SmwQesoRPB
+YlqGYvoh+SRl5pg3dKwet+BtbRTV/96PCYmHqoc0Q8VwgJJZprqo/92IvGY1DzZSG3tzJP9Q
+zi1PEwYvzyVztlPZIHPwHCYHQlKy6g/gE6Nu1ZC6AUAC5UCUkMuF7WuqnKCkkOXnK0waxyk6
+zz8uODMVXmux/ZFWn8p0+nz/eiVueqyUwinbHOdZJzMBrQi4rkO6oksgO0eTBkSkAhmksu7m
+PyDFpfg0RKYW8dtUyMBXl6jt8EZ4N0RyqXbi65OF8RNXFXzmoX/fa9zQ1yiJA7CeqC4mP2eE
+8GKr0R7RbZGIjZPotvaDzfmSWxNkQktV/OFnzhopxhFqZ3d2rnBCVXEaUN4zbEVpA70892tO
+YVZ+uxJGNSTV4VO/w4iSfnprsmRf3g284RSdC14VnobdG//qTmB0Nmb6ED0u1g50jcKul0xa
+3JwxhP8vjSh2NiBipIs7PNs1ebnIPkSOCsdF1bEAlsYzhsu3vgj7421ckvBcBxM+ktePYYWc
+W38T9smphw2pROz1MKOuVi9Bd+h8f0M+f1w/u+UO+rc8UQvTR5/R99sBrKeLTTzHlXybqnza
+E3juiGP3bm2Sh2MvXsYOrx5cYoPlrq+ss8BG8feDW22TDD2uN9Cs4OVMR1fuz7ONfedNZNZb
+s677i6cBbx8iQX7BDQOL89nNR77ZW/v7hREj3auHZH7mW4p0kbnsMDXsjhEb5gn724sRkuHD
+rLB7+CmZqJ3Nd3G21IwdvzOK8y3mB5/GwBgQ/3jHqvn7kyv/fR7RtU2I3/zC9zBJt4AypzYK
+v5jahe9Dzvw03d1v7H6OHzgGeh9eRAvLrO+8ofZjtx5HAv0L3g+85gY9Lsusdw35dYhIMhDa
+WP7iOEv3IKc30Z7VO+bNk5nlvo5VDVGKZ/3Dko+CS4+JqdvyIMfKlz/go13OwXpxByjG2H9a
+H60XKdo3PC0KkoBcx2L+6GqSsfExdTxl7aQbfR5IYQKSG3ZolO4+74e42HRG2un6bPT1PN9+
+zblt4zwduO5eL1i9XEHJHS27PvNXpO/hxPZ//PyvR1pdNJOYZSQAIMQAAED5x5HW1cv2r5fo
+G7paLnuc6H6g8ncUhi4fW+lm045d6efJ1l0nwvVEfnsgpamTXLw2scDhskMBWMI2WD2ZM1XG
+09BugH3u9xoCAIHg+1vzQxUO9pA+bmb0MMmDBDZC5ux9YEniXOpIRdZAPBa1+/aaH25t4hxf
+lKSg/9tjj5/3H2MTPXKGsFFhd/eaXNi0/zB26OnB5a5uazdC0o+EsL3DFr3kDp46t3CxFpu9
+MBWLUc3lvsvID5Ld8qD28WmIp8QAlgZPFB3VRs1KLzNI1b7bD37NxYW+Hl8fxGvSgG9aZnHm
+Ah7XcocK1/gKO9j5CCuYdxpQND5k0kQPmN2AQTfQezdOSAvfXhN/aL9S2JwTGghCGZkyf0Xd
+OvX0v0OjPAqdhtJZK8sZfGNrj9ov6uz31zCKG1w6rSPiy/Zg875bIj3TebDeDLMheHnwnjzj
+5on54yvaPtLiMjHLiyv+ILF/664gfgaP0/sDk8Wv9T6Mxq9174nA7cuNrVI5BQmGleebXgdG
+fhya9bnpgV+w+Be7sPWf41KcRU59WBboDrYw+4imZ2b9QqBcP2koEMDamq+1UgrhDlHbH3UY
+RnH1hso1O+01rjcoEQ2XZevN2RfHywgSWn3Dx9DmMvGoPTrD+0G/9kb34SgSysD4EPvRv0ek
+IzkmiwUJ/fjUNhb+zuTxZsqIwN6pl6m27c3BC2KWJxq4E/QuTS93dejPjmwi4IfqjzGH1dDG
+rL2yyatXg7uPdrSRM1foBRhgT/+gkXgdgD00xGUDuImWWk2P4WqhAtqMEBpp0FFGJDRIXVqv
+dwfb5ZcRsDmiRC9RV1QL5mPV8ZFOdP7oHTGTzieVfCDaLgWda/xK20uQK+/icCfaClD6YueC
+3X65ROEjW0nPDC6uB/PtRwRtchglfFDJobrqL71qLnq+B9Lcx+s0SWLfKgPymQNXbeE7oaB8
+bzDQc/OAet5lPaxZqJ7a3PyPXTvLP4aTahWFCBv6hPdcZ6tH3Nf2h8/TRqZROf8SJzt2gTmn
+qsaTwXFKQLfAHThxnsf4nNRl1rPIJ4Ncx5OoIWZoHzibxN3fp0El67gNSWMlLL+De18Wa1dg
+dCRSUf1G5oiAReor8slqaC/bw9eRhgcxADWZzZDgMxXj+8h/N2CZ9pKG4up9tbES5ILdSIbL
+56SQA4nuYoLC1FfidsKNiknrbl0ZBS6J1IpbIeoobJH7fUiTVs2UAze+LpCukwq688WoCozC
+ZLbLgpnYILPsEFxy+CrAaWc69qxkdKuy/K4YH01JpQm0oGSeLnPDPueaIHPH+63Nb7JSYlcl
+xgQYkdqfFgD/OsQBIfEOnglW4Bc//S1+mPCOVpj45ljuZUQAQn+4NAOG9k6C7Wo6JoDLwjT0
+CiJEXMS76Fq/i3FxgDwgqi7wxCi+d0iTL1mJY1outtemtlZquygCzpuo7Ic1G81ebSnbOMQf
+jcQGvnEFzLFsyxt+QfTEwL2HubSnGgjgCkhl5dz/UR7IFYDWbcyWOIlX9vsN02gk8PP9BCVo
+Eakit7TKmbU4MBwTqJ99GSzYJufHvRm9E5rCWPo8i2ieSBBbkBL/vvJfht77OjLGHLflt82i
+kXiKy/+8JiIKDwVWJ1z0FVYizRzs1vE9iKgTTjcaSxXGARzH5FwVwKGoDNf5u7+THMQVgNNt
+bIyYgIPfMpYbCubQH/67AS8w+r21Je4VFcsJytamXCiEAzizie0oqxqUAziFiefo33WP2Y6Z
+ftrsy/htFGG3KypH1iUFKCWXTIorNnWlEA3kLUh9S+au39OwBqsp8WPh/75+qaCnBzsecudv
+VerIRlT/rHH0DplF4W8LxbNyfgnkehn1+K3xX+3xZ7NjCU31/adFLH/8bf1ANO/4iPR/7vCx
+vTllyn1FdcU2HEqoovb7V9hCwzLj4X9/M7zSKzgWciksC0qhAzFEc/CW+KnH+TbkFgjOlX6T
+MXD/zGbUgizirXwgk1R80fq8R/xSXoS8zYCYU7W7YC1+pxLDNJbUFXIZ8uQ14SPPcJtCFzUC
+mq5SzJ/PX0KeynvD4scsKlWj0VzqPwXm5oy9QssIc55ocCrl9cv6mlrBqcvriebBLVYIqSUT
+tWkC+2WlcnmWtkZF0DfMkqOvuTCt2lb5fHxe94IWngNwk6qboR9XfL/j2MsfHsu+7QocDEm5
+pwdb78RU7gb4F40XDO/mF48XyGrFDEKFD0nGMGZxA8uTp3MTpKJJP1JibNnGLjJvb6iTwltL
+MPHzMPn2s2Vflh3Zq+HaaCqFV5lsSz+eY3BuSQdEeJ6+bJMMcAmCBwhYfOcuuE0migBzBAOx
+zwqEE5YVtpVZIMUOZkjI+JnbuiC8Cye87UIfj+Rn/NLG1IL69cLLlXxNdgTeH9TxE78SKuiG
+nyX0XXRItdjYp8aermZEv3fsxRbukP+PvZ49geWsldj7yysxLPKe6xk4ggQWZf0VA7NnNTJY
+Oj9nn0Sr8pK1sUOHHXBCm3uZmKZDBgk/Vm2WJsZM6wU7th+iOCPB4N4gBe/ElIbWvzZgUrq7
+/wG6ApdpHA8esZs2NGOM2PpNCaY4lG8Ov9o1MQ/Roz5mJyVRJulMqVl3Ec6ckw4BakKCOyd3
+B1sCtrmCVYShAYIrzjACfy5PbyzJrxJNX2FEEtcoIxo1rPjHBgO7yND+lT5KZaa1vD1dK5KZ
+88KlvbMGzu2vgC+wZQ/YT5TpmWAXed8/BuQUIhuCnfG6PXIzIerm3HNPUk1sNbRNb3GNL5/+
+1M5VhsXNZeHB3d3dHUpxd3eKu7u7a5HiOkDRoqWluDsUd6e4FXe3pWvtfvt199n/+86TTJLJ
+Obm5yb3JnPPelz4Qkre8NH0rVPLjx4cMsyhzxk7x/S/q6vOYcK++y7CDg9laMnOvmZokve+K
+Gvp8qW7iiomZv3sHTeQKhzQK9zaDBwbFai1KA1Eghx9pE6bnCDqUFMx1xUYI9n0228qzjQSv
+rnTnuyc1wpmeyVPCkQq6AkzDhBBr33vo/cEKKjlwwUor825Tb42QaAhpUZImC5R7pmiI1muM
+yJEbwKBndXEKCutHKn1Rw32GvKTtsl2zzvd4d10q8hW+B/I8YerR1Zk3o4xFElhYQdHg7BWc
+vFKAp2Av5uCtaZrO8dck6A/HRLKmHxWXhUIdx9fpJLxPkllcYuggdzuQCuxpAwSEj6rkUDXC
+FMlPRpMDEntXiZF8aDWyDnsimKjSFOOtZ2VrzrDlCpagr4rCi4ooyKg7sSTkHStAv9dKbszj
+BXyeYqaAKc2mOi0eWjpLpIyUzeCgZj1UtuPrEbCzttJKbOel7NryAeVMsQzDNaz0PnsbSU/G
+g+Orfcj71N/PeKIYmVzn7EsXPocSLT0iM6ETNRNC+nSEqw1tYQXEeyy/vN56KpRyf6jlwt6n
+4jy/7XiVgSn9XHpr4mpVft1fyZqU2SYBamZwznHQf8WkYeTt9428eeKciEGMkzXsrU3ot14E
+J7Rr4lZXAzEaR9uOSB+QYmBkO5i1DcY5ge7NZ6oWaq32kwnSROZFrxg6NqBTaw4j+lObvNdz
+YzKWpKuoevaOfSyvb6wBOxprcinhmqZbkmjZMJhaGugqnStDBwnaTcHHwrDqT2h8B5th4cLy
+jDIzzP0jRZDmDqQY+EdqBU9peGfBnzZz2oSs+nwjqoIyQR5hwdy/CNLP3K9mlS9sJ4aVa5mr
+RJbjejuApgzy2y46jz/EHgKDuQ0qE6P0dWoV3ODbb4fu9xYVLnFYCuLn89XP0a9mgZ90dOU+
+F3IS9c1a8xXsGnqNvUv/sLY54mp27xCnc34AyO4I1Hr4jjMuQiAbWURLS+sCl2RLsPq0e3Oy
+p6M4Ibb/KJ05fpRObVhoKGUnq5OQH5a+Z1BG/YGXiHKbGhymECzKLvyNk3kp++pFpoFiyIj7
+3kl1AxGXKbL50HRQeLPcyVDKY6FbxvuDrCypouTXLdEG5qeMoOjBEHlkDaZgbVcOEsaXxA7+
+zbGpnx1YAQLzSPJNzp6qHlwImWrQ4Re2nAvtCHNzdCsePDgE+Kup9A4j73WMqYWVyq7wZuf2
+JdBgP31JHeaLMqPuw+I5Wcd4+miphW8EPdo4HrnnFdcXkZVQOnoKb88aXedI2Dm81yBivHfi
+3nfiN1UbFkja8ySSSFoUTKP8yRQZo+ToTdp9zB5JauPSTadv+5fID3h+TRqNmtDRVlrQaS40
+lYuz0ulCgzYDCKPKRDPP1oJ7Yc/xCqICg97XHD4sGrIFIVi75gdYRZPBg6x62xmbW3wuPjBh
+lET7JJ+QLT3ZP1YDp63faBDoT3uckpU3PewnUp6q8tsWa1Nmggcf0sb3SkbuuYP6RGHCcPOe
+essoL+4oQW0TO9TJxVHljyI3rUmqjROYamcBFccZDl+vWBZHokeXe7zlKzH5UMp/0hBfUCCU
+a0qzYkNs9/DhamY9DTnHYHKLQlb3OKIDMGMUW0jLRYgadf1xvYeSRn2okgIMV7jZYp1hXVcy
+cYMLWQCRi23tVRNJ0dgJrqJQcdgz5+CacjvRiVXXrAGDkWvX11cxmif4dq0zO24G4XsbxxRd
++bs+iFDUpJ7pwim1Q1HsEQPuOMx+t63ROjphYZ39RRE+cDQBw3nbEaQr4rAGVP3rDqSNWqf9
+kewlbD2olus6jq9XePgSKua8P6X5639FWmck0zHT3aD/5qKByT5fEtuwV/aBI6zfT5o8NIWW
+5EMloBC6gf2WRAFvcH3JS0DaS4Qv6BqoY+aB4v/w52lNZqpzepuXRUrlX7h0dq62RqZOlnbm
+P/4GHugs2m28RvZlGvOHBt9k+VLcFHzJaDNPO2EXldcklo2hHRE6jZBgY693z/YY4qfunyui
+nMAQVej6xa0FboskgiJ+Ox1nBH40zuv8qOp4ySaL07HLgDTHW6neMci03ik4NeJkR2J/BNku
+YQpRvRYLckTUwxV1bWmRyN+jyhv69VMiWlcwx5hEHO9B3paoRpHlBTMuxWDNxmJ/yzHjBjNM
+9uS96ffYzh1z991oN8NmXClS1H5/JXzGLPJAP1meuYWIONedN95wZFQBx16IxivyiffMfji3
+bg+WaEtCx/FZjQqfdgo/j9UVby2FoBmiQSHNBxxFgqxRIrkIzmc3i+kIddzoLTgRMnK0ohVs
+4kl82ejA7iTWbBonFF9cBqxzE02kQBnte986N0HTJB/TEc+Od/DWuudE+oYnH2F3aoyLt0ps
+BVw2ze45xkpuBva/Cmqi7lU0h946HpJYX7RTdJmUfxXeGUoz3tPqH9klpwpP5dR0eYXtQ3vX
+yVbV0Sf6bqhZxEIqH5FW5bprIQZ/rVefn7cV3NBGwJM5j0DZrkIM1r5De05BCndx8KLunb/K
+3UU9EJrUk1zyG8a3xYVl0Yq+WDtYsm9zKx4l98vz3MtfZ/v6szv4u5z7TO809iT0/Jw/DVGM
+45oTeGj7dIUK3KYGqkRNPhiKLgZLVD2srw9oNrYejmuPneWfN9S7Rx1F7Qswndvx7nB9SM1f
+MeY9Qlc09z83X+UBvxGAFVqXxJG5uR1/kuJoJ20nMK1bm1xA1APsicaxs3hnXiANG2gU3Aa6
+jMLiZaFeZca0hFYUSSb2nj00hjJEGL+vOD0chNPmpjgQszbcJ8W+GiIvFKQHiPvapvClvIr5
+eLo0GKXFT2FVVlOsJpIi6+w17VZOwyoxdXO0JSan6zWtj5euVOtAEkZqbSxzaDCtgDfqzPrs
+vfnp+f5e3wrM4bGsYX9JRDZf2CZUCBigfmCyK4x5sjbtD0sSDqYgAJGewlgPAh6UfG4jAj40
+JetluXs/jebc3UdqANejWWopS1Hehb+r77ik88xOLc/zgTNBsHogbupWA5WdbB9gBoltUMU5
+0bTOHRpvrZjhJ23bbV6nkvFlbPu8QYmzel9FuyjOBcGKTb6EIdELjqNEK5JFxDgBU9d6plZf
+fxMutWsLujXKeMr0DdmGSh5lv1cZjhFNCo0m0KmHrSCx4LNhWM5eAgHDRUnh9/TQqqK+u0sa
+tzdt61vN4annqmLh+24qiT0lVqw7MBr6uJ7tcIzbKZY5OAQiXck+FyS+l7CIa1g5VZkGeHbq
+R1Fg1s7ZzMDQrWqNc440VjWxT7HnLUtdkIpo0iETBB4WcQ/JCe2VAkIeKcpcEbAJYijxobaw
+vBRjidrEZtRgDnp2evXO69fyQG4WbVJlBsxNRVJJJSvPeFbyElBL8U/VIRcS3xdB8OKHhNGb
+mPZtDONReMLjyF02sVF0IQNTpF/J4aBqphBYSVVrCa+fqcLCKYQW0XawGNywP/jgxCiPK9qL
+F70OA1+uhSCvAS1hyp/UeHsjXtSnjKPMkE9WLfMsXlR14vBOHmOxHqIlL3c5esQCUUrACe4+
+bdQRTtGOx2nZF2cpLfStvQvQaRNXHpvAo1U8xCU5PgWLDWEXMzWZGKc3gr5zjEFFpRwxqiDh
+DcMOfBlyJHb1RT8i6WUkWLj8G/UIhmNn6xtZMF9Mh5iSfOk8B0aqdtPAc5S2kLu3osHAr7bn
+AQrNU1V4VLveWKkl0hjRuDDIRFgfZpkC91Nwbhvky/Qtkkb4kRgCGnkn4aOi8HvPxyDvQ0Vo
+No4hESmU2/A4k/QOADspN3QJaHqhDUrr5XA5vgf1sIJJCXug1GSqNxRx/ATCk9U5WjxqqiKi
+Cf0M37OKsOGXxszyBoqwkVU1sCz03I0yYTLlfL/4JS3NDhCEhwpQSKc1cUGnstA/xL4uxpd3
+t9S4mTybrTjZGSL7lI+H+aRY/uZlr6Uddz8qLdfBGCsNtml85+v4zNgTNrlXrl1ATEMsyeTm
+at0TOiD37FSosrthJ/vDNt0TSadKKPyUn7Y5j+L9qg2UlYCzDVhN7D7QpM7DE+96nnRb8LCL
+dy9q4fMR+nRPaEmu5Vdb0MlbI5IYrKHDPLEQIiZZGE1FCAshv1Qa/znKOJw3yehMCdFA3nHk
+2/C+lcOT/h/fbSvlPKJPJGfm2t12n4uL9fmscga3hatcjvqp9JT0hRY6BVkT6+xR1poknMRI
+VQ2Var5mt8WWtpQmX5OtjqaKXqntX92NSwk83Castnps8YNNLTJGNaLP99SSXiB8j3pzfA+p
+Wid7O2xR7PzYeloazR26vK24JPYdw7rY8rHVy0xOX6PUCGRL3gP3CgVED9JglQzSeFeYimdA
+5kGNc4OA+LGoRGgtgY8ZRczJQbXzs53voHzwE4TE4+n+m1UE0p7AsbOaPZxA0++hLLzyIzB9
+m+EHZKGpFZyUrRwoyh7eILnMN3h7e4QIq4SP1vRlbEl9yQOldqjOmpokpxZoR3WGGq6JpDEV
+R0D5DudwOfmF6Vduaz1E97d1zz681zdVJXbrLkpjkM8VIsc5+5RvUsF1uYJV3JUP2GVil48F
+OCZdlsAP8nLUnhi/LLPrckg1UX9na0rygtLliG8it9BcJ4rdBXFhnw+uxPUQvXm3Mid6HhKs
+Qhh70yJG/tyHNXlCbmYqPWzRZ/J6EAZSnQ2XN20YGg882JQ9/yh1np7KSmO4GMz4NVn6ToR9
+PmPAfPQBBf94tDypWdVDD+NHIWW2F7sVmh4r8VhttoyteZIyTbdvqfOMAuMdNl+/oHVPgqxr
+wK7v4jvaQDiSOH2EWFUJehsRb8x0csYmLxLTA/B7mQ//dT6dFC79LpnQyete4E/fTQYGA78e
+gQAAx2A/WL/QICb2xopO9g7OTIYODj/eTP4/UvNvyFSRs19khm9BmvNn9rHfBNdEAY+OJOlR
+NCBCQK7js2YlgKuiEDIKNmvzU83klK+b9PGKLSguksA9Wm58vWj8tndejT8L3TNMvWlgbonW
+n7btG/0ZfUJlslVWj5pfe9pKfyyRAVrmV0FI414GG50thHh9WBTX4KxINHntkSlGl8i0sCwH
+V9tXyzyPC7kULHSR2oH2IbWde71ICOetG04Kz4vVTty7UaNbHVUGMBRurWohZxIJk/K0EgRv
+SWA/kE2nFIpwbZwIGuS7YW+hiyKt9oRG3tog5oVX2KkqAueEPJtWu8gQs1vs36l3Lw8ci0Nh
+6crNb4yH0mdBsTCCuJlF3bFjc/eBdqd1chhr9lMh8xmYCh0GnQ1LLbcblKlFWfu1flTDQ+mm
+ACAVT1hwDFTozU06xQJ1+vJuh7uytuYVMFjSaweuabFNI4ZlTPm41mckYCtfhTBAj1w+QH81
+NbbZ7hf5ZOqgmxbUAimvU7aBpxUdy96W9ETixo3pPTUmQ9CP07EW4647++l8gHAzJdrubXl/
+a14NpRb5+y2a9KFnjGyf3aNJxCybFsQYzLUexapL6fNmTAiFg0rUfHgbT8eKdZzse13Qk3Y0
+aNvGpNEFAvUdYBuaZf/7++c38juJQW0b6lnGzY1dsRR/nsNxEeDy6nxZon5pBYQvbcTY1dnF
+3lbD1ubvw5stXUxtWf4/tvkPCBntiARlgYdcbVrlSfqWNeKBHL/roYnZHFG/WuPCytZjqQKk
+vrvCVKCjP2CBuX0qWBLo/HiUNq/yakyVnTo6xotIAkxg53gaEz3qXUsWTV4gFetB01Ye35rN
+B/rTTbSyPNHXzBEFWTMHlPApdNLYgyY5+B+TWGO5Nd1ryPZcde1dnmwFrw1LReyJie4gp27T
+pc+eXyMEu9+IHWEyDxChLCxpUOt0+gwl1fe9jqWGbDbwqAOWfoNrtL786r8E92d3QeBaw+La
+y5Lay5XFBlAD/nkX/PX6/7XTZPlbj0kOoM4hBvw3ZMZ1WHUxw4cdB7eIjC25JiCO0jlKL7iM
+7c/lvJlVQhWxgVrEwTM+5g/PatyQX0+MayVSu0diMz3+HuymLviln0SkTKfokHj18DLdoU84
+qTYxsYq6nXtu9tpdDcstK5pVdOcUf9ykJFeFrw60FRhUtX3aJ3Wq+r4PbAOqsw6BLJPNzULh
+a8L5IYeJlO1kOrFBtOOyEu7UW/GwdxnjhYbHzfEsuUTF+97lFa5WLBZkDOeZSjXkLQ1pMHvs
+o8dXcFdrmLMWUbPPNTqXrhN2J06EAoEzGI/5WrfbGJd/Psp6EJoJDhIUAKiC/JcBZXYuqoZG
+NqY/Km5KTdc+gxndN7v6OeBh2QBajlVV2ZUo/qqCzyXr7oAT8qMh3i234e110zaZJZbyB2V2
+S2LwTGuiT7EjLBx1bWoYByEQli7ieTAUgWPfbAoYWc/ODV1riEE4Czk+smqZmDAFfGNcaWuy
+nPhmAQUyMhtH+z5+ooEbQWT1gyI8ZSEmblTDl0gunxqx4rTHmvLP9Urszk4MdLtXhrK70Rev
+rlAxE3cSokbD7JPHPmURaSmR5I8rDuBC1m6j1vbOydkiYAHqzdRcfSKlfHMiEtBIKRrYDZw4
+OnpCdCVyizp3UWyzVcVAeyY/h75OKaeb+hSBWnkQCgdUZQtdjW3RyijtsS5EeAstw6NuGqK3
+gaOkwFnE1qw/yQXDB8KUDrGGCLaBOJKeMO0nWK4k6x6qxa2HeBOjuXu/K00MR29jKHca/CjE
+TS4swCuxnsgyuQNt74mpYEYSxAtlZiNwkOlM2h2sChp0nAdztDjyGNCGEaEUipOVhwqjx8JP
+sRE5Vqe0CfeacKVcXUKMn4RVn1wpFh/jdowsP7J6P5b7/SCGp6jIHXEnjjt8KeHRhlZ0Y7Bt
+1m7YM9Z2vchoTDh5IdE4KgzQkFPfGMaCvL3MhdM6YretopujMKpK+Eb2xuZGR7YFf8PPI9/G
+Y9ZwItxUQM6zzh+/KlAg2S2WKxtBelG0Je6d32LA1p+HTkIX/CrSXpa+v0xo/9bo/qf29jG2
+BbaTGV3cvcMd2jOgkJMzpFZRkQqFJCpYJmH5VeBD0ibmwSKeqA/o12Mfh1WXyKhqM4RQ6JMc
+FMrAjPD3/F/v53i7kxOQ6vsVDU031+G1nN7jN6LTeEIQwb3hq3kLZ/7RAk4ohZIBed9cGRF1
+f4hNppcToahgFoAyn2sbK8u1pQus0jm4Sn4UY3c5SH194G7/pyeMlYMpDwryUtqXCf0fzcTd
+1EjlFxZ89FiHNBgL8l97VvqGuvlk0kqXOmLlU9KgO4ClmxvekEmnrNVHBfuFUmI9r0Hy9Nh0
+/4Y7Qf0WsKj8sRIzvTLYoA8doSUqn5n259+VkqczYyuAcNdAKZU9nRmlL8JnmEuWPCSVUgtp
+VWctFKJrl/fYgbwbohGmjiVjAapKv3+F67fYk04RTdnw7pzx8FJNV7/MPmxUyQI/K5Snkick
+LuYR2IEVH2Sjm0TEkJ1vuk7CqolMc58j4Gmhc2MK7BGAzjJFxZ1sps9XQNsFU1vIuPMQ/kxb
+fdiF/na4NxXcuUrRNyLWyOk7v6Gcz2AShAbRp3fXSdmExzK5zybf/P9UeSRXzIfaCBEAcDMC
+AHD/lWPxxtLFQszMzNTY5Z90i0XOf9AteGYMZWqtM2myI6zxY6nczAjriGFrsVUKUgp8Nv9J
+t2BNH96kwJRyAfP1WeLEbXu4azzLMifs0cPGRxI/DgMLh7KrPwn6utGRej+YFRyIRkWvwSwA
+f3O6+u5rsP7K871+WzN+T3/GqDEUNPjp+OACHyF9oolvdRNek0yr0WlT8o64IT4/+fE3hxo8
+fl4PxhVfmPyeIw9O3HX9fWoXT3ywOjZM3iqPnL7y0qlOdqSAWRHscg3UNrj8r0sYUe9f7xPk
+tJpFcFz7MHmCLXRZSlPyEtrkrUq6WlDtx1k4kfMUPMloiyYrTZ0kM4yKuFetCwXhu5MdiRB1
+vtwY+z7Yi8rBJIyTjHwcCOueW0UrLR8lvDH85uNouDlj5+CKSak0SN6QRYfaVJ99wA/xcy5P
+oYkJkwtWwkUhr+RXbFTcTL8y6WkmJqvKsnBZCxJw+XKMpFSvab6k6b1UrAuhgMOwloLJhyc/
+fn6R26MOTvvJu87Emt9B/Wh82hhZ3OZIJFZP3Dumoq/DOyBS7Pv7c6ja00SNh2g7skuVx85n
+xi7iiKxUMswmwrc7y9ogjd9OsHac641y+lPJRtY3ya/m+FbhKjQ82w83pJC917eUH5QWh0JP
+k0sOYVP44Qhzt9jOY6EC25ydy9m4CE8MdgazPF5dYwqmi/G4U4FZ1EeRST7PilcyRsP5wVCe
+AhtWVQXD+MjxTyAA0kodTAHAZUS/lAKIelBqZ6pxzOWz8P0x3/WoJnA9fCTAl9O11LLFPjiy
+gPaHeQJ9T6KWniA4G4U2uJTloOeazY7UNKazHX8d0srSXrt6GNTv+y5hsBcbPT1lg7OgawG6
+7SEP9qJgAUTY+b1Q91U0LB3hz3Jc0d03Qg+uoqmZEasbBu5lLi0+ceFBzu7iG3cgF6MWZ/nY
+h5dkaY9+fYLMRyJybEK9A0HEzl9sAjHF1tdYXSBYw62Z5DMzhq1G8r0c0whAM3BVFyYGcoSc
+y7yZTkH6m77v27EpeOV0PiD8IH342g+JcEIpVts64zIuZ3o/ATlT9cAjG2EBLGjatO5S6JGb
+JVEXjOr7FFF8ksRNig1YJHO3yJ5x4tOBVWG295Do7HA3M+aM+mFPQRLUbAel4qdjwHW579/6
+iTUL/8b6uCJMjQDbjXhLXZ6Xhkuaqome0Oow5rYelluNQkXjGMnykZaK7VTBZ81WvcQCusMt
+crwMLOqKmacGkosdVrTvysfQCiGc21f4GSH+kxqc8Fd0DAPob8IQktlj/vBpixP2o3aFM+0O
+iOfe4Zt6bNYrfHCPzF5zNyVI1V4nQwvBbJjVJBo8juLZ4Khs1kiM7UXO641/pX2UR+FLMNRr
+lIk4/ZX2oUVjalKDHV8TJN3ci9ncaFgOQWY99jiUzfcFV3ME4uAcNhqujt4oFkW7ywm3QFXr
+PSvLWwA/mRzI01wI7eTU2xgEbAkKL4x2HYFteYbTiI4vxd1wa0PCoUvrQIh8O5CRIKU6SfOO
+PgPE7SRiOE8XyiXjbAgm66nhIHQvMhwP85n2DJZKkZv3naQkLawen+cxS3+QPrSEpiskV43K
+s5SLcT9QSqxOa2uQn7B2g1fFuMjW4CS5akzhmAa+Z87z+0FsIPpBnIBqhnl5HrvzJD69bBrE
+xWOV/UFjgBb4ki5lFu3yskdlL2SEm5UUNQRJwUT97JipbV9QVE1Q6aocdlSNm+wPRkd5Dupn
++D3o5rsfhIZ/9fzXTUerSyMFAieUJ5W9YfAqrj98hoVHxyMug4vfRMglFUPYX9wdv6wxzsD+
+4J28uJUOAFKUgOvNwNKeDrz4gxP4wgLZA/du0UzxMYDDUPRlFqgksCpnMIXkgYbtCnXsRvn4
+g7nC/tokrTSYIzCendfk72UP0zoRN384eimmUXkOrQdavYZ1EXgxzgiKhyZdcTfdD8ZIderI
+i6uQbJvBPjPRP/gnaF5Mv4BafinKXJxh6Y8Sz5zEsUy81FAfLp5VB57vZtPL8f5WHz+qHTXH
+7I81QvZq6O/+O6Bb+sTlfh7B/cTOfILIA81D01gkrIT75VQ0u0R6JaFebKxtkCWc1ngt1mxK
+3MwMTca4LjWEvMw6RP1tFEGSW/eezJ/ayYrlNpKD8Ql2ix452JiLU7gDJpl9nM7yp4HfqSB1
+E2i8nVfgTj0GtcXoq8Joo+5XRjNjKyfyJhCHcz3AISOVL2jR6a1RLqnHRjdtET4QWz8mIagW
+v1UmUtMKMg16o2gBekmrKN6XUytTjUVBPoZvba9KAnNUSdt7w6FKwThhH9bVMv7Ub6OPOKCq
+Hex90EolndfLdkFxunEurkr+RQ51L5SjNBLqiU6VcBoTa1qNULfYipxEkJ6/1Ha3N0K93AU2
+WdQJ/LTOxWTD8W5TNkkgV3STrXwM+sMc6bXsRFvovpJYn6chwoDbSM7djrvSUDC889bqoiB+
+2Gd/CFBfaX0YcXMZzH4QaBD/7RxfZC7l/ljtDwiIW6nq0n7rPr5gj0IJ61/Zx2JNOTjoNE0w
+bNTfpJdEI4JjIRPyMswaDHOhxwWxHBBYFLLGL3qrqXhynYEKzewgGYwk+kZfyxTjBp9vnnG4
+kX0jzzu8rMqOqVJcmzayOChT71F//ep0wsIiNKUhN+JrQ+7wl6hzNhqWN/ject5chLHXhTud
+fuPiLMSB2atCCuBqPvSvZYSMilKV3YFreZm57asZZvUlB7m9SK4G1vXG+Wu0HLuDDl8Xse1Y
+SkT7r0wHPbMMrPJLFSssQqpYcO3sQgyaIMm6WXkcwCBSilHQFjBkd7/irvWYuLxFqR2BdrQA
+9supkE3JIma7tg9EjG9SJmjrU3LcHlG6e/JnHNAFK1rZByjk9WuuEt59FxjaTOKEo05d94Yb
+aEDGS4dTawM1XpwgpTSCXjz1BEUQ1VJjGXRO1+CaTzeTMGGcEC/7oq42v/2D+oEBDmaLw8yN
+8lfqR/i3zxfqZq6ImPnpd9DhjR/CzSG6L7NCoNmvTenD/0r9uM2TTjaFbPQwTUBvFthofY4Q
+I9WV7qy5VUGZ2VocRzafo1A+Z5bqTG7wDbk0nUvkBiXWbGE7M3f+G/NDrQbYYcDvQHiz/Iaa
+u2x7vFJLfIA5w7wdwPw1H3bRBiX0lb4CB9qT6iRRvFPQobE7kKXapKCn29+LhYtXINUEvTiw
+Z00O9MSfm1spi5TAlkC443n5SbQH9hBPNa3C4mHTAbooOtdZmEUS6Unwrhb0hg2dX5sqMBw5
+EvypAdWBg4WzLysNNsXc23G9DIZSdbMysiRFLz/iFV7H8ubqZoEBuOcNah8NkzpgaduS1x/i
+RA23kFxo+p78qKZB221S9L1lFKRnoW5fOdWNwhzw/Qw5c6yUI1cGIEYVmCuRdpHemEc63BcD
+tZLCc+0PU+ncnGS0e6izVExSC54fdJ7wajaHveRttq6xM4ycq3N+tpa/Pr/+7K48by2U8Tm4
++evF7IJJ4S19jGx6hfJhfk3VsJRzd8l2epsnoADrcybV0PkG9xrG8rMFTWcyi6jJ4Nbr0vgM
+H8jTcgg62AhrMHUTOMEtVXA9TjKq7OO0Tn/2XbFx0DAszPSCeXVnnWR+zHMI39yTZ9eJ++vy
+ZsFSsqo7ev8mrF1v8LL0uJKkS+jjiTJyXFvC4k50gECJFQxjejuHGPt0gWv5944EaxRYiIZX
+ml3kPBm4mZ1Lhg4Zuu/vjLfpGNNUgp8gS3JPKDpgnSAv6OC/3YJ+0TkOtq+1ypDDrbXKkqep
+tTroQNCAe3JcfD+47W83iz8Fkpgl+3Bmfm7yFTRToeUzv/fHkbck72T12YFF1W29LltnTk5c
+HbeCtXr7JHJIk8FuQ/TwVM6fVLa7hiMuq8B8oLCsIsrMTZDkmGlW9oqLx4eVah0DvKnygwfZ
+pPrRy6+lHXvrzfNC04EUDSiOUjG4ZgPBDPlJV63Zafko5GmI9I0EOqVZJb0Bk45BQiiNcyVd
+i9t+m0lCyyxvYAj3WDrY8K4ygLZevLx8avJlNnckQVk9i9CK8JhvEadTEB7YuwnebWV1P44T
+PvkEZoB0D/s5LC4Ji4buJLbrhjlIrWjlIPAGvGtZD57d6Hjif28S6H01hStCGIlbo9/Uq9cC
+VHR61+JylM4hIsRf1R6VemMuNnmGKuIxG6OuOhssKn+UlOQrb+Kx4dcsdxJnpz5MYKUSnk3S
+da+0iIsZmXSP5BqZeVEoWZMipFrQqm94zNMYrpPmtuF8DfJ1INWue8Nn14yRpdSOxOBbYZ+b
+Pp0JJEJViZhH46nhYxtoQdSJwN67A3PH4yctesjBiKQL0vPoxweTSn+l7kGbxOb68BiijrEp
+a7buLVKGT2EY6lXch7D7G3R4TIQTjcPy2VMRRS7VuVbpDmjwtXRiuHQ0ezvg3ZgMqC5i69dA
+mzSmPMQhoVXLROJYqGxit67k0kqehVpu9tw87QW52klFTBps7SdUb+UBaVffVW86KZpg4cGJ
+kR/Mj/KrmdW/MT+4vtE3SyCCafTzASs3RSWH2pzPkPYLNFgHw+CLkU7zIjjeun+Sld8UXOfe
+nArh2AVjDw0bDYAVZn+IrcIngXgA4y/nQpghnhHzaIswJuQN3f883UAwl/t0591/4sCa0QER
+Kan3IS6U4dxHLs+FEaz3c+ubeJm+MWXO+VdKNiQQFZqqAkroi5IgB+RcoPImb2T4NSspfQs1
+iOUy6eTNuxJFIKKydiLnb7kdUdxR1pT3cT+sFfZUFvfLuw6Z6jP4jCtcqRDT1KjC0nyAYJbr
+e9eP5LmggX48c680gFeK0jy5ydoTdfP455FjmQCeHksQAKAbFABA+TW7YmzvZPr/9Mqv6qlK
+1sHM6KErUPdICe5y1eU2eZi140Uwoa42BwzkdbbFlAkmNY/XUVpZpr5zxpw7flzX5LtnqsnL
+KNUo0mbU8NBngqw9od9Mv/tWnRHFmdMnZ6ZIC4eNGIyxtrXJaGYxfzAsV0NYgGV+TyaVWMEt
+4m29D27cdaWohMYZ7rKuvhup5T7Fo6PilsPTjkLC8qldWZ6hh2HsswRpIzEXXvxlHSMPwBxb
+ulhQK7iLuLtND66RlQOK23T9YwjfrF2RzDeajCo9/CUqMnHjyVdCbPtG9Q8kT/R6K41qviSL
+n7BzeLfoDXGL1biZijEdAJ8VS8GlSuRPRW0z6Eu+hNL50gUIZNm/9D81zrgxeb4NvLKnF5zM
+s1qScLyxkti35Ff5PWG8lOecJJtlGRZMhLKMTrOK2Xj1O27yd2GQW8ZXD5WauSlY9+RWnmuk
+6XwXzR3Th4d2BIHTpjX+aDubQE7AGePFZdvgT5UvEFAGwO/kzf+IPxE7/5uD30kj/woIcADg
+F6Hkvxn+Ti/2V9BAAQC/U4/96en3Ap4/sQ7zJ3KefzP/vdTZT1wj/1H47Kf975WyfuIG9adu
+1h/Mf6+79BO76P+qwvTT+vdaPj8xifnvyj7/5uLfVTd+hQ3eHzQ4fpr/foTTTwjQ/kss7qfx
+76lxPyHC+Uei3E/736Wvf8WKIADwazL7p/XvEnu/AkwUAPjPab6/+fpdeuhXwIgD/jRZ9LNE
+v8+S/ISkxB9zJj/tfxcv/xV+Un8sxb8V4N/jz7/CXvrfo9E/Pfw+GvsT+TK/i83+9PO7Z+ev
+4NMCAP7tSaooAwH540e0l8/8S4NY0vmx9hdQSwECPwAUAAAACAAbjVlI8IPqwnxTAADMYQAA
+CAAkAAAAAAAAACAAAAAAAAAAb3BwLmRvY3gKACAAAAAAAAEAGAAVy4Po4m/RAfheiOjib9EB
+V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
+</bestandsinhoud>
+          </document>
+        </opp>
+        <opp>
+          <opp_ingangdatum>2008-09-01</opp_ingangdatum>
+          <opp_einddatum>2009-10-04</opp_einddatum>
+          <document>
+            <bestandsnaam>opp2.txt</bestandsnaam>
+            <omschrijving>Tweede OPP</omschrijving>
+            <bestandsinhoud>UEsDBAoAAAAAAPuFWUhQ3S9eGQAAABkAAAAIAAAAb3BwMi50eHROb2cgZWVuIE9QUD8gSmEs
+                            IGRhdCBtYWchUEsBAj8ACgAAAAAA+4VZSFDdL14ZAAAAGQAAAAgAJAAAAAAAAAAgAAAAAAAA
+                            AG9wcDIudHh0CgAgAAAAAAABABgAbmRM4+Nv0QHN3Urj42/RAc3dSuPjb9EBUEsFBgAAAAAB
+                            AAEAWgAAAD8AAAAAAA==</bestandsinhoud>
+          </document>
+        </opp>
+        <verblijf_opdc>
+          <opdc_ingangdatum>2011-01-01</opdc_ingangdatum>
+          <opdc_einddatum>2011-03-01</opdc_einddatum>
+          <opdc_brin>23EC</opdc_brin>
+          <opdc_vestigingscode>00</opdc_vestigingscode>
+        </verblijf_opdc>
+        <verblijf_opdc>
+          <opdc_ingangdatum>2006-05-04</opdc_ingangdatum>
+          <opdc_einddatum>2006-05-04</opdc_einddatum>
+          <opdc_brin>00AA</opdc_brin>
+          <opdc_vestigingscode>00</opdc_vestigingscode>
+        </verblijf_opdc>
+        <pgbdatum>2011-01-12</pgbdatum>
+        <pgbomvang>12000</pgbomvang>
+        <rvc>
+          <centraleproblematiek>concentratieproblemen</centraleproblematiek>
+          <maatregelen>rugzakje</maatregelen>
+          <signaleringlwoopro>
+            <deelgenomenaanonderzoek>true</deelgenomenaanonderzoek>
+            <leerachterstand>true</leerachterstand>
+            <lagescoreeindtoets>true</lagescoreeindtoets>
+          </signaleringlwoopro>
+          <rvcdatum>2015-05-04</rvcdatum>
+          <!-- codelijst 17: LWOO -->
+          <rvcindicatie>LWOO</rvcindicatie>
+          <document>
+            <bestandsnaam>rvcrapport.xlsx</bestandsnaam>
+            <omschrijving>RVC-rapport</omschrijving>
+            <bestandsinhoud>UEsDBBQAAAAIAPOEG0cBwbl2rBYAAHsiAAAPAAAAcnZjcmFwcG9ydC54bHN47VllWJRZFB6k
+                            ZujujgFEQkBapURCmKVFunPohllKSrqRkAYFAYfUIYeQECmRGkqQbukRlsWNxw33x+6P/bP7
+                            zjPffDP3uWee+933nPuec75TxcSiAOAAgAAAgBUQ4JhB5YgBAORhAwDkAOAVA3lnJw8rJw8T
+                            bV8XK3cjfh+oI0sB1hXuPMAVwP/4T6M/xUi1Q5AifAf7Qr63QmQSHNmDMDpxfYa5Qhz5do0u
+                            DczKlYVqPRb5LFPkRIDr925oOfsYliSy49Jkf6/+YdDUZMihb7yVqWppbQ7lJhSdMldNUFir
+                            QmeTb+ogI8pkZExQ6kCcodHQFfL+OlqK9cXz/MSeHFxV4VT82JgDOuv2N278Niw4zbOx3Dmx
+                            phZMBoSidLdkOKnB1vG86CZWkGmC1XFW+1i56Yh/oSptlPa1CvRykjOjuGcJ3fO6bt5204J3
+                            +Tmnk6aoYzkD8toQRzb5gDRCs8hUUmb+/rmcrP0ONsaUyjIPUF9qdLhXUCExC+UYAH5dOrYp
+                            cWr7JfFJqTmF3WoubZGRCdmtRItdiHjlRST7yAUx283AQA7l5R4MU0P6NuEqL3a//ldpGKMO
+                            BCkUNrgnZbDI0O1hDvH4FG4M9bkwI8vamVdcrECNjlsiCP652cSRVY8O5wbmqSatPMmmO33j
+                            w1yXz/niAhPweyet0xFkP7y8u3fpg/iXTmriZuXoLsD/5fq/c/6PL4hJGlTvECR4vaPUJP/x
+                            87qTEjC/uPGeUiOrNlMbxzZzXWwhh8zx0UPMEBUL1PDRyuBtg9ntZTttZgZzAfUOBLcsXNjc
+                            f9zepyJXlzjPnM3GjqKbLo7BTG9m1tHEpygly3z889Pq6Gg6RMoZu7kII4QCf2/TrThRUKPP
+                            zHY4mfap1XTK0s3wVqbv+KTfI+2BuP64ZbfQ0qfVDSJqzj4CyzDzdPUYmSfkUm+8luSt8Z8N
+                            op5myr1RDqXcz35H2vuZzQLzCXjKEHJwUS/uyqYaNaQ0vy8998hdZmMjmD/X9tlJ84D0QunD
+                            D2qWJ2bILmJtk296ySzonPvK5VE2igkA0AGAGD6OAj87irezm4O5s7PDl8PsV6fBuHQaDMB/
+                            HE3Jg/Y/kSa0OXQY5prkZJUi2RwjW2VwDABrLAx1iqYdcTnfTpZHyPTy51OHcpzBbg+Vnn8o
+                            3emkxrHP0Ung5AHWFpc/QHGfiDffkg5lGasfyal5aioTIu8a2BDYoe5+plByyFHwiBM7fHKn
+                            qGjEtIrHlQmaPcp/kGlBS7fm6TtG2Cet1iB09j7IvIQnLjXE5bkoi3po/MCFQyPCSTXAdckm
+                            Pq3qfo8z9YAlicSj9SEW3owHHN294KhOlqqOj2Lhvemm1fQdlqqCqBtmPatB76UiMuQQz+3H
+                            jEN8H1CGR/CHf49HEHuYdL6YecQAAQlsW/B0e09FZM+Y7+F/i0EcuoS5ppescLoMp8SXv/g4
+                            /o47MZqyTu2CJE1668zX5qJDMYEkIDL7crdnfnkuXouEcJfNHi+6E5hYlJzde3nI7GROjE23
+                            fsVgMTh3vqkanL+ooQDK6FexigPB5m7e7ufZk6Xhqb2RMITvg1Df2dGN9SwldoBgYcdAbEnl
+                            6iz7bbBT2uMdsXG4XnkWA4Eziad9wQktAGCxtfQj6+cUfUPGZms/FJrtG1rt2tYgsMj9SHEf
+                            YNXu4Ov4Zla6FZvNOSso6DQ/IoPl3uB8cLLLoQN4PMQjh2qLDy8vV6sQUad2pdBKM04PcFeQ
+                            47dn9Ho5mxfnuwdaqUmbVITrDZ3sxD9QGsC1KoKSST62qE3H6AJmOrl9J0QBWgqAy0BgO9ij
+                            cCA38529Wh0bsU9GQT5q3mTvoA3DcnF7+VOODavMDg3a91/yHWnMiz2eS4C3JJ2afDwJjzlM
+                            nb7TiXP78RDt8ihTTlivx+vGxsnd8qJvu3PbaBAyBQcAKKO/VKY/b4aHrRXU6ufr9S8bsqkP
+                            caa/Q9HKvseo6O8M5aqnv+tZNgGnV9IqmOBbd21i2lG/2ViTSct1SFh3l4NDQdYw4aWrjEyx
+                            7oLmLbU84KPRqrasxzOH6k1gZfrgIHTC5sDZ8nmg82y/cesei/lqJFDZd/rIXq+ciQ0+2C1C
+                            NDWbY3bRFx5R1L5HI8yUXC/GNdIIP9yWGt8rwVNWIHkevwR28s/X7LUuZoPRvP50FaJE4E7O
+                            z/Z8XgcrFd7WLSNmnlpnX6cfJRh7k2IR2LP94b4rv4jyJtSq059AvFNlHSM3KhisNk2JI/1k
+                            TERhwCod5PFQH4WpaPG9NAdxSgRNGh54yvj9WVPf2CHe7D3q63XmUDOjubMRz7WQPY+3uxRI
+                            bpsHG+MG415uaJy2UaHK8Q1P/7rsJximc7g6FdfuZB7+oFiRPHwtaHNRaMupTqOi8eTK+SHn
+                            Y4Mc9dJhFSu4AmHPrbH0Xfr31jD/t0j6hC6xtN3DAa8GlMcujuXeW86Aiwfl+t57OBRCdJD0
+                            oan88+9VbkbcE0fxhTkDAgoz26m5I8Olm0SiQfHv+0yjd2H86KAhpXDK2MRMLssQWOQif5xi
+                            iPlbDGcywwy4fIsh3Uh/wgG2mjbK/zYygRzfr+pJ4PH6qdbB+mlycsSgOtMPPp9Wh3s7mK/x
+                            2XzgjwtdaE+fC0B36zHnz+V+f/5pb2XJR7/z4tN59+2LA30JEk1b1uFogSdn6M3eaIHbp1uo
+                            bs5daPDdOycJigoFqI80jJ+AHsLhrpxc7K5wyg4SLRtsomAv0NoTPMb5LQlrq5dErrHeejKH
+                            3Jiz2TPelowPzUtsQSvNgm5Bn7NriKiLcSbeNeFRMQ0s5GW/yqB0jaBhTt3bXphwhTqnycz0
+                            h4zAYWIccRm4BOuCREr3KEbcA1SUoryOuT03ERAYkjOX2yO+gKikGEw7kkiuFH2nUeRKa/8b
+                            Dxw9qfrJ1mjJ7FS7Zvk4Qw4OLGvOdmKQe78P+SBFXJ8SkWvnI5zWMJ374I+m/GdslVyUPpIs
+                            MYWzGUr69cuYGGiq7JaIfNNUBCz3LTs1D0VO2nBTmIQAm/dJLf0CN08HkS0DFXynl+chtyKu
+                            YSry+FUWK5rxLGgxdbtFNWpxuwYfyUgnzsZ3RWGwXyFKwJlsu3PHdACckXEV88bMs1HS2Isy
+                            R2E8T5Sbj0E9albU0dyqt8a/7H5V+zm+6gHRky5crGpz32g/g/w5XVvxgrNu3oMyw5YzRBN3
+                            13fFnvLmWdB3fnfLpXZAVo55yzHTSSWnaS8wYz8LPqXOdOfqjTdXBsZLpgaHhuJjiTokzK/L
+                            l7XLRpLbTjs8AZP1pHiwaLRzZtO8deGBxkYsm0zuW8vnKjiuJdzf2oczGo93TAazc1kU4fXD
+                            RS1qK0HZ6ZPouhTu1SPJfvsHT93dy2mH7+l4vFy66kCeVSiRIa1HiOPuILfAYhvZ1qcmfuow
+                            5jKPjImpm6mIF2qgETAsibaM7OY4TBzzn7x7Y7Homm4axbDfhOlQabfwc935sRHLuSCUb7a2
+                            pZ4Jkn9/NsuHJ3o+LD1oas3D0vW6hH5MHMq4HD62mxB/GRCCa4SkFUE+RutOZDWAyuwATseJ
+                            3Mf94DfUs45Wj14pfxf6mdjhmDMsRzIB+MzrBQHUNuOZCNb95xL6p+N0pmNvNPOK6HIgjw4J
+                            geGB9/BeFG48EHpMYkKZY0QzXF9TZcezJHynk4WBuZA0K0qeYHs8Hw8d8+whL7EW6QG+4ZCd
+                            QxZPg3ipsl4TlbC4VJw+2ULt9DrFW6HJdjXZPitBZ+w9mQbNyVg3ar2uojPOZ5oEixePr/rd
+                            DpaKPIQfBRFTd15hz+GBQkxI3Z/KKSudtwQNIEeJIqlefgyzA159WSJ6gS0xcgEd0KcDV3zg
+                            fkZkF4QVdq4UFpKAya0KRg+w6Koe86smFT+8p0DZmRpF6a8QB6Rfp5sY9W+MkAN6aqmNCJm6
+                            lC4OwiDCthSr4NIMZ3XON8fGWZiB3isWybQpbhsv7GyFPq+wLW8hzfXqNt5+ctzhu1rARQXV
+                            vfkGz1R3Au+B3VRrCZB62h7a9WDEpyIRhGtsOEaDsx/OHZzFUXTR9sPdsMFIkEVzPtEp66gu
+                            lomgyHUgfeQ6b/2eDEJmCkkqou41hJMMtlLLqlefsp+0hvXmOA0cp8DrLFf2jrFjc8Rs+KW4
+                            qAXeTTwLYzRAwVNLcAafqGvQZFpy0S7S7MOfn9yMjt8OLfSeb0TG8NiFgG7pgghuHrR9xOBo
+                            XbJNczoHfesQ+x75aOmLovC4VBQ0XxWFu62VlYe7wE8fQj9JiyTkFyUW/kWJ7TW7TlWg6JJS
+                            ZHk2zARf1zcuckfZOWKjjFANuUkJQqvFYiDl3MBzN8Stx2nnIft00NcrGv2098OK6z1ft7bW
+                            11APBCTUp/A96DmhlTZZOfZeI52ZFQMEkyLRMWKsHlEkxjdMi+JfYKqm4uUkBmvq4c9JJCwJ
+                            Wj6ARy5ymRXVB3BwbFPh6KbqvpD1FDTtALoO9cmgYYVSt4djENg2RShmxGO5d6QFQxVEKxh9
+                            jzV6K+tXLYdHZktPC7XJ/ZUqdxV5I5jKSUjVY+SqvI2jUlk0n6Rliq5CbYjKYloHXvW8Q2Yz
+                            E969ELBuHsdeaBHY7IvphpW/XJ8hMg4U15XjJIaedC7SryJAHhOcdjt6Sn37OE1sO0ByvrT0
+                            u2JCSgVe1eHea/bQmw75dIgnEu7s4DhuoonDmsGH1wSxRLTGhjyDK2nuEmfrRJqp+NWlXyRd
+                            YPzDXRH+f1f+7V2x3uyv270cQWP+5a78pPpSktXiswRJwndS0Zc6nFq+GiUCvH8nVndGvrgs
+                            16abwLTL+ulWwPnnONl8HW/iNYyPwXv7A00W1PE2DhOk2eMT6dKqmgN5evc3WvhOj50h3jsS
+                            +7JHdSIT8r0C86cWh0dqrnINx4wypgqrsN5GknBDYJXkixEucRlIIJ2HLg6eEe/ZvMzYItih
+                            k01tDsTrOcglt+1kZvrOFttAGxcflsFCFEOg3bpzMF8lUu6E1F87ivigns8IhL9TjHgDXOov
+                            O3u1Ndybk98yONmsrXdE09RmUMHg5ygnJ36dEl29Uncfn03nTsWzUFsp96GUgOSlLE5qnevo
+                            ffmO3os6a9ntlhAMyryS665UW3Os2xYLwjCVqNXuh0opV1fZAwAWwKYi0A+ZIooY13m1u3IP
+                            dbbsGCZsuu1tPyIfCviggYitK723EjCGI5paHJG8dAAQV3TE/Xo5eaCfcPmiMhvmku9VnfF8
+                            3tNPt/St1vxesT2SPAk6Wjlgj0Z11QZeg/KGPseL4FK8GyLzfcJekJVEhck414eMxnysq73J
+                            1N1X+Tqvu62xjvYbnBHHJ9kYH0kKIPzdYSnS+1QXuyUa95qJq8MgI3WI434Z4ammhX41dyXy
+                            B7gMBafDbxlx3PbpPD26g/qVyDUdSDpuRPIPNtSjCb/FEpeqcNfnl3dLl2+Kn1nibmvmZmWp
+                            5eFm52Tj/oUhjnGyeJeJ2p3jEG9gzbg2NqnygtwuoGDbQmpKRjjq8bPVrYpIfOSSfzzxnCMT
+                            XMv7GgOZfoYa73dKnvZXjPgYiBt78SiiS197Rw21k9OKOkkL9ReE88HDdDmq6pYRXau+mUIj
+                            3/E/UxDATCtfNhwSm2ZT2TxoKkuTRMvkrY8m378ftM4z7Tf9/SQt0UAkKre+7CRbi7Swi/Z8
+                            LNdj+4y5+PtaJicE9TeTnmblIajKZVTawQIACH9ZnYevo9VPyypKUYtGfSF+2A+4+Y3s3Wr1
+                            yi+aEywJ8Q24OfCbr9ZvRr6PSPwo4rQWuNPjtfDwZu0LagcRupuZvjfcznzSruRkwA3LsSBc
+                            rIr3lhDzZSq7G7fwqWj07+rIhuleQ/LVnFw/P+Opr6R09LbsZ5XhzpovdD98RJLF/LjIq8Ch
+                            xLR4VFETV0uL1IBeEX9DTFm2QDCAJcktzL9dZfkCM3G06YZngoO+Vjexocu417UYyxa/yhTR
+                            AxaW9/seivv4jVlNHapP6KGea+AgdsQ134FZm1ccqleKRPjr3KiWEBpEtVdqb5sdlhxAUk85
+                            dzYLRyZ+kOO62ibcxRHrzlcrS5QS3CkZX5B0SEp/9QTpwqyr2XsH1ci+s9rJsMARMdKUfCId
+                            jmwH83feKO/hAsSJ4HgyCF8NBdFtwgw69vD4q7s9XC8iKwmgpcNn1phrRPcWQ0WxRQaednel
+                            vg5JJSK70SSJHl6ja8HdYnia/Rq7NFVXO0jZr+d9kJsbuHNAbDz+UxyMP9HeEjzjnmhqqyXQ
+                            3vVQDqdm5ZB8sLX4cJPYYvhV0wrmHnirsaiqmz1wDjTrCYnKvJJpk5cn3xG2uP5kkgcwsSBd
+                            RoJWdWl59fl99CcWRaTKFLChlR/sU9sKDxETQijCVri2JBVC7n7uMhk7QOYiB7a75CKQkXQd
+                            5Gef7c49X8H6CkxJK6mRm/hZuG9O/ej7bbIOvbL4Orinz175OjD72M0ws8Z+gFY8Dzq2DTeP
+                            IPMuJP7IwAVDG2XJTbnsp7NFNv/wbKT1m6RbZ2pVL7gMvHqXgZfksnBm6WzxnZuzi7uAmYvL
+                            F979Xy77GdnJEGeUIEHXDuYRI8EMvYTydYLg5+aqYhQT4dhKU0/0H8eF9SWxwhWrIbenFOls
+                            AvmbNQKIiW8nJiEkRPg3BMH0AazLNYaWq2rcFXPUC98fH64X9pAFCyCx48PEzcnE0OdSdVH5
+                            XUpUWq9Jb1EWgO31NMFaFph2r6ttivHgGAsW02++0xmbhwoKEPolRUtfsOzJrKpeq5oal7kO
+                            rpT0c7ClvTeYzuTVnRZchx6tH6BjaSn+wUyNgEc7BSZB46GifqfLw0BEYHhEY0VFPd7eoe1D
+                            ZqgnNn9+0ko4Qn41oh6DPlmXsUJShMI8bVOACSVnCUl40c2jgDscwvV6Hbpo9tQoi3v9bswg
+                            hEjlQKXazJFoaVSqYqvOmAiHnz8W1gZsb+dcGEjqOKiZkikKJBEo7cTs6JFaCLBuOaXYoazV
+                            o7rQUexfSw3nuT7NLL4xVDsf76c6NtoZ+rYl/1jUl4MTUoB2OndHOHt/oAJCVF85lkEJSVVn
+                            F5Vvi40y7rAjblkahc5Z+H464zuArJqdcfl9f/NNukRrnDKkdz9+qPWbgmKOrzpF8XLE/TKg
+                            kv6W1xbOblb/E/srUpJMIO2CFF1zamdEqnMNTgTY6VAOex+3qCiSWGc1/+DwQ8jU+jwKBRW0
+                            me/qPsr+vCEh9pYaVwN3zvSaXrWMMkUhgEMn5g00eKzcSvxusKeCkCYvCFsy5E70pyNwqWRh
+                            X1u5Bl3MoikmJEm0ECEjteIRDi+WIulUnGVtfqmhSLISbx19I9+/Gls6atH/WhupIgOST3AU
+                            kzQnIYZI6dxqnaiNO5wOS8nGlYzzZHyjDejvmaelqI6c0fisXvrSQrSwWfwlcRrx6xK7AvCW
+                            +ckZ6IenxrOIMtb0rUruPCEbkUKcSK2S55EfXkTkaZbhKEf27ilBxfTJN662HhDiHvk0ibrY
+                            fRLwCEPbBGHfMh+jluTdWXu3bx/Vp5w9HbYnnd2v2yuiylztg560PhGeU9wW6OTpDYxcc1SQ
+                            xuxjMAlI/oT7K/kwrvAB/qq1/kd8o9H+s4G/avv9FsWXkfo3TcCfJ/5VJ+S3eHNZUP12X+Sr
+                            nb+uh38FIehP1fGfJ/91/fYrMvH+VM39auCvs7SvMCH9dib996wckn078/tq5a9zk6+Ipvim
+                            lT+t6M/a9beAU/1ZyX618Nf68Cviqb+qxT9N/fMp/1tgXXLkt2f+19l/FUt/i2mGn2Z/jaw/
+                            T8fG+TJI8OV1+Yf6zF++/QhQSwECPwAUAAAACADzhBtHAcG5dqwWAAB7IgAADwAkAAAAAAAA
+                            ACAAAAAAAAAAcnZjcmFwcG9ydC54bHN4CgAgAAAAAAABABgADIjtMtbg0AEfdAL5XuHQAbwX
+                            9DLW4NABUEsFBgAAAAABAAEAYQAAANkWAAAAAA==</bestandsinhoud>
+          </document>
+        </rvc>
+        <lwoo>
+          <lwoo_ingangdatum>2016-05-04</lwoo_ingangdatum>
+          <lwoo_swvnummer>98229</lwoo_swvnummer>
+          <lwoo_beschikkingsnummer>OND/ODS-2014/38325 U</lwoo_beschikkingsnummer>
+          <lwoo_einddatum>2017-07-31</lwoo_einddatum>
+        </lwoo>
+        <upw>
+          <upwingangdatum>2006-05-04</upwingangdatum>
+          <!-- codelijst 32: 3=Vervolgonderwijs -->
+          <upwuitstroomprofiel>3</upwuitstroomprofiel>
+          <upwvoelementcode>0013</upwvoelementcode>
+          <!-- codelijst 34 -->
+          <upwleerjaar>3</upwleerjaar>
+        </upw>
+        <diagnose>
+          <!-- codelijst 23: nieuwe code: slechthorend -->
+          <code>H91.9.s</code>
+          <naam>Slechthorend</naam>
+          <datum>2012-02-23</datum>
+          <doorwie>Mevr. Pieters</doorwie>
+          <instantie>Alfa Ziekenhuis</instantie>
+        </diagnose>
+        <diagnose>
+          <!-- codelijst 23 -->
+          <code>F90.0+</code>
+          <naam>ADHD/ADD met medicijnen</naam>
+          <datum>2006-03-12</datum>
+          <doorwie>Drs. Mathijssen</doorwie>
+          <instantie>Beta Ziekenhuis</instantie>
+        </diagnose>
+        <onderwijsbelemmering>Impulsiviteit</onderwijsbelemmering>
+        <onderwijsbelemmering>Slordigheid</onderwijsbelemmering>
+        <onderwijsbelemmering>Ongeconcentreerdheid</onderwijsbelemmering>
+        <sterkpunt>Sportiviteit</sterkpunt>
+        <sterkpunt>Enthousiasme</sterkpunt>
+        <extrahulpingroep78>
+          <!--codelijst 12: LCC=Concentratie-->
+          <domein>LCC</domein>
+          <toelichtinghulp>Leerling heeft concentratie-oefeningen
+                        gedaan.</toelichtinghulp>
+          <voortzetten>false</voortzetten>
+        </extrahulpingroep78>
+        <extrahulpingroep78>
+          <!--codelijst 12: LWV=Werkverzorging-->
+          <domein>LWV</domein>
+          <toelichtinghulp>Leerling heeft netter leren werken.</toelichtinghulp>
+          <voortzetten>true</voortzetten>
+        </extrahulpingroep78>
+        <specialebegeleiding>true</specialebegeleiding>
+        <begeleiding>
+          <soortbegeleiding>Logopedie</soortbegeleiding>
+          <begeleidingvoortzetten>false</begeleidingvoortzetten>
+        </begeleiding>
+        <ambulantstartdatum>2010-04-12</ambulantstartdatum>
+        <ambulantbrincode>00YY</ambulantbrincode>
+        <ambulantvestigingscode>00</ambulantvestigingscode>
+        <begeleidingsplanrec>false</begeleidingsplanrec>
+        <!-- Gegevens over of en reden leerling is ingevoerd in Verwijsindex risicojongeren (VIR).
+                Let op, volgens de wet is vastleggen en uitwisselen van gegevens m.b.t. VIR niet toegestaan. 
+                Dit blok zal op termijn verdwijnen. 
+                Gebruik van dit gegevensblok en de twee velden wordt afgeraden.
+                VIR mag niet in overstapdossier
+                -->
+        <!--<vir>
+                    <ingevoerdinvir>false</ingevoerdinvir>
+                    <reden>Het was niet nodig om de leelring in VIR in te voeren.</reden>
+                </vir>
+                -->
+        <!-- BR: Gegevens over of en reden leerling is besproken in Zorg Advies Team (ZAT).
+                Let op, uitwisseling van deze gegevens m.b.t. ZAT zonder specifieke 
+                toestemming van ouders/verzorgers is niet toegestaan -->
+        <zat>
+          <besprokeninzat>false</besprokeninzat>
+          <reden>Het was niet nodig om de leerling in ZAT te bespreken.</reden>
+        </zat>
+        <!-- veld "medicijngebruik" is nieuw -->
+        <medicijngebruik>true</medicijngebruik>
+        <artslijst>
+          <arts>
+            <voornaam>Bernard</voornaam>
+            <voornaam>Zacharias</voornaam>
+            <voorletters-1>B.Z.</voorletters-1>
+            <achternaam>van Zwieten</achternaam>
+            <roepnaam>Bob</roepnaam>
+            <geboortedatum>1977-05-23</geboortedatum>
+            <geslacht>2</geslacht>
+            <adresgeheim>false</adresgeheim>
+            <adreslijst>
+              <adres>
+                <soortadres>bezoek</soortadres>
+                <straat>Toneellaan</straat>
+                <nummer>1</nummer>
+                <toevoeging>a</toevoeging>
+                <!--<aanduiding>BY</aanduiding>
+                                <locatieomschrijving>station Zoetermeer OOst</locatieomschrijving>-->
+                <postcode>2725NA</postcode>
+                <plaats>Zoetermeer</plaats>
+                <gemeente>Zoetermeer</gemeente>
+                <land omschrijving="Nederland">6030</land>
+              </adres>
+            </adreslijst>
+            <communicatielijst>
+              <communicatie>
+                <soort>telefoon</soort>
+                <aanduiding>werk</aanduiding>
+                <nummer>0793462626</nummer>
+                <geheim>false</geheim>
+                <noodnummer>false</noodnummer>
+              </communicatie>
+            </communicatielijst>
+            <soort>neuroloog</soort>
+          </arts>
+        </artslijst>
+        <contactoverigeinstanties>
+          <instelling>
+            <naam>Bureau Jeugdzorg</naam>
+            <adreslijst>
+              <adres>
+                <soortadres>bezoek</soortadres>
+                <straat>Westwaarts</straat>
+                <nummer>15</nummer>
+                <toevoeging>b</toevoeging>
+                <postcode>2711AD</postcode>
+                <plaats>Zoetermeer</plaats>
+                <gemeente>Zoetermeer</gemeente>
+                <land omschrijving="Nederlnad">6030</land>
+              </adres>
+            </adreslijst>
+            <communicatielijst>
+              <communicatie>
+                <soort>telefoon</soort>
+                <aanduiding>werk</aanduiding>
+                <nummer>070-12332332</nummer>
+              </communicatie>
+            </communicatielijst>
+          </instelling>
+          <contactpersoon>
+            <voornaam>Elizabeth</voornaam>
+            <voornaam>Maria</voornaam>
+            <voorletters-1>E.M.</voorletters-1>
+            <voorvoegsel>de</voorvoegsel>
+            <achternaam>Koning</achternaam>
+            <roepnaam>Els</roepnaam>
+            <geboortedatum>1963-11-01</geboortedatum>
+            <geslacht>1</geslacht>
+            <adresgeheim>false</adresgeheim>
+            <adreslijst>
+              <adres>
+                <soortadres>bezoek</soortadres>
+                <straat>De Villeneuvestraat</straat>
+                <nummer>24</nummer>
+                <toevoeging>a</toevoeging>
+                <!--<aanduiding>BY</aanduiding>
+                                <locatieomschrijving>paardenstal</locatieomschrijving>-->
+                <postcode>3053ZV</postcode>
+                <plaats>Rotterdam</plaats>
+                <gemeente>Rotterdam</gemeente>
+                <land omschrijving="Nederland">6030</land>
+              </adres>
+            </adreslijst>
+            <communicatielijst>
+              <communicatie>
+                <soort>telefoon</soort>
+                <aanduiding>werk</aanduiding>
+                <nummer>0104223633</nummer>
+                <geheim>false</geheim>
+                <noodnummer>false</noodnummer>
+              </communicatie>
+              <communicatie>
+                <soort>e-mail</soort>
+                <aanduiding>werk</aanduiding>
+                <nummer>informatie@jeugdzorg.nl</nummer>
+                <geheim>false</geheim>
+                <noodnummer>false</noodnummer>
+              </communicatie>
+            </communicatielijst>
+          </contactpersoon>
+        </contactoverigeinstanties>
+      </zorg>
+      <sefunctioneren>
+        <document>
+          <bestandsnaam>SEF 2001-334.docx</bestandsnaam>
+          <omschrijving>sociaal-emotioneel rapport</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIAK9MwUaggJ2i3U8AAD5fAAARAAAAU0VGIDIwMDEtMzM0LmRvY3jsmWN0Jk0W
+                        x2Nbk4nt5E0yb5yJbdu2J7Zt27bzxLZt23ayWfPjftu951RX3a4+1X3Or/63blXLiIOCoQFB
+                        AEEBAQERArmCBsmOAQMB4X+5qEBQIOr81lYOhlYO2gouNob2mnTOlhYEuWAgFNlAIED/t/9p
+                        q0+Qtp7lQeq/FHGHNK8a2ogH5aOQQizAyUHhtVk/i9xFf5VujWt8fgg/76OaMwC1okvcuW97
+                        vB11NnJ5N5G0RWQwvTRzVKRVAZZyLVhvNNpcyBp5LBehSEcZ4ChexkNp1Wr3bNC4BM33LdUs
+                        VQ3D5LLJNIBVyh+BtHGYeTIBn5ls3ucdytKDfTvXu44Uv0TCSVwyrZ6/If5dz7i62SN/FVQU
+                    </bestandsinhoud>
+        </document>
+        <document>
+          <bestandsnaam>sef_2016_02_26.txt</bestandsnaam>
+          <omschrijving>Nog een SEF</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIACtNWkg6TAceeAAAAL8AAAASAAAAc2VmXzIwMTZfMDJfMjYudHh0fY7RCcMw
+                        DET/A9lBA7Sdoht0AmMfimpbKraadPwK8tePgiTQcce7h2VJqV3RzcUUDWTqh9SKJsrrcgfN
+                        /x6SSeVH2pMSECsc94UxzbTJs26QcqF1sR0jDNX6dGHqcArlSHnzyEcmhlFG4vN9iwfkrBL8
+                        HDR8/PYFUEsBAj8AFAAAAAgAK01aSDpMBx54AAAAvwAAABIAJAAAAAAAAAAgAAAAAAAAAHNl
+                        Zl8yMDE2XzAyXzI2LnR4dAoAIAAAAAAAAQAYAKUPWndxcNEBYXNZd3Fw0QFhc1l3cXDRAVBL
+                        BQYAAAAAAQABAGQAAACoAAAAAAA=</bestandsinhoud>
+        </document>
+        <toelichtingsef>Lees goed wat wat er in de rapporten staat.</toelichtingsef>
+      </sefunctioneren>
+      <verzuim>
+        <dagdelengeoorloofd>12</dagdelengeoorloofd>
+        <dagdelenongeoorloofd>2</dagdelenongeoorloofd>
+        <urengeoorloofd>3</urengeoorloofd>
+        <urenongeoorloofd>6</urenongeoorloofd>
+        <meerdan25percent>false</meerdan25percent>
+        <frequentie>2</frequentie>
+        <contactleerplicht>true</contactleerplicht>
+        <rmcmelding>true</rmcmelding>
+        <documentLijst>
+          <document>
+            <bestandsnaam>verzuimrapport.txt</bestandsnaam>
+            <omschrijving>Hierin staat hoe vaak de leelring verzuimd
+                            heeft.</omschrijving>
+            <bestandsinhoud>UEsDBAoAAAAAAHOCG0eFuZbPOAAAADgAAAASAAAAdmVyenVpbXJhcHBvcnQudHh0ZGl0IGlz
+                            IGRlIHZlcnp1aW1iaWpsYWdlDQoNCmRlIGxlZXJsaW5nIHdhcyB2YWFrIGFmd2V6aWdQSwEC
+                            PwAKAAAAAABzghtHhbmWzzgAAAA4AAAAEgAkAAAAAAAAACAAAAAAAAAAdmVyenVpbXJhcHBv
+                            cnQudHh0CgAgAAAAAAABABgAWqAGZ9Pg0AE4UgZn0+DQAThSBmfT4NABUEsFBgAAAAABAAEA
+                            ZAAAAGgAAAAAAA==</bestandsinhoud>
+          </document>
+        </documentLijst>
+      </verzuim>
+      <eindtoets_basisonderwijs>
+        <eindtoetsresultaat>
+          <toetssoort>0011</toetssoort>
+          <toetsniveau>B</toetsniveau>
+          <toetsomschrijving>Centrale eindtoets (CET)</toetsomschrijving>
+          <datum_afname>2015-04-28</datum_afname>
+          <wettelijke_ontheffing>N</wettelijke_ontheffing>
+          <standaardscore>525</standaardscore>
+          <toets_advies>Kaderberoepsgerichte leerweg</toets_advies>
+          <onderdelen>
+            <onderdeel>
+              <onderdeelcode>8000</onderdeelcode>
+              <!-- De unieke code voor een onderdeel van de eindtoets. Let op, originele waardebereik ingeperkt tot 8000 (Taal) of 8001 (Rekenen). -->
+              <onderdeelomschrijving>Nederlandse taal</onderdeelomschrijving>
+              <!--<ond_referentieniveau>01</ond_referentieniveau>-->
+              <ond_referentieniveau>03</ond_referentieniveau>
+              <!-- 1S -->
+              <domeinen>
+                <domein>
+                  <domeincode>8050</domeincode>
+                  <!--De unieke code voor een domein. Let op, originele waardebereik ingeperkt tot 8050 (Lezen) of 8051 (Taalverzorging).-->
+                  <domeinomschrijving>Nederlandse taal -
+                                        Lezen</domeinomschrijving>
+                  <dom_referentieniveau>01</dom_referentieniveau>
+                </domein>
+                <domein>
+                  <domeincode>8051</domeincode>
+                  <domeinomschrijving>Nederlandse taal -
+                                        Taalverzorging</domeinomschrijving>
+                  <dom_referentieniveau>01</dom_referentieniveau>
+                  <!-- Lager dan 1F -->
+                </domein>
+              </domeinen>
+            </onderdeel>
+            <onderdeel>
+              <onderdeelcode>8001</onderdeelcode>
+              <!-- De unieke code voor een onderdeel van de eindtoets. Let op, originele waardebereik ingeperkt tot 8000 (Taal) of 8001 (Rekenen). -->
+              <onderdeelomschrijving>Rekenen</onderdeelomschrijving>
+              <ond_referentieniveau>04</ond_referentieniveau>
+              <!-- 2F -->
+            </onderdeel>
+          </onderdelen>
+        </eindtoetsresultaat>
+        <deelgenomen>true</deelgenomen>
+        <document>
+          <bestandsnaam>citouitslag.jpg</bestandsnaam>
+          <omschrijving>leerlingrapport van CITO</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIAPRcWkh5ePa/Xx8AAMIjAAAPAAAAY2l0b3VpdHNsYWcuanBnxVgFVFRPF380
+                        SshSIiUsoTRLtyKwgKSEIOmyLN1LSYrUEiLdoYAg3SDpHyWlpBtBkG6QEIVvia/jnO+c75zv
+                        wbydN/c3v3vnzn13Zt7Z2NksQPIQqggFMDAAAAP9B5zNYVDKuVuaAYCiIjuADwAANgDBwATw
+                        0DUpdOFD18nRv3LoIn7V/gRdLIOxz7sDT4HLS90SDkPCAD5eiJAYL58YnxADBCLGL4r+/7MI
+                        FwAi8QBsNJaXj48XK/KStxhdMF9fct1H37Cu6oPognNVX0AXhmxMgBH9+/FS3T8qEhETEAVg
+                        MFEIgk/UzIwfwssHgQvzi/LDTM34YDATEX4TQTMImh3ABK5sgPDyYpBc8rviom24qsucC4Fz
+                        v2COWjg7O4jx8NghuWGm9iYIbri9LY87zIEHws3LA0jcc3eAwa0RzgwmCHNLO0nwVv0HMIOl
+                    </bestandsinhoud>
+        </document>
+      </eindtoets_basisonderwijs>
+      <toetslijst>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>DREM8</eldtoetscode>
+            <leergebied>technisch lezen</leergebied>
+            <toetsnaam>Drempelonderzoek 678 2010 Technisch lezen</toetsnaam>
+            <!--<toetsversie></toetsversie>-->
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2015-04-10</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <dl>0</dl>
+            <afgenomendoor>
+              <naammedewerker>Mevr. de Graaf</naammedewerker>
+              <functie>leerkracht</functie>
+            </afgenomendoor>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>15</aantalgoed>
+            </toetsscore>
+            <referentiescore>
+              <!--codelijst 11: DQ=Didactisch Quotient-->
+              <codereferentiescore>DQ</codereferentiescore>
+              <!--codelijst 22: Landelijk-->
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>60</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>D</waarde>
+              <kwalificatie>Geen nadere kwalificatie</kwalificatie>
+            </referentiescore>
+            <document>
+              <bestandsnaam>drem8.jpg</bestandsnaam>
+              <omschrijving>drempelonderzoek technisch lezen</omschrijving>
+              <bestandsinhoud>UEsDBBQAAAAIAF1jWkjbNCaur6wAAEG3AAAJAAAAZHJlbTguanBn7FtlUJxNEn5hgSW4Bvcl
+                                wOIWFrcPD27BWRZ315AggQR3CAR3dydACMETCO4WCBogeIKE23znUld1v66u6npr5u2Z7nmm
+                                p2fqrd2pZ+/m7tYAAmV5JXkABQUAUJAf4G6dIVHO184aAJSUoAAmAABoAC8KKgBGahLIwofU
+                                SZBPOWQR/VO/AbLYvUD7NRwwRxY8pKJhh4B7wAE+Ht6HIjx8InwP6Xl/1SKCQn82YQBAPBhA
+                                Q/rz8PHxgOL/iFuNLKi5f8RqRlagP+kSyAr9T/omstAXogIMyOc74Hf5x4n4Rfj4AAtrOA/M
+                            </bestandsinhoud>
+            </document>
+          </resultaat>
+          <opmerking>Leerling was zenuwachtig voor de toets.</opmerking>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>NIO2004</eldtoetscode>
+            <!--<leergebied></leergebied>-->
+            <toetsnaam>NIO: Nederlandse Intelligentietest voor Onderwijsniveau,
+                            2004</toetsnaam>
+            <!--<toetsversie></toetsversie>-->
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2016-01-03</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <!--<dl></dl>-->
+            <afgenomendoor>
+              <naammedewerker>Mevr. M. Smit</naammedewerker>
+              <functie>orthopedagoog</functie>
+              <werktbijinstelling>
+                <instelling>
+                  <naam>Orthopedagogisch centrum Smit</naam>
+                  <adreslijst>
+                    <adres>
+                      <soortadres>bezoek</soortadres>
+                      <straat>Burgemeester Reigerstraat</straat>
+                      <nummer>55</nummer>
+                      <!-- <toevoeging></toevoeging>
+                                            <aanduiding></aanduiding>
+                                            <locatieomschrijving></locatieomschrijving> -->
+                      <postcode>3581KM</postcode>
+                      <plaats>Utrecht</plaats>
+                      <gemeente>Utrecht</gemeente>
+                      <land omschrijving="Nederland">6030</land>
+                    </adres>
+                  </adreslijst>
+                  <communicatielijst>
+                    <communicatie>
+                      <soort>telefoon</soort>
+                      <aanduiding>werk</aanduiding>
+                      <nummer>0302542890</nummer>
+                      <geheim>false</geheim>
+                      <noodnummer>false</noodnummer>
+                    </communicatie>
+                  </communicatielijst>
+                </instelling>
+              </werktbijinstelling>
+            </afgenomendoor>
+          </afname>
+          <resultaat>
+            <!--<toetsscore>
+                            <aantalopgaven>0</aantalopgaven>
+                            <aantalgoed>0</aantalgoed>
+                            <aantalfout>0</aantalfout>
+                            <aantalgelezen>0</aantalgelezen>
+                            <tijd>0</tijd>
+                            <vaardigheidsscore>0</vaardigheidsscore>
+                            <codevaardigheidsschaal>codevaardigheidsschaal0</codevaardigheidsschaal>
+                            <betrouwbaarheidsinterval>
+                                <bivlaag>0</bivlaag>
+                                <bivhoog>0</bivhoog>
+                            </betrouwbaarheidsinterval>
+                        </toetsscore>-->
+            <referentiescore>
+              <codereferentiescore>IQ</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>97</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>RW2006-12-155</eldtoetscode>
+            <leergebied>rekenen</leergebied>
+            <toetsnaam>Rekenen-Wiskunde 2006 ( jaar van uitgave groep 3/4)</toetsnaam>
+            <toetsversie>B8-digi S(B)O</toetsversie>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2015-10-23</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <!--<dl></dl>-->
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>51</aantalgoed>
+              <vaardigheidsscore>90</vaardigheidsscore>
+              <codevaardigheidsschaal>110</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>B</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>IV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>III</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>FN</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>RNTRM</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <!-- test of de waarde < goed wordt getoond/geïmporteerd -->
+              <waarde>1F</waarde>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>40</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CAE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>C</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CIV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>II</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>BLZ07-20-138</eldtoetscode>
+            <leergebied>begrijpend lezen</leergebied>
+            <toetsnaam>Begrijpend lezen 2007( jaar van uitgave groep 3/4)</toetsnaam>
+            <toetsversie>M8-digi S(B)O</toetsversie>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2014-01-19</afnamedatum>
+            <jaargroep>7</jaargroep>
+            <dl>25</dl>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>36</aantalgoed>
+              <vaardigheidsscore>103</vaardigheidsscore>
+              <codevaardigheidsschaal>118</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>AE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>C</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>IV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>III</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>FN</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>87</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>RNTRM</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>2S</waarde>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>DLE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>60</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CAE</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>D</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+            <referentiescore>
+              <codereferentiescore>CIV</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>IV</waarde>
+              <kwalificatie>Geen nadere kwalificatie.</kwalificatie>
+            </referentiescore>
+          </resultaat>
+        </toets>
+        <toets>
+          <toetsidentificatie>
+            <eldtoetscode>WISC3NL2005</eldtoetscode>
+            <leergebied>IQ</leergebied>
+            <toetsnaam>WISC-III NL: Nederlandse bewerking van de Wechsler Intelligence
+                            Scale for Children, 2002/2005 Verkorte versie zonder subtest 11 en 13
+                            toegestaan</toetsnaam>
+          </toetsidentificatie>
+          <afname>
+            <afnamedatum>2016-01-10</afnamedatum>
+            <jaargroep>8</jaargroep>
+            <dl>25</dl>
+          </afname>
+          <resultaat>
+            <toetsscore>
+              <aantalgoed>36</aantalgoed>
+              <vaardigheidsscore>103</vaardigheidsscore>
+              <codevaardigheidsschaal>118</codevaardigheidsschaal>
+            </toetsscore>
+            <referentiescore>
+              <codereferentiescore>IQ</codereferentiescore>
+              <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+              <waarde>114</waarde>
+              <kwalificatie>geen kwalificatie</kwalificatie>
+            </referentiescore>
+            <document>
+              <bestandsnaam>WISC3NL2005.txt</bestandsnaam>
+              <omschrijving>WISC3NL2005</omschrijving>
+              <bestandsinhoud>UEsDBAoAAAAAADxtjkhtqwZyCwAAAAsAAAAPAAAAV0lTQzNOTDIwMDUudHh0V0lTQzNOTDIw
+                                MDVQSwECPwAKAAAAAAA8bY5IbasGcgsAAAALAAAADwAkAAAAAAAAACAAAAAAAAAAV0lTQzNO
+                                TDIwMDUudHh0CgAgAAAAAAABABgAh5gxpUKW0QFD/DClQpbRAUP8MKVCltEBUEsFBgAAAAAB
+                                AAEAYQAAADgAAAAAAA==</bestandsinhoud>
+            </document>
+          </resultaat>
+          <toetsonderdeel>
+            <eldonderdeelcode>WISC3NL2005V</eldonderdeelcode>
+            <onderdeelnaam>WISC-III NL Verbaal</onderdeelnaam>
+            <resultaat>
+              <toetsscore>
+                <aantalopgaven>100</aantalopgaven>
+                <aantalgoed>80</aantalgoed>
+                <aantalfout>20</aantalfout>
+                <aantalgelezen>100</aantalgelezen>
+                <tijd>50</tijd>
+                <vaardigheidsscore>2</vaardigheidsscore>
+                <codevaardigheidsschaal>ABC</codevaardigheidsschaal>
+                <betrouwbaarheidsinterval>
+                  <bivlaag>60</bivlaag>
+                  <bivhoog>140</bivhoog>
+                </betrouwbaarheidsinterval>
+              </toetsscore>
+              <referentiescore>
+                <codereferentiescore>IQ</codereferentiescore>
+                <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+                <waarde>108</waarde>
+                <kwalificatie>geen kwalificatie</kwalificatie>
+              </referentiescore>
+              <document>
+                <bestandsnaam>WISC-III NL Verbaal.txt</bestandsnaam>
+                <omschrijving>WISC-III NL Verbaal</omschrijving>
+                <bestandsinhoud>UEsDBAoAAAAAAFJsjkjPePYiEwAAABMAAAAXAAAAV0lTQy1JSUkgTkwgVmVyYmFhbC50eHRX
+                                    SVNDLUlJSSBOTCBWZXJiYWFsUEsBAj8ACgAAAAAAUmyOSM949iITAAAAEwAAABcAJAAAAAAA
+                                    AAAgAAAAAAAAAFdJU0MtSUlJIE5MIFZlcmJhYWwudHh0CgAgAAAAAAABABgAH9dFnkGW0QG5
+                                    7ESeQZbRAbnsRJ5BltEBUEsFBgAAAAABAAEAaQAAAEgAAAAAAA==</bestandsinhoud>
+              </document>
+            </resultaat>
+          </toetsonderdeel>
+          <toetsonderdeel>
+            <eldonderdeelcode>WISC3NL2005P</eldonderdeelcode>
+            <onderdeelnaam>WISC-III NL Performaal</onderdeelnaam>
+            <resultaat>
+              <toetsscore>
+                <aantalopgaven>80</aantalopgaven>
+                <aantalgoed>73</aantalgoed>
+                <aantalfout>7</aantalfout>
+                <aantalgelezen>80</aantalgelezen>
+                <tijd>30</tijd>
+                <vaardigheidsscore>2</vaardigheidsscore>
+                <codevaardigheidsschaal>ABC</codevaardigheidsschaal>
+                <betrouwbaarheidsinterval>
+                  <bivlaag>60</bivlaag>
+                  <bivhoog>140</bivhoog>
+                </betrouwbaarheidsinterval>
+              </toetsscore>
+              <referentiescore>
+                <codereferentiescore>IQ</codereferentiescore>
+                <codevergelijkingsgroep>Landelijk</codevergelijkingsgroep>
+                <waarde>125</waarde>
+                <kwalificatie>geen kwalificatie</kwalificatie>
+              </referentiescore>
+              <document>
+                <bestandsnaam>WISC-III NL Performaal.txt</bestandsnaam>
+                <omschrijving>WISC-III NL Performaal</omschrijving>
+                <bestandsinhoud>UEsDBAoAAAAAAFtsjkgLxdr7FgAAABYAAAAaAAAAV0lTQy1JSUkgTkwgUGVyZm9ybWFhbC50
+                                    eHRXSVNDLUlJSSBOTCBQZXJmb3JtYWFsUEsBAj8ACgAAAAAAW2yOSAvF2vsWAAAAFgAAABoA
+                                    JAAAAAAAAAAgAAAAAAAAAFdJU0MtSUlJIE5MIFBlcmZvcm1hYWwudHh0CgAgAAAAAAABABgA
+                                    sIHLqUGW0QGOM8upQZbRAY4zy6lBltEBUEsFBgAAAAABAAEAbAAAAE4AAAAAAA==</bestandsinhoud>
+              </document>
+            </resultaat>
+          </toetsonderdeel>
+          <opmerking>WISC afgenomen omdat verzorgers een IQ-test wilden</opmerking>
+        </toets>
+      </toetslijst>
+      <handelingsplanlijst>
+        <handelingsplan>
+          <startdatum>2014-01-01</startdatum>
+          <einddatum>2016-01-01</einddatum>
+          <isgerichtop>rekenvaardigheid</isgerichtop>
+          <document>
+            <bestandsnaam>HandelingsplanRekenen.pdf</bestandsnaam>
+            <omschrijving>handelingsplan rekenen</omschrijving>
+            <bestandsinhoud>UEsDBBQAAAAIANRxWkiaB7JRzg0AAIMdAAAZAAAASGFuZGVsaW5nc3BsYW5SZWtlbmVuLnBk
+                            Zu1ZeVgTRxTnUhQBqUUED1yugkeyR24K4YoUhAgCCtbSskkWCCTZuFkkHBW01aooiOCBJ6JY
+                            WrUiFtGCnJVWUfFAa2vxAvkUsR5ttVKRboIYymH1n7Z/OF+y386b937vzXtvZnZmnIIFvjSY
+                        </bestandsinhoud>
+          </document>
+        </handelingsplan>
+      </handelingsplanlijst>
+      <cijferlijstlijst>
+        <cijferlijst>
+          <cijferlijstTypelijst>
+            <naam>Rapport 1</naam>
+            <onderdeel>
+              <naam>Geschiedenis</naam>
+              <score>
+                <waarde>10</waarde>
+                <kwalificatie>Goed</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-08</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Wiskunde</naam>
+              <score>
+                <waarde>4</waarde>
+                <kwalificatie>Onvoldoende</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-12</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Biologie</naam>
+              <score>
+                <waarde>3</waarde>
+                <kwalificatie>Onvoldoende</kwalificatie>
+              </score>
+              <afnamedatum>2015-10-28</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 1</periode>
+            </onderdeel>
+            <score>
+              <waarde>5.7</waarde>
+              <kwalificatie>Voldoende</kwalificatie>
+            </score>
+          </cijferlijstTypelijst>
+          <afnamedatum>2016-11-15</afnamedatum>
+          <jaargroep>11</jaargroep>
+          <periode>periode 1</periode>
+        </cijferlijst>
+        <cijferlijst>
+          <cijferlijstTypelijst>
+            <naam>Rapport 2</naam>
+            <onderdeel>
+              <naam>Geschiedenis</naam>
+              <score>
+                <waarde>6</waarde>
+                <kwalificatie>Voldoende</kwalificatie>
+              </score>
+              <afnamedatum>2016-01-08</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Wiskunde</naam>
+              <score>
+                <waarde>8</waarde>
+                <kwalificatie>Goed</kwalificatie>
+              </score>
+              <afnamedatum>2016-01-04</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <onderdeel>
+              <naam>Biologie</naam>
+              <score>
+                <waarde>5</waarde>
+                <kwalificatie>Matig</kwalificatie>
+              </score>
+              <afnamedatum>2015-12-12</afnamedatum>
+              <jaargroep>11</jaargroep>
+              <periode>periode 2</periode>
+            </onderdeel>
+            <score>
+              <waarde>6.3</waarde>
+              <kwalificatie>Bevorderd</kwalificatie>
+            </score>
+          </cijferlijstTypelijst>
+          <afnamedatum>2016-01-29</afnamedatum>
+          <jaargroep>11</jaargroep>
+          <periode>periode 2</periode>
+        </cijferlijst>
+      </cijferlijstlijst>
+      <overigdocumentlijst>
+        <document>
+          <bestandsnaam>groepsplan.txt</bestandsnaam>
+          <omschrijving>Groepsplan</omschrijving>
+          <bestandsinhoud>UEsDBAoAAAAAAG1+WkgMsVk+FQAAABUAAAAOAAAAZ3JvZXBzcGxhbi50eHRkaXQgaXMgaGV0
+                        IGdyb2Vwc3BsYW5QSwECPwAKAAAAAABtflpIDLFZPhUAAAAVAAAADgAkAAAAAAAAACAAAAAA
+                        AAAAZ3JvZXBzcGxhbi50eHQKACAAAAAAAAEAGADhtGQqpXDRAUhVYyqlcNEBSFVjKqVw0QFQ
+                        SwUGAAAAAAEAAQBgAAAAQQAAAAAA</bestandsinhoud>
+        </document>
+        <document>
+          <bestandsnaam>diagram.png</bestandsnaam>
+          <omschrijving>diagram leerresultaten</omschrijving>
+          <bestandsinhoud>UEsDBAoAAAAAABiAWkj3rf0a7hUAAO4VAAALAAAAZGlhZ3JhbS5wbmeJUE5HDQoaCgAAAA1J
+                        SERSAAAA4QAAAOEIAwAAAAltIkgAAAHvUExURf////8AAP//AGZm//8A//+zAP+0AP+2AP/A
+                        AP+6AP+8AP+4AP+/AP+xAP/CAKbmtKfosmNj/19f/1xc/6fzpqXpsaftrWlp/6Xvq6Xrr6b0
+                        pWFh/wAAAKDmtFpa/6fwqv//58fH//+8vKXktpfmtFpq///n////+3Nz/5/trZvqsPHx///i
+                        4qGh//+Ojvj4/5jktv/Y2P/Fxf//vYuL////zf9ra4KC///Z///s7M7O////fv8Ahv//3v//
+                    </bestandsinhoud>
+        </document>
+      </overigdocumentlijst>
+      <verzorger>
+        <voornaam>Pieter</voornaam>
+        <voornaam>Johannes</voornaam>
+        <voorletters-1>P.J.</voorletters-1>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1978-02-17</geboortedatum>
+        <geslacht>2</geslacht>
+        <adresgeheim>false</adresgeheim>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Hofstraat</straat>
+            <nummer>117</nummer>
+            <toevoeging>d</toevoeging>
+            <!--<aanduiding>TO</aanduiding>
+                        <locatieomschrijving>kinderboerderij</locatieomschrijving>-->
+            <postcode>7311KT</postcode>
+            <plaats>Apeldoorn</plaats>
+            <gemeente>Apeldoorn</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>07012332332</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+          <communicatie>
+            <soort>e-mail</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>Berg@werk.nl</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+        <!--codelijst 41: 1=Vader-->
+        <relatietotkind>1</relatietotkind>
+        <wettigevertegenwoordiger>true</wettigevertegenwoordiger>
+        <banknummer>0167961977</banknummer>
+        <iban>NL51RABO0307495248</iban>
+      </verzorger>
+      <verzorger>
+        <voornaam>Tanja</voornaam>
+        <voorletters-1>T</voorletters-1>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1982-03-16</geboortedatum>
+        <geslacht>1</geslacht>
+        <adresgeheim>false</adresgeheim>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Hoofdstraat</straat>
+            <nummer>52-54</nummer>
+            <toevoeging>b</toevoeging>
+            <!--<aanduiding>BY</aanduiding>
+                        <locatieomschrijving>brandweerkazerne</locatieomschrijving>-->
+            <postcode>7311KD</postcode>
+            <plaats>Apeldoorn</plaats>
+            <gemeente>Apeldoorn</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>0501212121</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+          <communicatie>
+            <soort>e-mail</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>geheim@geheim.geheim</nummer>
+            <geheim>true</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+        <!--codelijst 41 6=Adoptief moeder-->
+        <relatietotkind>6</relatietotkind>
+        <wettigevertegenwoordiger>true</wettigevertegenwoordiger>
+        <banknummer>0733959717</banknummer>
+        <iban>NL03COBA0733959717</iban>
+      </verzorger>
+      <verzorger>
+        <voornaam>Wilma</voornaam>
+        <voorvoegsel>de</voorvoegsel>
+        <achternaam>Ruyter</achternaam>
+        <geboortedatum>1962-04-07</geboortedatum>
+        <geslacht>1</geslacht>
+        <!--codelijst 41 7=Biologische moeder-->
+        <relatietotkind>7</relatietotkind>
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+      <verzorger>
+        <voornaam>Paul</voornaam>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1943-10-28</geboortedatum>
+        <geslacht>2</geslacht>
+        <relatietotkind>5</relatietotkind>
+        <!--5=Anders-->
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+      <verzorger>
+        <voornaam>Fokke</voornaam>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1938-06-12</geboortedatum>
+        <geslacht>2</geslacht>
+        <relatietotkind>3</relatietotkind>
+        <!--5=Anders-->
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+    </leerling>
+  </huidigeschool>
+</dossier>

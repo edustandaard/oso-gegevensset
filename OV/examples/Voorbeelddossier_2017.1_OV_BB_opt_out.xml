@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+  <metadata>
+    <deeldossier>LASLVS</deeldossier>
+    <pakketnaam>LeerlingInZicht</pakketnaam>
+    <pakketversie>1</pakketversie>
+    <datum>2017-03-02</datum>
+    <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
+    <standaardversie>2017.1</standaardversie>
+    <validatieversie>2017.1.1</validatieversie>
+    <categorie_uitlevering>
+      <cat_metadata>VERPLICHT</cat_metadata>
+      <cat_ouderinzage>OPT-UIT</cat_ouderinzage>
+      <cat_school>VERPLICHT</cat_school>
+      <cat_leerling>VERPLICHT</cat_leerling>
+      <cat_oudersverzorgers>OPT-UIT</cat_oudersverzorgers>
+      <cat_vve>OPT-UIT</cat_vve>
+      <cat_schoolloopbaan>OPT-UIT</cat_schoolloopbaan>
+      <cat_overstapadvies>OPT-UIT</cat_overstapadvies>
+      <cat_zorgenbegeleiding>OPT-UIT</cat_zorgenbegeleiding>
+      <cat_verzuim>OPT-UIT</cat_verzuim>
+      <cat_eindtoetsbo>OPT-UIT</cat_eindtoetsbo>
+      <cat_toetsresultaten>OPT-UIT</cat_toetsresultaten>
+      <cat_handelingsplannen>OPT-UIT</cat_handelingsplannen>
+      <cat_cijferlijsten>OPT-UIT</cat_cijferlijsten>
+      <cat_vombo>OPT-UIT</cat_vombo>
+      <cat_bijlagedocs>OPT-UIT</cat_bijlagedocs>
+    </categorie_uitlevering>
+    <!--codelijst 16: OVERIG -->
+    <overstap>POVO</overstap>
+  </metadata>
+  <!-- codelijst 29 overdrachtsoort: overdrachtbinnenbrin of overstapdossier -->
+  <overdrachtsoort>overdrachtbinnenbrin</overdrachtsoort>
+  <huidigeschool>
+    <naam>Testschool</naam>
+    <adreslijst>
+      <adres>
+        <!-- bezoek: codelijst 19 -->
+        <soortadres>bezoek</soortadres>
+        <straat>Langestraat</straat>
+        <nummer>66</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de groenteboer</locatieomschrijving>-->
+        <!-- postcode beetje aangepast, spatie ertussen-->
+        <postcode>1811 JJ</postcode>
+        <plaats>Alkmaar</plaats>
+        <gemeente>Alkmaar</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+      <adres>
+        <!-- post: codelijst 19 -->
+        <soortadres>post</soortadres>
+        <!-- onhandig om zo de postbus in te vullen -->
+        <straat>Postbus</straat>
+        <nummer>12</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de slager</locatieomschrijving>-->
+        <postcode>7603WG</postcode>
+        <plaats>Almelo</plaats>
+        <gemeente>Almelo</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+    </adreslijst>
+    <communicatielijst>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- werk: codelijst 5 -->
+        <aanduiding>werk</aanduiding>
+        <nummer>0701111111</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- e-mail: codelijst 4 -->
+        <soort>e-mail</soort>
+        <!-- prive: codelijst 5 -->
+        <aanduiding>prive</aanduiding>
+        <nummer>testschool@kennisnet.nl</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- overig: codelijst 5 -->
+        <aanduiding>overig</aanduiding>
+        <nummer>0107890123</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>true</noodnummer>
+      </communicatie>
+    </communicatielijst>
+    <!--sommige systemen kunnen niet omgaan met brincode 00YY,
+        omdat het geen geldig BRIN is.-->
+    <brincode>00YY</brincode>
+    <vestigingscode>00</vestigingscode>
+    <aanleverpunt>1</aanleverpunt>
+    <soort>SO</soort>
+    <type>REC3</type>
+    <naamdirecteur>P. de Haan</naamdirecteur>
+    <website>www.osotestschool.nl</website>
+    <leerling>
+      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Johannes</voornaam>
+      <voornaam>Martinus</voornaam>
+      <voornaam>Franciscus</voornaam>
+      <voorletters-1>L.J.M.F.</voorletters-1>
+      <voorvoegsel>van de</voorvoegsel>
+      <achternaam>Berg</achternaam>
+      <roepnaam>Daan</roepnaam>
+      <geboortedatum>2003-03-17</geboortedatum>
+      <!--<geboortemaand>2003-03</geboortemaand>-->
+      <!--man: codelijst 14-->
+      <geslacht>2</geslacht>
+      <adresgeheim>false</adresgeheim>
+      <!--BR: Indien een adres van leerling geheim, is ieder leerlingadres in overstapdossier verboden 
+                (d.w.z. dit element is verboden wanneer adresgeheim waarde “true” heeft).-->
+      <adreslijst>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>bezoek</soortadres>
+          <straat>Hoofdstraat</straat>
+          <nummer>136</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- <aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de visboer</locatieomschrijving>-->
+          <postcode>7311BA</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>post</soortadres>
+          <straat>Hoogstraat</straat>
+          <nummer>34</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- TO: codelijst 18 -->
+          <!--<aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de bakker</locatieomschrijving>-->
+          <postcode>1391BV</postcode>
+          <plaats>Abcoude</plaats>
+          <gemeente>Abcoude</gemeente>
+          <land omschrijving="een heel klein land">6030</land>
+        </adres>
+        <adres>
+          <soortadres>gba</soortadres>
+          <straat>Adelaarslaan</straat>
+          <nummer>152</nummer>
+          <toevoeging>b</toevoeging>
+          <!--     <aanduiding>BY</aanduiding>
+                    <locatieomschrijving>de kapper</locatieomschrijving>-->
+          <postcode>7331GJ</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+      </adreslijst>
+      <!--BR: In overstapdossier is dit postcode4adres verboden bij een leerling-->
+      <!--<postcode4adres>7311</postcode4adres>-->
+      <communicatielijst>
+        <!--BR: Indien de communicatieinfo van de leerling geheim is, is de overdracht van die comunicatieinfo verboden. 
+                    Omdat het veld “Nummer of adres” verplicht is, zal een vaste geheimwaarde worden overgedragen. 
+                    (d.w.z. indien een communicatieinfo geheim is, 
+                    zal de geheimwaarde “geheim@geheim.geheim” voor e-mail of de geheimwaarde “9999999999” voor telefoonnummer in het veld nummer worden overgedragen).-->
+        <communicatie>
+          <!-- telefoon: codelijst 4 -->
+          <soort>telefoon</soort>
+          <!-- prive: codelijst 5 -->
+          <aanduiding>overig</aanduiding>
+          <nummer>9999999999</nummer>
+          <!-- let op: geheim -->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>0235257739</nummer>
+          <geheim>false</geheim>
+          <!-- let op: geheim -->
+          <noodnummer>true</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>werk</aanduiding>
+          <nummer>0666362828</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>geheim@geheim.geheim</nummer>
+          <!--In een overdracht-binnen-brin is geheime communicatieinfo over 
+                    e-mail verplicht middels de geheimwaarde "geheim@geheim.geheim".-->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>leerling@leerling.nl</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+      </communicatielijst>
+      <gba>
+        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Johannes</gbavoornaam>
+        <gbavoornaam>Martinus</gbavoornaam>
+        <gbavoornaam>Franciscus</gbavoornaam>
+        <gbavoorvoegsel>van de</gbavoorvoegsel>
+        <gbaachternaam>Berg</gbaachternaam>
+        <gbageboortedatum>17-03-2002</gbageboortedatum>
+      </gba>
+      <adresbuitenland>10 Downing St, London SW1A, UK</adresbuitenland>
+      <bsn>613543439</bsn>
+      <!--<onderwijsnummer>101211151</onderwijsnummer>-->
+      <leerlingid>LN094837</leerlingid>
+      <onderwijssinds>2006-03-17</onderwijssinds>
+      <startdatumhuidigonderwijs>2007-03-17</startdatumhuidigonderwijs>
+      <datuminschrijving>2005-01-04</datuminschrijving>
+      <datumuitschrijving>2016-07-31</datumuitschrijving>
+      <!-- codelijst 15: leerlinggewicht-->
+      <leerlinggewicht>1.20</leerlinggewicht>
+      <!-- codelijst 10: nnca-->
+      <nnca>1</nnca>
+      <tehuis>false</tehuis>
+    </leerling>
+  </huidigeschool>
+</dossier>

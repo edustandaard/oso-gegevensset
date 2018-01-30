@@ -1,0 +1,565 @@
+<?xml version="1.0"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+  <metadata>
+    <deeldossier>LASLVS</deeldossier>
+    <pakketnaam>LeerlingInZicht</pakketnaam>
+    <pakketversie>1</pakketversie>
+    <datum>2017-03-02</datum>
+    <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
+    <standaardversie>2017.1</standaardversie>
+    <validatieversie>2017.1.1</validatieversie>
+    <categorie_uitlevering>
+      <cat_metadata>VERPLICHT</cat_metadata>
+      <cat_ouderinzage>OPT-UIT</cat_ouderinzage>
+      <cat_school>VERPLICHT</cat_school>
+      <cat_leerling>VERPLICHT</cat_leerling>
+      <cat_oudersverzorgers>VERPLICHT</cat_oudersverzorgers>
+      <cat_vve>VERBODEN</cat_vve>
+      <cat_schoolloopbaan>VERPLICHT</cat_schoolloopbaan>
+      <cat_overstapadvies>OPT-UIT</cat_overstapadvies>
+      <cat_zorgenbegeleiding>VERPLICHT</cat_zorgenbegeleiding>
+      <cat_verzuim>OPT-UIT</cat_verzuim>
+      <cat_eindtoetsbo>OPT-UIT</cat_eindtoetsbo>
+      <cat_toetsresultaten>OPT-UIT</cat_toetsresultaten>
+      <cat_handelingsplannen>OPT-UIT</cat_handelingsplannen>
+      <cat_cijferlijsten>OPT-UIT</cat_cijferlijsten>
+      <cat_vombo>OPT-UIT</cat_vombo>
+      <cat_bijlagedocs>OPT-UIT</cat_bijlagedocs>
+    </categorie_uitlevering>
+    <!--codelijsat 16: VOSWV-->
+    <overstap>VOSWV</overstap>
+  </metadata>
+  <!-- codelijst 29 overdrachtsoort: overdrachtbinnenbrin of overstapdossier -->
+  <overdrachtsoort>swv-dossier</overdrachtsoort>
+  <huidigeschool>
+    <naam>Testschool</naam>
+    <adreslijst>
+      <adres>
+        <!-- bezoek: codelijst 19 -->
+        <soortadres>bezoek</soortadres>
+        <straat>Langestraat</straat>
+        <nummer>66</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de groenteboer</locatieomschrijving>-->
+        <!-- postcode beetje aangepast, spatie ertussen-->
+        <postcode>1811 JJ</postcode>
+        <plaats>Alkmaar</plaats>
+        <gemeente>Alkmaar</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+      <adres>
+        <!-- post: codelijst 19 -->
+        <soortadres>post</soortadres>
+        <!-- onhandig om zo de postbus in te vullen -->
+        <straat>Postbus</straat>
+        <nummer>12</nummer>
+        <toevoeging>b</toevoeging>
+        <!-- BY: codelijst 18 -->
+        <!--<aanduiding>BY</aanduiding>
+                <locatieomschrijving>de slager</locatieomschrijving>-->
+        <postcode>7603WG</postcode>
+        <plaats>Almelo</plaats>
+        <gemeente>Almelo</gemeente>
+        <land omschrijving="Nederland">6030</land>
+      </adres>
+    </adreslijst>
+    <communicatielijst>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- werk: codelijst 5 -->
+        <aanduiding>werk</aanduiding>
+        <nummer>0701111111</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- e-mail: codelijst 4 -->
+        <soort>e-mail</soort>
+        <!-- prive: codelijst 5 -->
+        <aanduiding>prive</aanduiding>
+        <nummer>testschool@kennisnet.nl</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>false</noodnummer>
+      </communicatie>
+      <communicatie>
+        <!-- telefoon: codelijst 4 -->
+        <soort>telefoon</soort>
+        <!-- overig: codelijst 5 -->
+        <aanduiding>overig</aanduiding>
+        <nummer>0107890123</nummer>
+        <!--<geheim>false</geheim> element niet nodig bij huidigeschool-->
+        <noodnummer>true</noodnummer>
+      </communicatie>
+    </communicatielijst>
+    <!--sommige systemen kunnen niet omgaan met brincode 00YY,
+        omdat het geen geldig BRIN is.-->
+    <brincode>00YY</brincode>
+    <vestigingscode>00</vestigingscode>
+    <aanleverpunt>1</aanleverpunt>
+    <soort>SO</soort>
+    <type>REC3</type>
+    <naamdirecteur>P. de Haan</naamdirecteur>
+    <website>www.osotestschool.nl</website>
+    <leerling>
+      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Johannes</voornaam>
+      <voornaam>Martinus</voornaam>
+      <voornaam>Franciscus</voornaam>
+      <voorletters-1>L.J.M.F.</voorletters-1>
+      <voorvoegsel>van de</voorvoegsel>
+      <achternaam>Berg</achternaam>
+      <roepnaam>Daan</roepnaam>
+      <geboortedatum>2003-03-17</geboortedatum>
+      <!--<geboortemaand>2003-03</geboortemaand>-->
+      <!--man: codelijst 14-->
+      <geslacht>2</geslacht>
+      <adresgeheim>false</adresgeheim>
+      <!--BR: Indien een adres van leerling geheim, is ieder leerlingadres in overstapdossier verboden 
+                (d.w.z. dit element is verboden wanneer adresgeheim waarde “true” heeft).-->
+      <adreslijst>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>bezoek</soortadres>
+          <straat>Hoofdstraat</straat>
+          <nummer>136</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- <aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de visboer</locatieomschrijving>-->
+          <postcode>7311BA</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+        <adres>
+          <!-- codelijst 19 -->
+          <soortadres>post</soortadres>
+          <straat>Hoogstraat</straat>
+          <nummer>34</nummer>
+          <toevoeging>a</toevoeging>
+          <!-- TO: codelijst 18 -->
+          <!--<aanduiding>TO</aanduiding>
+                    <locatieomschrijving>de bakker</locatieomschrijving>-->
+          <postcode>1391BV</postcode>
+          <plaats>Abcoude</plaats>
+          <gemeente>Abcoude</gemeente>
+          <land omschrijving="een heel klein land">6030</land>
+        </adres>
+        <adres>
+          <soortadres>gba</soortadres>
+          <straat>Adelaarslaan</straat>
+          <nummer>152</nummer>
+          <toevoeging>b</toevoeging>
+          <!--     <aanduiding>BY</aanduiding>
+                    <locatieomschrijving>de kapper</locatieomschrijving>-->
+          <postcode>7331GJ</postcode>
+          <plaats>Apeldoorn</plaats>
+          <gemeente>Apeldoorn</gemeente>
+          <land omschrijving="Nederland">6030</land>
+        </adres>
+      </adreslijst>
+      <!--BR: In overstapdossier is dit postcode4adres verboden bij een leerling-->
+      <!--<postcode4adres>7311</postcode4adres>-->
+      <communicatielijst>
+        <!--BR: Indien de communicatieinfo van de leerling geheim is, is de overdracht van die comunicatieinfo verboden. 
+                    Omdat het veld “Nummer of adres” verplicht is, zal een vaste geheimwaarde worden overgedragen. 
+                    (d.w.z. indien een communicatieinfo geheim is, 
+                    zal de geheimwaarde “geheim@geheim.geheim” voor e-mail of de geheimwaarde “9999999999” voor telefoonnummer in het veld nummer worden overgedragen).-->
+        <communicatie>
+          <!-- telefoon: codelijst 4 -->
+          <soort>telefoon</soort>
+          <!-- prive: codelijst 5 -->
+          <aanduiding>overig</aanduiding>
+          <nummer>9999999999</nummer>
+          <!-- let op: geheim -->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>0235257739</nummer>
+          <geheim>false</geheim>
+          <!-- let op: geheim -->
+          <noodnummer>true</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>telefoon</soort>
+          <aanduiding>werk</aanduiding>
+          <nummer>0666362828</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>geheim@geheim.geheim</nummer>
+          <!--In een overdracht-binnen-brin is geheime communicatieinfo over 
+                    e-mail verplicht middels de geheimwaarde "geheim@geheim.geheim".-->
+          <geheim>true</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+        <communicatie>
+          <soort>e-mail</soort>
+          <aanduiding>prive</aanduiding>
+          <nummer>leerling@leerling.nl</nummer>
+          <geheim>false</geheim>
+          <noodnummer>false</noodnummer>
+        </communicatie>
+      </communicatielijst>
+      <gba>
+        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Johannes</gbavoornaam>
+        <gbavoornaam>Martinus</gbavoornaam>
+        <gbavoornaam>Franciscus</gbavoornaam>
+        <gbavoorvoegsel>van de</gbavoorvoegsel>
+        <gbaachternaam>Berg</gbaachternaam>
+        <gbageboortedatum>17-03-2002</gbageboortedatum>
+      </gba>
+      <adresbuitenland>10 Downing St, London SW1A, UK</adresbuitenland>
+      <!-- Verboden voor SWV: bsn>613543439</bsn-->
+      <!--<onderwijsnummer>101211151</onderwijsnummer>-->
+      <leerlingid>LN094837</leerlingid>
+      <onderwijssinds>2006-03-17</onderwijssinds>
+      <startdatumhuidigonderwijs>2007-03-17</startdatumhuidigonderwijs>
+      <datuminschrijving>2005-01-04</datuminschrijving>
+      <datumuitschrijving>2016-07-31</datumuitschrijving>
+      <!-- codelijst 15: leerlinggewicht-->
+      <leerlinggewicht>1.20</leerlinggewicht>
+      <!-- codelijst 10: nnca-->
+      <nnca>1</nnca>
+      <tehuis>false</tehuis>
+      <verzorgersaansprakelijk>true</verzorgersaansprakelijk>
+      <schoolloopbaanlijst>
+        <schoolloopbaan>
+          <schooljaar>2006-2007</schooljaar>
+          <groepscode>1a</groepscode>
+          <groepsnaam>instroomklas</groepsnaam>
+          <jaargroep>1</jaargroep>
+          <begindatum>2007-03-17</begindatum>
+          <einddatum>2007-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!-- hieronder 3 regels uitcommentariëren als bron geen VO-->
+          <voelementcode>0011</voelementcode>
+          <voelementomschrijving>Ljvb op HAVO/VMBO-Th/Gm Lw</voelementomschrijving>
+          <schoolsoortomschrijving>HAVO/VMBO-Th/Gm Lw</schoolsoortomschrijving>
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2007-2008</schooljaar>
+          <groepscode>1/2</groepscode>
+          <groepsnaam>combinatieklas</groepsnaam>
+          <jaargroep>1</jaargroep>
+          <begindatum>2007-08-01</begindatum>
+          <einddatum>2008-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!-- hieronder 3 regels uitcommentariëren als bron geen VO-->
+          <voelementcode>0012</voelementcode>
+          <voelementomschrijving>Ljvb op VMBO-Gm Lw</voelementomschrijving>
+          <schoolsoortomschrijving>VMBO-Gm Lw</schoolsoortomschrijving>
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2008-2009</schooljaar>
+          <groepscode>2b</groepscode>
+          <groepsnaam>groep 2</groepsnaam>
+          <jaargroep>2</jaargroep>
+          <begindatum>2008-08-01</begindatum>
+          <einddatum>2009-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2009-2010</schooljaar>
+          <groepscode>3</groepscode>
+          <groepsnaam>groep 3</groepsnaam>
+          <jaargroep>3</jaargroep>
+          <begindatum>2009-08-01</begindatum>
+          <einddatum>2010-07-31</einddatum>
+          <brincode>14AI</brincode>
+          <vestigingscode>02</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2010-2011</schooljaar>
+          <groepscode>4</groepscode>
+          <groepsnaam>groep 4</groepsnaam>
+          <jaargroep>4</jaargroep>
+          <begindatum>2010-08-01</begindatum>
+          <einddatum>2011-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2011-2012</schooljaar>
+          <groepscode>5</groepscode>
+          <groepsnaam>groep 5</groepsnaam>
+          <jaargroep>5</jaargroep>
+          <begindatum>2011-08-01</begindatum>
+          <einddatum>2012-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2012-2013</schooljaar>
+          <groepscode>6</groepscode>
+          <groepsnaam>groep 6</groepsnaam>
+          <jaargroep>6</jaargroep>
+          <begindatum>2012-08-01</begindatum>
+          <einddatum>2013-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2013-2014</schooljaar>
+          <groepscode>7</groepscode>
+          <groepsnaam>groep 7</groepsnaam>
+          <jaargroep>7</jaargroep>
+          <begindatum>2013-08-01</begindatum>
+          <einddatum>2014-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2014-2015</schooljaar>
+          <groepscode>8</groepscode>
+          <groepsnaam>groep 8</groepsnaam>
+          <jaargroep>8</jaargroep>
+          <begindatum>2014-08-01</begindatum>
+          <einddatum>2015-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <schoolloopbaan>
+          <schooljaar>2015-2016</schooljaar>
+          <groepscode>8</groepscode>
+          <groepsnaam>groep 8</groepsnaam>
+          <jaargroep>8</jaargroep>
+          <begindatum>2015-08-01</begindatum>
+          <einddatum>2016-07-31</einddatum>
+          <brincode>00YY</brincode>
+          <vestigingscode>00</vestigingscode>
+          <schoolsoort>SO</schoolsoort>
+          <schooltype>REC3</schooltype>
+          <!--<voelementcode>0000</voelementcode>
+                    <voelementomschrijving>voelementomschrijving1</voelementomschrijving>
+                    <schoolsoortomschrijving>schoolsoortomschrijving1</schoolsoortomschrijving>-->
+        </schoolloopbaan>
+        <!--Onderstaand stuk is voor VOVO-->
+        <!--<schoolloopbaan>
+                    <schooljaar>2014-2015</schooljaar>
+                    <groepscode>1g</groepscode>
+                    <groepsnaam>1 LWOO</groepsnaam>
+                    <jaargroep>1</jaargroep>
+                    <begindatum>2014-03-17</begindatum>
+                    <einddatum>2015-07-31</einddatum>
+                    <brincode>00YY</brincode>
+                    <vestigingscode>00</vestigingscode>
+                    <schoolsoort>VSO</schoolsoort>
+                    <schooltype>LWOO</schooltype>
+                    <voelementcode>0041</voelementcode>
+                    <voelementomschrijving>Lj LWOO vb op Bbg Lw</voelementomschrijving>
+                    <schoolsoortomschrijving>leerwegondersteunend onderwijs</schoolsoortomschrijving>
+                </schoolloopbaan>-->
+        <!--<schoolloopbaan>
+                    <schooljaar>2015-2016</schooljaar>
+                    <groepscode>2f</groepscode>
+                    <groepsnaam>2 LWOO</groepsnaam>
+                    <jaargroep>2</jaargroep>
+                    <begindatum>2015-03-17</begindatum>
+                    <einddatum>2016-07-31</einddatum>
+                    <brincode>00YY</brincode>
+                    <vestigingscode>00</vestigingscode>
+                    <schoolsoort>VSO</schoolsoort>
+                    <schooltype>LWOO</schooltype>
+                    <voelementcode>0041</voelementcode>
+                    <voelementomschrijving>Lj LWOO vb op Bbg Lw</voelementomschrijving>
+                    <schoolsoortomschrijving>leerwegondersteunend onderwijs</schoolsoortomschrijving>
+                </schoolloopbaan>-->
+      </schoolloopbaanlijst>
+      <sefunctioneren>
+        <document>
+          <bestandsnaam>SEF 2001-334.docx</bestandsnaam>
+          <omschrijving>sociaal-emotioneel rapport</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIAK9MwUaggJ2i3U8AAD5fAAARAAAAU0VGIDIwMDEtMzM0LmRvY3jsmWN0Jk0W
+                        x2Nbk4nt5E0yb5yJbdu2J7Zt27bzxLZt23ayWfPjftu951RX3a4+1X3Or/63blXLiIOCoQFB
+                        AEEBAQERArmCBsmOAQMB4X+5qEBQIOr81lYOhlYO2gouNob2mnTOlhYEuWAgFNlAIED/t/9p
+                        q0+Qtp7lQeq/FHGHNK8a2ogH5aOQQizAyUHhtVk/i9xFf5VujWt8fgg/76OaMwC1okvcuW97
+                        vB11NnJ5N5G0RWQwvTRzVKRVAZZyLVhvNNpcyBp5LBehSEcZ4ChexkNp1Wr3bNC4BM33LdUs
+                        VQ3D5LLJNIBVyh+BtHGYeTIBn5ls3ucdytKDfTvXu44Uv0TCSVwyrZ6/If5dz7i62SN/FVQU
+                    </bestandsinhoud>
+        </document>
+        <document>
+          <bestandsnaam>sef_2016_02_26.txt</bestandsnaam>
+          <omschrijving>Nog een SEF</omschrijving>
+          <bestandsinhoud>UEsDBBQAAAAIACtNWkg6TAceeAAAAL8AAAASAAAAc2VmXzIwMTZfMDJfMjYudHh0fY7RCcMw
+                        DET/A9lBA7Sdoht0AmMfimpbKraadPwK8tePgiTQcce7h2VJqV3RzcUUDWTqh9SKJsrrcgfN
+                        /x6SSeVH2pMSECsc94UxzbTJs26QcqF1sR0jDNX6dGHqcArlSHnzyEcmhlFG4vN9iwfkrBL8
+                        HDR8/PYFUEsBAj8AFAAAAAgAK01aSDpMBx54AAAAvwAAABIAJAAAAAAAAAAgAAAAAAAAAHNl
+                        Zl8yMDE2XzAyXzI2LnR4dAoAIAAAAAAAAQAYAKUPWndxcNEBYXNZd3Fw0QFhc1l3cXDRAVBL
+                        BQYAAAAAAQABAGQAAACoAAAAAAA=</bestandsinhoud>
+        </document>
+        <toelichtingsef>Lees goed wat wat er in de rapporten staat.</toelichtingsef>
+      </sefunctioneren>
+      <verzorger>
+        <voornaam>Pieter</voornaam>
+        <voornaam>Johannes</voornaam>
+        <voorletters-1>P.J.</voorletters-1>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1978-02-17</geboortedatum>
+        <geslacht>2</geslacht>
+        <adresgeheim>false</adresgeheim>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Hofstraat</straat>
+            <nummer>117</nummer>
+            <toevoeging>d</toevoeging>
+            <!--<aanduiding>TO</aanduiding>
+                        <locatieomschrijving>kinderboerderij</locatieomschrijving>-->
+            <postcode>7311KT</postcode>
+            <plaats>Apeldoorn</plaats>
+            <gemeente>Apeldoorn</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>07012332332</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+          <communicatie>
+            <soort>e-mail</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>Berg@werk.nl</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+        <!--codelijst 41: 1=Vader-->
+        <relatietotkind>1</relatietotkind>
+        <wettigevertegenwoordiger>true</wettigevertegenwoordiger>
+        <!-- Verboden voor SWV: banknummer>0167961977</banknummer-->
+        <iban>NL51RABO0307495248</iban>
+      </verzorger>
+      <verzorger>
+        <voornaam>Tanja</voornaam>
+        <voorletters-1>T</voorletters-1>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1982-03-16</geboortedatum>
+        <geslacht>1</geslacht>
+        <adresgeheim>false</adresgeheim>
+        <adreslijst>
+          <adres>
+            <soortadres>bezoek</soortadres>
+            <straat>Hoofdstraat</straat>
+            <nummer>52-54</nummer>
+            <toevoeging>b</toevoeging>
+            <!--<aanduiding>BY</aanduiding>
+                        <locatieomschrijving>brandweerkazerne</locatieomschrijving>-->
+            <postcode>7311KD</postcode>
+            <plaats>Apeldoorn</plaats>
+            <gemeente>Apeldoorn</gemeente>
+            <land omschrijving="Nederland">6030</land>
+          </adres>
+        </adreslijst>
+        <communicatielijst>
+          <communicatie>
+            <soort>telefoon</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>0501212121</nummer>
+            <geheim>false</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+          <communicatie>
+            <soort>e-mail</soort>
+            <aanduiding>prive</aanduiding>
+            <nummer>geheim@geheim.geheim</nummer>
+            <geheim>true</geheim>
+            <noodnummer>false</noodnummer>
+          </communicatie>
+        </communicatielijst>
+        <!--codelijst 41 6=Adoptief moeder-->
+        <relatietotkind>6</relatietotkind>
+        <wettigevertegenwoordiger>true</wettigevertegenwoordiger>
+        <!-- Verboden voor SWV:banknummer>0733959717</banknummer-->
+        <iban>NL03COBA0733959717</iban>
+      </verzorger>
+      <verzorger>
+        <voornaam>Wilma</voornaam>
+        <voorvoegsel>de</voorvoegsel>
+        <achternaam>Ruyter</achternaam>
+        <geboortedatum>1962-04-07</geboortedatum>
+        <geslacht>1</geslacht>
+        <!--codelijst 41 7=Biologische moeder-->
+        <relatietotkind>7</relatietotkind>
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+      <verzorger>
+        <voornaam>Paul</voornaam>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1943-10-28</geboortedatum>
+        <geslacht>2</geslacht>
+        <relatietotkind>5</relatietotkind>
+        <!--5=Anders-->
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+      <verzorger>
+        <voornaam>Fokke</voornaam>
+        <voorvoegsel>van de</voorvoegsel>
+        <achternaam>Berg</achternaam>
+        <geboortedatum>1938-06-12</geboortedatum>
+        <geslacht>2</geslacht>
+        <relatietotkind>3</relatietotkind>
+        <!--5=Anders-->
+        <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
+      </verzorger>
+    </leerling>
+  </huidigeschool>
+</dossier>
