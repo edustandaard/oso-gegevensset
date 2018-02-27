@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180226: Correctie van validatie van BR OG.04 bij veld <overlijdensdatum> -->
 <!-- 20180115: Validatie van BR OG.04 bij veld <overlijdensdatum> toegevoegd -->
 <!-- 20180102: Eerste comcept release voor Validatie van OSO Gegevensset versie 2018.1, inclusief wijzigingen:
 				Validatie van veld <standaardversie> gewijzigd
@@ -646,7 +647,7 @@
             <xsl:with-param name="tekst">De gegevens over ouder/verzorger mogen geen overlijdensdatum bevatten wanneer het kenmerk van overlijden ontbreekt.</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
-        <xsl:if test="(od:overleden='false') and (od:overlijdensdatum) ">
+        <xsl:if test="not(xs:boolean(od:overleden)) and (od:overlijdensdatum) ">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">De gegevens over ouder/verzorger mogen geen overlijdensdatum bevatten wanneer kenmerk van overlijden anders aangeeft.</xsl:with-param>
           </xsl:call-template>
