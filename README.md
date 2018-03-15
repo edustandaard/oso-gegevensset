@@ -27,3 +27,7 @@ Om de symlinks werkend te krijgen dient op Windows de git clone commando met een
 ```
 git clone -c core.symlinks=true <url>
 ```
+
+### NB2: 2017 branch
+
+De wijzigingen voor de 2017.1.x versie zijn te vinden in de 2017 branch.
