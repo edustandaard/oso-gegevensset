@@ -7,7 +7,7 @@
     <datum>2017-03-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
     <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <validatieversie>2017.1.2</validatieversie>
     <categorie_uitlevering>
       <cat_metadata>VERPLICHT</cat_metadata>
       <cat_ouderinzage>OPTIONEEL</cat_ouderinzage>

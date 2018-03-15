@@ -7,7 +7,7 @@
     <datum>2017-03-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
     <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <validatieversie>2017.1.2</validatieversie>
     <categorie_uitlevering>
       <!-- codelijst 48 categorie: VERPLICHT, OPTIONEEL, VERBODEN of OPT-UIT  -->
       <cat_metadata>VERPLICHT</cat_metadata>
@@ -1325,7 +1325,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
       <eindtoets_basisonderwijs>
         <eindtoetsresultaat>
           <toetssoort>0011</toetssoort>
-          <toetsniveau>B</toetsniveau>
+          <toetsniveau>G</toetsniveau>
           <toetsomschrijving>Centrale eindtoets (CET)</toetsomschrijving>
           <datum_afname>2015-04-28</datum_afname>
           <wettelijke_ontheffing>N</wettelijke_ontheffing>

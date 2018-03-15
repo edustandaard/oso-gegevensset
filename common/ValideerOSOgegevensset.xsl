@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180228: Validatie van codelijst 43 (niveau eindtoets) uitgebreid met waarde "G".
+                Hoewel in dit schooljaar 2017-2018 binnen de PO eindtoets de waarde "0015" in codelijst 42 en waarden "S", "B", "N" en "E" in codelijst 43 niet meer zijn toegestaan worden deze in OSO nog steeds toegestaan. 
+                Deze genomede waarden worden afgeraden en toch toegestaan t.b.v. overdracht van eindtoetsresultaten uit voorgaande jaren. -->
 <!-- 20170308: Eerste officiele release voor Validatie van OSO Gegevensset versie 2017.1, inclusief wijzigingen:
 				Validatie toegevoegd dat bij selectief uitleveren in het geval van OPT-UIT ook werkelijk alle gegevens uit deze categorie ontbreken 
 				Validatie van codelijsten aangepast: codelijsten 16 (soort overstap/dossier), 29 (soort overdracht)
@@ -401,9 +404,10 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetsniveau> binnen <eindtoets_basisonderwijs> conform codelijst 43. Niveau eindtoets -->
+      <!-- 20180228: Validatie van deze codelijst aangepast: ook waarde "G" (van Generiek) toegestaan en oudere waarden t.b.v. oudere eindtoetsresultaten nog steeds toegestaan -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetsniveau">
-        <xsl:if test="not(text()='B') and not(text()='N') and not(text()='S') and not(text()='E') ">
+        <xsl:if test="not(text()='G') and not(text()='S') and not(text()='B') and not(text()='N') and not(text()='E') ">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Toetsniveau' binnen het blok 'Eindtoets basisonderwijs' bevat een waarde die niet voorkomt in codelijst 43.</xsl:with-param>
           </xsl:call-template>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
-<!-- 20170308:	Eerste officiele release van Validatie van Overstapprofielen versie 2017.1.1, inclusief wijzigingen: 
+<!-- 20180228: Update release versie 2017.1.2 van OV profielen: validatie van codelijst 43 (niveau eindtoets) uitgebreid met G -->
+<!-- 20170308: Eerste officiele release van Validatie van Overstapprofielen versie 2017.1.1, inclusief wijzigingen: 
 				Validatie van BR OVa.MD03 en OVb.MD03 (veld categorie_uitlevering) toegevoegd
 				Validatie van BR OV.MD02 (veld validatieversie) gewijzigd
 				Namespace definitie naar versie 2017.1 (ipv 2016.1) 
@@ -89,11 +90,11 @@
     </xsl:if>
     <!-- Afspraak OSO gegevensset + overstapprofielen versie 2017.1, business rule OVa.MD02 -->
     <!-- Afspraak OSO gegevensset + overstapprofielen versie 2017.1, business rule OVb.MD02 -->
-    <!-- Veld validatieversie heeft waarde "2017.1.1" -->
-    <!-- 20170308 aanpassing volgende regel -->
+    <!-- 20180228: Validatie van deze waarde aangepast: voor deze versie is waarde "2017.1.2" toegestaan -->
+    <!-- 20170308 Veld validatieversie heeft waarde "2017.1.1" -->
     <!-- 20161128 deze regel aangepast aan nieuwe XSD -->
     <!-- 20160223 volgende regel toegevoegd -->
-    <xsl:if test="not(od:validatieversie='2017.1.1')">
+    <xsl:if test="not(od:validatieversie='2017.1.2')">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">De validatieversie is niet correct voor deze versie van de validatie XSLT.</xsl:with-param>
       </xsl:call-template>

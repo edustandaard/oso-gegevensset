@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
-<!-- 20170308:	Eerste officiele release van Validatie van SWV PaO profielen versie 2017.1.1, gemaakt op basis van Overstapprofielen validatie XSLT -->
+<!-- 20180228: Update release versie 2017.1.2 van SWV PaO profielen: validatie van codelijst 43 (niveau eindtoets) uitgebreid met G -->
+<!-- 20170308: Eerste officiele release van Validatie van SWV PaO profielen versie 2017.1.1, gemaakt op basis van Overstapprofielen validatie XSLT -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
   <!-- We lezen een paar gegevens uit het dossier die we later goed kunnen gebruiken -->
@@ -45,8 +46,9 @@
       </xsl:call-template>
     </xsl:if>
     <!-- Afspraak OSO gegevensset + SWV-profielen versie 2017.1, business rule PaO.MD02 -->
-    <!-- Veld validatieversie heeft waarde "2017.1.1" -->
-    <xsl:if test="($typeDocument='swv-dossier') and  not(od:validatieversie='2017.1.1')">
+    <!-- 20180228: Validatie van deze waarde aangepast: voor deze versie is waarde "2017.1.2" toegestaan -->
+    <!-- 20170308: Veld validatieversie heeft waarde "2017.1.1" -->
+    <xsl:if test="($typeDocument='swv-dossier') and  not(od:validatieversie='2017.1.2')">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">De validatieversie is niet correct voor deze versie van de standaard.</xsl:with-param>
       </xsl:call-template>

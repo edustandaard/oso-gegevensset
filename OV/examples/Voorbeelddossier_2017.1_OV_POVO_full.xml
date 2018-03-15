@@ -1,5 +1,6 @@
-<?xml version="1.0"?>
-<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">
+<?xml version="1.0" encoding="UTF-8"?>
+<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.edustandaard.nl/oso_gegevensset/2017/dossier ./OSO_gegevensset_2017.1.xsd">
+  <!--<dossier xmlns="http://www.edustandaard.nl/oso_gegevensset/2017/dossier">-->
   <metadata>
     <deeldossier>LASLVS</deeldossier>
     <pakketnaam>LeerlingInZicht</pakketnaam>
@@ -7,7 +8,7 @@
     <datum>2017-03-02</datum>
     <!-- elementen eldversie en xsdversie zijn komen te vervallen -->
     <standaardversie>2017.1</standaardversie>
-    <validatieversie>2017.1.1</validatieversie>
+    <validatieversie>2017.1.2</validatieversie>
     <categorie_uitlevering>
       <cat_metadata>VERPLICHT</cat_metadata>
       <cat_ouderinzage>VERPLICHT</cat_ouderinzage>
@@ -113,7 +114,7 @@
     <naamdirecteur>P. de Haan</naamdirecteur>
     <website>www.osotestschool.nl</website>
     <leerling>
-      <voornaam>Bj&#xF6;rn</voornaam>
+      <voornaam>Björn</voornaam>
       <voornaam>Johannes</voornaam>
       <voornaam>Martinus</voornaam>
       <voornaam>Franciscus</voornaam>
@@ -219,7 +220,7 @@
         </communicatie>
       </communicatielijst>
       <gba>
-        <gbavoornaam>Bj&#xF6;rn</gbavoornaam>
+        <gbavoornaam>Björn</gbavoornaam>
         <gbavoornaam>Johannes</gbavoornaam>
         <gbavoornaam>Martinus</gbavoornaam>
         <gbavoornaam>Franciscus</gbavoornaam>
@@ -1299,7 +1300,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
       <eindtoets_basisonderwijs>
         <eindtoetsresultaat>
           <toetssoort>0011</toetssoort>
-          <toetsniveau>B</toetsniveau>
+          <toetsniveau>G</toetsniveau>
           <toetsomschrijving>Centrale eindtoets (CET)</toetsomschrijving>
           <datum_afname>2015-04-28</datum_afname>
           <wettelijke_ontheffing>N</wettelijke_ontheffing>
