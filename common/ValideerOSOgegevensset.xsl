@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180322: Validatie van codelijst 43 (niveau eindtoets) uitgebreid met waarde "G". -->
 <!-- 20180226: Correctie van validatie van BR OG.04 bij veld <overlijdensdatum> -->
 <!-- 20180115: Validatie van BR OG.04 bij veld <overlijdensdatum> toegevoegd -->
 <!-- 20180102: Eerste comcept release voor Validatie van OSO Gegevensset versie 2018.1, inclusief wijzigingen:
@@ -396,6 +397,8 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetssoort> binnen <eindtoets_basisonderwijs> conform codelijst 42. Soort eindtoets -->
+      <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
+      <!-- Is de waarde van veld <toetssoort> binnen <eindtoets_basisonderwijs> conform codelijst 42. Soort eindtoets -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetssoort">
         <xsl:if test="not(text()='0011') and not(text()='0012') and not(text()='0013') and not(text()='0014') and not(text()='0015') and not(text()='0016') ">
@@ -406,10 +409,10 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetsniveau> binnen <eindtoets_basisonderwijs> conform codelijst 43. Niveau eindtoets -->
-      <!-- 20180102: Validatie ingeperkt tot 1 code "S" -->
+      <!-- 20180322: Validatie van deze codelijst aangepast: ook waarde "G" (van Generiek) toegestaan en oudere waarden t.b.v. oudere eindtoetsresultaten nog steeds toegestaan -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetsniveau">
-        <xsl:if test="not(text()='S')">
+        <xsl:if test="not(text()='G') and not(text()='S') and not(text()='B') and not(text()='N') and not(text()='E') ">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Toetsniveau' binnen het blok 'Eindtoets basisonderwijs' bevat een waarde die niet voorkomt in codelijst 43.</xsl:with-param>
           </xsl:call-template>

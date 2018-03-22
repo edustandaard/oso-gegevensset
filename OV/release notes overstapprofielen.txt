@@ -1,11 +1,11 @@
-Release notes bij Overstapprofielen technische bestanden versie 2018.1 van 20180226.
+Release notes bij Overstapprofielen technische bestanden versie 2018.1 van 20180322.
 In deze release zijn de bestanden "OSO gegevensset XSD", "OSO Codelijsten" en "Validatie XSLT" gewijzigd.
 
 Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2018.1_xxx.xml"). 
 
 Deze aanpassing betreft:
 1) Nieuwe velden <overleden> en <overlijdensdatum> binnen <verzorger> toegevoegd, inclusief validatie van BR bij <overlijdensdatum>
-2) Validatie van inperking in waarden bij codelijst 43 aangepast
+2) Validatie van codelijsten 43 (niveau eindtoets) uitgebreid met code "G"
 3) Validatie van actuele versie 2018.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
 In deze laatste versie is de validatie van de BR bij <overlijdensdatum> gecorrigeerd!
 

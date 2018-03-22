@@ -1940,7 +1940,7 @@ V9iG6OJv0QFQSwUGAAAAAAEAAQBaAAAAolMAAAAA
         <geboortedatum>1938-06-12</geboortedatum>
         <geslacht>2</geslacht>
         <relatietotkind>3</relatietotkind>
-        <overleden>false</overleden>
+        <overleden>true</overleden>
         <overlijdensdatum>2017-05-01</overlijdensdatum>
         <!--5=Anders-->
         <wettigevertegenwoordiger>false</wettigevertegenwoordiger>
