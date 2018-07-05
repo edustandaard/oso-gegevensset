@@ -1,12 +1,14 @@
-Release notes bij SWV PaO profielen technische bestanden versie 2018.1 van 20180322.
+Release notes bij SWV PaO profielen technische bestanden versie 2018.1 van 20180704.
 In deze release zijn de bestanden "OSO gegevensset XSD", "OSO Codelijsten" en "Validatie XSLT" gewijzigd.
 
 Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2018.1_xxx.xml"). 
 
 Deze aanpassing betreft:
-1) Nieuwe velden <overleden> en <overlijdensdatum> binnen <verzorger> toegevoegd, inclusief validatie van BR bij <overlijdensdatum>
-2) Validatie van codelijsten 43 (niveau eindtoets) uitgebreid met code "G"
-3) Validatie van actuele versie 2018.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
+1) Validatie van codelijsten 9 uitgebreid met codes 7 t/m 15 
+En eerder al:
+2) Nieuwe velden <overleden> en <overlijdensdatum> binnen <verzorger> toegevoegd, inclusief validatie van BR bij <overlijdensdatum>
+3) Validatie van codelijsten 43 (niveau eindtoets) uitgebreid met code "G"
+4) Validatie van actuele versie 2018.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
 In deze laatste versie is de validatie van de BR bij <overlijdensdatum> gecorrigeerd!
 
 ---

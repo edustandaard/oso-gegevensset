@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180704: Validatie van codelijst 9 (VVE programma) uitgebreid met waarden "7" t/m "15". -->
 <!-- 20180322: Validatie van codelijst 43 (niveau eindtoets) uitgebreid met waarde "G". -->
 <!-- 20180226: Correctie van validatie van BR OG.04 bij veld <overlijdensdatum> -->
 <!-- 20180115: Validatie van BR OG.04 bij veld <overlijdensdatum> toegevoegd -->
@@ -131,15 +132,16 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld codevoorschoolsprogramma conform codelijst 9. VVE programma -->
+      <!-- 20180704 Validatie van codes "7" t/m "15" toegevoegd -->
       <xsl:for-each select="/descendant::*/od:voorschools/od:codevoorschoolsprogramma">
-        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')">
+        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')      and not(text()='7') and not(text()='8') and not(text()='9') and not(text()='10')       and not(text()='11') and not(text()='12') and not(text()='13') and not(text()='14') and not(text()='15')">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Voorschoolse programma' bevat een waarde die niet voorkomt in codelijst 9.</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
       <xsl:for-each select="/descendant::*/od:vroegschools/od:codevroegschoolsprogramma">
-        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')">
+        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')      and not(text()='7') and not(text()='8') and not(text()='9') and not(text()='10')       and not(text()='11') and not(text()='12') and not(text()='13') and not(text()='14') and not(text()='15')">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Vroegschoolse programma' bevat een waarde die niet voorkomt in codelijst 9.</xsl:with-param>
           </xsl:call-template>

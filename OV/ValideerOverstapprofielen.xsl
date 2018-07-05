@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20180704:	Correctie van foutmelding bij business rule OVa.AI01 -->
 <!-- 20180102:	Eerste concept release van Validatie van Overstapprofielen versie 2018.1.1, inclusief wijzigingen: 
 				Validatie van BR OV.MD02 (veld <validatieversie>) gewijzigd
 				Namespace definitie naar versie 2018.1 (ipv 2017.1) -->
@@ -341,6 +342,7 @@
     </xsl:if>
     <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.AI01 -->
     <!-- In een overstapdossier is Aansprakelijke instelling verplicht als de verzorgers niet aansprakelijk zijn -->
+    <!-- 20180704: correctie van foutmelding voor POVO: ...verplicht in een POVO-overstapdossier... (was VOVO-overstapdossier) -->
     <!-- 20170308 regel gewijzigd: alleen voor POPO en POVO; 20131128 volgende regel gewijzigd //od:huidigeschool/od:leerling/ ervoor -->
     <xsl:if test="($typeDocument='overstapdossier') and ($typeOverstap='POPO') and not(xs:boolean(od:verzorgersaansprakelijk)) and not(od:aansprakelijkeinstelling)">
       <xsl:call-template name="melding">
@@ -349,7 +351,7 @@
     </xsl:if>
     <xsl:if test="($typeDocument='overstapdossier') and ($typeOverstap='POVO') and not(xs:boolean(od:verzorgersaansprakelijk)) and not(od:aansprakelijkeinstelling)">
       <xsl:call-template name="melding">
-        <xsl:with-param name="tekst">Aansprakelijke instelling is verplicht in een VOVO-overstapdossier als de verzorgers niet aansprakelijk zijn.</xsl:with-param>
+        <xsl:with-param name="tekst">Aansprakelijke instelling is verplicht in een POVO-overstapdossier als de verzorgers niet aansprakelijk zijn.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
     <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.VV01 -->
