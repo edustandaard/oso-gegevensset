@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Overzicht van wijzigingen -->
+<!-- 20190101:	Eerste concept release van Validatie van Overstapprofielen versie 2019.1.1, inclusief wijzigingen: 
+                Validatie van BRs OVa.ZB01 en OVa.ZB02 (mbt Zorg) verwijderd -->
 <!-- 20180704:	Correctie van foutmelding bij business rule OVa.AI01 -->
 <!-- 20180102:	Eerste concept release van Validatie van Overstapprofielen versie 2018.1.1, inclusief wijzigingen: 
 				Validatie van BR OV.MD02 (veld <validatieversie>) gewijzigd
@@ -30,7 +32,7 @@
 				veld "toestemming" verplicht bij VOVO-overstap 
 				validatie van business rules OS.I05, OS.E01, OS.E02, OS.E03 en OS.E04 toegevoegd 
 				namespace definitie naar versie 1.2 (ipv 1.1) -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2018/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2019/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2019/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
   <!-- We lezen een paar gegevens uit het dossier die we later goed kunnen gebruiken -->
   <!--<xsl:variable name="typeDocument" select="local-name(/node())"/>-->
@@ -69,9 +71,10 @@
             <xsl:apply-templates/>
         </meldingen>
     </xsl:template>-->
-  <!-- 20170308: Validatie van codelijsten verplaatst naar apart bestand dat wordt hieronder include -->
+  <!-- 20190101: Verwijzing naar deze validatie-XSLT gewijzigd -->
   <!-- 20180102: Verwijzing naar deze validatie-XSLT gewijzigd -->
-  <xsl:include href="include/ValideerOSOgegevensset_2018.1.xsl"/>
+  <!-- 20170308: Validatie van codelijsten verplaatst naar apart bestand dat wordt hieronder include -->
+  <xsl:include href="include/ValideerOSOgegevensset_2019.1.xsl"/>
   <xsl:template match="*|text()|@*">
     <xsl:apply-templates/>
   </xsl:template>
@@ -79,27 +82,28 @@
     <!-- _______________________________________________________ -->
     <!-- Algemene business rules t.b.v. profiel “Overstapdossier” -->
     <!-- _______________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen + binnen-brin versie 2018.1, business rule OVa.MD01 -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen + binnen-brin versie 2018.1, business rule OVb.MD01  -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen + binnen-brin versie 2019.1, business rule OVa.MD01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen + binnen-brin versie 2019.1, business rule OVb.MD01  -->
     <xsl:if test="$heeftLAS='N'">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Het dossier voor overstap en overdracht-binnen-brin moet een LAS deel bevatten, en mag niet alleen een LVS of TIB deel bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.MD02 -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.MD02 -->
-    <!-- Veld validatieversie heeft waarde "2018.1.1" -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.MD02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.MD02 -->
+    <!-- Veld validatieversie heeft waarde "2019.1.1" -->
+    <!-- 20190101 aanpassing volgende regel aan actuele versie -->
     <!-- 20180102 aanpassing volgende regel aan actuele versie -->
     <!-- 20170308 aanpassing volgende regel -->
     <!-- 20161128 deze regel aangepast aan nieuwe XSD -->
     <!-- 20160223 volgende regel toegevoegd -->
-    <xsl:if test="not(od:validatieversie='2018.1.1')">
+    <xsl:if test="not(od:validatieversie='2019.1.1')">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">De validatieversie is niet correct voor deze versie van de validatie XSLT.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OS03 -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.OS01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OS03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.OS01 -->
     <!-- Bij overstapdossier heeft veld soort overdracht de waarde overstapdossier of overdrachtbinnenbrin -->
     <!-- 20131128 volgende regel toegevoegd -->
     <xsl:if test="not($typeDocument='overstapdossier') and not($typeDocument='overdrachtbinnenbrin')">
@@ -110,7 +114,7 @@
     <!-- _______________________________________________________ -->
     <!-- Metadata business rules t.b.v. profiel “Overstapdossier” -->
     <!-- _______________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.MD03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.MD03 -->
     <!-- Veld categorie_uitlevering is verplicht voor overstapdossiers -->
     <!-- 20170308 volgende regel toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:categorie_uitlevering)">
@@ -118,7 +122,7 @@
         <xsl:with-param name="tekst">Een overstapdossier moet het blok "Categorie uitlevering" bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OS01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OS01 -->
     <!-- Veld Soort overstap verplicht bij alle overstapdossiers -->
     <!-- 20131128 volgende regel toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and  not(od:overstap)">
@@ -126,7 +130,7 @@
         <xsl:with-param name="tekst">Een overstapdossier moet de aanduiding voor soort overstap bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OS02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OS02 -->
     <!-- Veld Soort overstap heeft waarde POPO, POVO of VOVO -->
     <!-- 20131128 volgende regel toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and not($typeOverstap='POPO') and not($typeOverstap='POVO') and not($typeOverstap='VOVO')">
@@ -137,7 +141,7 @@
     <!-- ______________________________________________________________ -->
     <!-- Metadata business rules t.b.v. profiel “Overstap-binnen-brin” -->
     <!-- ______________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.MD03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.MD03 -->
     <!-- Veld categorie_uitlevering is verplicht voor overstapdossiers -->
     <!-- 20170308 volgende regel toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and not(od:categorie_uitlevering)">
@@ -150,7 +154,7 @@
     <!-- ______________________________________________________ -->
     <!-- Dossier business rules t.b.v. profiel “Overstapdossier” -->
     <!-- ______________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.IZ01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.IZ01 -->
     <!--In een overstapdossier moet de inzage node aanwezig zijn.-->
     <xsl:if test="($typeDocument='overstapdossier') and not(//od:dossier/od:inzage)">
       <xsl:call-template name="melding">
@@ -163,7 +167,7 @@
     <!-- _____________________________________________________ -->
     <!-- Inzage business rules t.b.v. profiel “Overstapdossier” -->
     <!-- _____________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.IZ02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.IZ02 -->
     <!--In een overstapdossier moet de inzage node aanwezig zijn.-->
     <!-- 20131128 volgende regel toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and not(xs:boolean(//od:inzage/od:inzage))">
@@ -171,21 +175,21 @@
         <xsl:with-param name="tekst">Elk overstapdossier moet zijn ingezien door ouders/verzorgers, ofwel het veld 'Inzage ouders' moet waarde "Ja" (true) bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.IZ03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.IZ03 -->
     <!--Als er ook inzage geweest is, is datum van inzage verplicht. -->
     <xsl:if test="($typeDocument='overstapdossier') and xs:boolean(od:inzage) and not(od:inzagedatum)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In overstapdossier is 'Inzagedatum' verplicht als er inzage is geweest.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.IZ04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.IZ04 -->
     <!--Als er ook inzage geweest is, is een waarde van akkoord verplicht. -->
     <xsl:if test="($typeDocument='overstapdossier') and xs:boolean(od:inzage) and not(od:akkoord)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In overstapdossier is de indicatie of ouders het wel of niet eens zijn met de inhoud verplicht als er inzage is geweest.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.IZ05 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.IZ05 -->
     <!-- 20150216: Veld "toestemming" verplicht bij VOVO-overstap -->
     <xsl:if test="($typeDocument='overstapdossier') and ($typeOverstap='VOVO') and not(od:toestemming)">
       <xsl:call-template name="melding">
@@ -195,14 +199,14 @@
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="od:huidigeschool">
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.SL01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.SL01 -->
     <!-- In een overstapdossier is bij school adres verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:adreslijst/od:adres)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In een overstapdossier is minimaal één adres verplicht bij een school.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.SL02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.SL02 -->
     <!-- In een overstapdossier is bij school communicatie verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:communicatielijst/od:communicatie)">
       <xsl:call-template name="melding">
@@ -215,21 +219,21 @@
     <!-- ________________________________________________________ -->
     <!-- Leeerling business rules t.b.v. profiel “Overstapdossier” -->
     <!-- ________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL01 -->
     <!-- In een overstapdossier is bij leerling voornaam verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:voornaam)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In een overstapdossier is minimaal één voornaam verplicht bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL02 -->
     <!-- In een overstapdossier is bij leerling geboortedatum verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:geboortedatum)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In een overstapdossier is de geboortedatum verplicht bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL03 -->
     <!-- In een overstapdossier is bij leerling geboortemaand verboden -->
     <!-- 20160120: validatie van business rule toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (od:geboortemaand)">
@@ -237,14 +241,14 @@
         <xsl:with-param name="tekst">In een overstapdossier is de geboortemaand verboden bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL04 -->
     <!-- In een overstapdossier is bij leerling indicatie adresgeheim verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:adresgeheim)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">In een overstapdossier is de indicatie 'adres geheim' verplicht bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL05 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL05 -->
     <!-- Bij leerling adres of adresbuitenland verplicht (todo: toevoegen of NL-adres of buitenlands adres, niet beiden?) -->
     <!-- 20150529 gewijzigd naar adres of adresbuitenland verplicht indien adres niet geheim is -->
     <!-- 20131128 gewijzigd van adres verplicht naar adres of adresbuitenland verplicht -->
@@ -253,7 +257,7 @@
         <xsl:with-param name="tekst">Minimaal één Nederlands of buitenlands adres is verplicht bij een leerling waarvan het adres niet geheim is.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL06 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL06 -->
     <!-- Bij leerling is indien adres geheim adres verboden -->
     <!-- 20160120: validatie van business rule toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (xs:boolean(od:adresgeheim)) and (od:adreslijst/od:adres)">
@@ -261,7 +265,7 @@
         <xsl:with-param name="tekst">Indien een adres van leerling geheim, is ieder leerlingadres in overstapdossier verboden.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL07 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL07 -->
     <!-- In een overstapdossier is postcode4adrres verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (od:postcode4adres)">
@@ -269,8 +273,8 @@
         <xsl:with-param name="tekst">In een overstapdossier is de postcode4-adres verboden bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL08 -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OV04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL08 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OV04 -->
     <!-- In een overstapdossier bij persoon (leerling, verzorger, etc.) geheimwaarde van communicatie doorgeven wanneer deze communicatie geheim is -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:for-each select="/descendant::*/od:communicatie">
@@ -285,7 +289,7 @@
         </xsl:call-template>
       </xsl:if>
     </xsl:for-each>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL09 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL09 -->
     <!-- Bij leerling is indien adres geheim adresbuitenland verboden -->
     <!-- 20160120: validatie van business rule toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (xs:boolean(od:adresgeheim)) and (od:adresbuitenland)">
@@ -293,7 +297,7 @@
         <xsl:with-param name="tekst">Indien een adres van leerling geheim, is een buitenlands leerlingadres verboden.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL10 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL10 -->
     <!-- geboorteplaats verboden bij alle overstapdossiers -->
     <!-- 20131128 toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (od:geboorteplaats)">
@@ -301,7 +305,7 @@
         <xsl:with-param name="tekst">De geboorteplaats van de leerling is verboden in alle overstapdossiers.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL11 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL11 -->
     <!-- nationaliteit verboden bij alle overstapdossiers -->
     <!-- 20131128 toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (od:nationaliteit)">
@@ -309,14 +313,14 @@
         <xsl:with-param name="tekst">De nationaliteit van de leerling is verboden in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL12 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL12 -->
     <!-- BSN of onderwijsnummer is verplicht in alle overstapdossiers -->
     <xsl:if test="($typeDocument='overstapdossier') and (not(od:bsn) and not(od:onderwijsnummer))">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">BSN of onderwijsnummer is verplicht bij een leerling in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL13 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL13 -->
     <!-- leerlingid alleen bij POVO overstapdossier -->
     <!--<xsl:if test="$typeDocument='overstapdossier' and $typeOverstap='POVO' and not(od:leerlingid) ">-->
     <!--<xsl:if test="($typeDocument='overstapdossier' or $typeDocument='verrijkingsinput') and $typeOverstap='POVO' and not(od:leerlingid) ">-->
@@ -325,14 +329,14 @@
         <xsl:with-param name="tekst">De code van de leerling in de schooladministratie is verplicht in een POVO-overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL14 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL14 -->
     <!-- datum van inschrijving verplicht bij overstapdossier -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:datuminschrijving)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Inschrijfdatum is verplicht bij een leerling in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.LL15 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.LL15 -->
     <!-- Een overstapdossier moet het veld “Verzorgers zijn aansprakelijk?” bevatten -->
     <!-- 20131128 toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier')  and  not(od:verzorgersaansprakelijk)">
@@ -340,7 +344,7 @@
         <xsl:with-param name="tekst">De aanduiding of verzorgers wel of niet aansprakelijk zijn is verplicht in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.AI01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.AI01 -->
     <!-- In een overstapdossier is Aansprakelijke instelling verplicht als de verzorgers niet aansprakelijk zijn -->
     <!-- 20180704: correctie van foutmelding voor POVO: ...verplicht in een POVO-overstapdossier... (was VOVO-overstapdossier) -->
     <!-- 20170308 regel gewijzigd: alleen voor POPO en POVO; 20131128 volgende regel gewijzigd //od:huidigeschool/od:leerling/ ervoor -->
@@ -354,43 +358,43 @@
         <xsl:with-param name="tekst">Aansprakelijke instelling is verplicht in een POVO-overstapdossier als de verzorgers niet aansprakelijk zijn.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.VV01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.VV01 -->
     <!-- Voorschools alleen toegestaan bij POPO-overstap -->
     <xsl:if test="($typeDocument='overstapdossier') and not($typeOverstap='POPO') and od:voorschools">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Voorschools is alleen toegestaan bij een POPO-overstap.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.VV02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.VV02 -->
     <!-- Vroegschools alleen toegestaan bij POPO-overstap -->
     <xsl:if test="($typeDocument='overstapdossier') and not($typeOverstap='POPO') and od:vroegschools">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Vroegschools is alleen toegestaan bij een POPO-overstap.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.SL01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.SL01 -->
     <!-- In een overstapdossier is schoolloopbaan verplicht -->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:schoolloopbaanlijst/od:schoolloopbaan)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Minimaal één schoolloopbaan is verplicht bij een leerling in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OA01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OA01 -->
     <!--In een overstapdossier moet de overstapadvies node aanwezig zijn.-->
     <xsl:if test="($typeDocument='overstapdossier') and not(od:overstapadvies)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Een overstapdossier moet het gegevensblok 'Overstapadvies' bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.TR01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.TR01 -->
     <!-- Minimaal 1 toets verplicht bij POVO-overstap in dossier met begeleidingsgegevens -->
-    <!-- 20150529 Deze business rule is als verplichting vervallen, wel aanbevolen -->
+    <!-- 20150529 Deze business rule is als verplichting vervallen, wel aanbevolen dus commentaar -->
     <!--<xsl:if test="($typeDocument='overstapdossier') and ($heeftLVS='Y') and $typeOverstap='POVO' and not(od:toetslijst/od:toets)">
 			<xsl:call-template name="melding">
 				<xsl:with-param name="tekst">Minimaal één toets is verplicht bij een leerling in een POVO-overstapdossier met begeleidingsgegevens.</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>-->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OV01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OV01 -->
     <!-- Test of het blok verzorger afwezig is wanneer 'verzorgersaansprakelijk' waar is-->
     <xsl:if test="($typeDocument='overstapdossier') and (xs:boolean(od:verzorgersaansprakelijk)) and not(od:verzorger)">
       <xsl:call-template name="melding">
@@ -400,7 +404,7 @@
     <!-- ______________________________________________________________ -->
     <!-- Leerling business rules t.b.v. profiel “Overstap-binnen-brin” -->
     <!-- ______________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.LL01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL01 -->
     <!-- In een Overstap-binnen-brin is bij leerling geboortemaand verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (od:geboortemaand)">
@@ -408,7 +412,7 @@
         <xsl:with-param name="tekst">In een overdracht-binnen-brin is de geboortemaand verboden bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.LL02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL02 -->
     <!-- Bij leerling is indien adres geheim adres in Overstap-binnen-brin verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (xs:boolean(od:adresgeheim)) and (od:adreslijst/od:adres)">
@@ -416,7 +420,7 @@
         <xsl:with-param name="tekst">Indien een adres van leerling geheim, is ieder leerlingadres in overdracht-binnen-brin verboden.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.LL03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL03 -->
     <!-- In een Overstap-binnen-brin is postcode4adrres verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (od:postcode4adres)">
@@ -424,8 +428,8 @@
         <xsl:with-param name="tekst">In een overdracht-binnen-brin is de postcode4-adres verboden bij een leerling.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.LL04 -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.OV02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.OV02 -->
     <!-- In een Overstap-binnen-brin bij persoon (leerling,verzorger,etc.) geheimwaarde van communicatie doorgeven wanneer deze communicatie geheim is -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:for-each select="/descendant::*/od:communicatie">
@@ -440,12 +444,28 @@
         </xsl:call-template>
       </xsl:if>
     </xsl:for-each>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.LL05 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL05 -->
     <!-- Bij leerling is indien adres geheim adresbuitenland in een Overstap-binnen-brin verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (xs:boolean(od:adresgeheim)) and (od:adresbuitenland)">
       <xsl:call-template name="melding">
         <xsl:with-param name="tekst">Indien een adres van leerling geheim, is een buitenlands leerlingadres in overdracht-binnen-brin verboden.</xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL?? -->
+    <!-- geboorteplaats verboden bij alle overstapdossiers, dus ook in BB -->
+    <!-- 20190101 toegevoegd -->
+    <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (od:geboorteplaats)">
+      <xsl:call-template name="melding">
+        <xsl:with-param name="tekst">De geboorteplaats van de leerling is verboden in een overstapdossier, dus ook voor overdracht-binnen-brin.</xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.LL?? -->
+    <!-- nationaliteit verboden bij alle overstapdossiers -->
+    <!-- 20190101 toegevoegd -->
+    <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (od:nationaliteit)">
+      <xsl:call-template name="melding">
+        <xsl:with-param name="tekst">De nationaliteit van de leerling is verboden in een overstapdossier, dus ook voor overdracht-binnen-brin.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
     <!-- data dictionary regel 348: Bevorderd of Examenresultaat -->
@@ -461,7 +481,7 @@
     <!-- ________________________________________________________ -->
     <!-- Verzorger business rules t.b.v. profiel “Overstapdossier” -->
     <!-- ________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OV03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OV03 -->
     <!-- Bij verzorger is indien adres geheim adres verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and (xs:boolean(od:adresgeheim)) and (od:adreslijst/od:adres)">
@@ -472,7 +492,7 @@
     <!-- _______________________________________________________________ -->
     <!-- Verzorger business rules t.b.v. profiel “Overstap-binnen-brin” -->
     <!-- _______________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVb.OV01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVb.OV01 -->
     <!-- Bij verzorger is indien adres geheim adres in Overstap-binnen-brin verboden -->
     <!-- 20160120: validatie van deze business rule toegevoegd -->
     <xsl:if test="($typeDocument='overdrachtbinnenbrin') and (xs:boolean(od:adresgeheim)) and (od:adreslijst/od:adres)">
@@ -486,7 +506,7 @@
     <!-- _____________________________________________________________ -->
     <!-- Overstapadvies business rules t.b.v. profiel “Overstapdossier” -->
     <!-- _____________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OA02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OA02 -->
     <!-- Advies VO is verplicht bij een POVO-overstap, WECVO-scholen zijn uitgezonderd -->
     <!-- 20131128 gewijzigd in uitzondering van advies voor SO-scholen -->
     <xsl:if test="($typeDocument='overstapdossier') and ($typeOverstap='POVO') and not($soortSchool='SO') and not(od:advies)">
@@ -494,7 +514,7 @@
         <xsl:with-param name="tekst">Advies VO is verplicht bij een POVO-overstap, SO-scholen uitgezonderd.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OA03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OA03 -->
     <!-- contactnodig verplicht bij alle overstapdossiers -->
     <!-- 20131128 toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier')  and  not(od:contactnodig)">
@@ -502,7 +522,7 @@
         <xsl:with-param name="tekst">De aanduiding of contact wel of niet nodig is, is verplicht in een overstapdossier.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OA04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OA04 -->
     <!-- contactpersoon verplicht bij contactnodig -->
     <xsl:if test="($typeDocument='overstapdossier') and xs:boolean(od:contactnodig)">
       <xsl:if test="not(od:contactpersoon)">
@@ -511,7 +531,7 @@
         </xsl:call-template>
       </xsl:if>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.OA05 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.OA05 -->
     <!-- contacttelefoon verplicht bij contactnodig -->
     <xsl:if test="($typeDocument='overstapdossier') and xs:boolean(od:contactnodig)">
       <xsl:if test="not(od:contacttelefoon)">
@@ -522,42 +542,46 @@
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  <xsl:template match="od:zorg">
-    <!-- ___________________________________________________ -->
-    <!-- Zorg business rules t.b.v. profiel “Overstapdossier” -->
-    <!-- ___________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.ZB01 -->
-    <!-- naam ib-er verplicht bij lgf -->
-    <xsl:if test="($typeDocument='overstapdossier') and od:lgf and not(od:naamib)">
-      <xsl:call-template name="melding">
-        <xsl:with-param name="tekst">De naam van de interne begeleider is verplicht als er leerlinggebonden financiering (lgf) is.</xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.ZB02 -->
-    <!-- vir verboden bij alle overstapdossiers -->
-    <!-- 20131128 toegevoegd -->
-    <xsl:if test="($typeDocument='overstapdossier')  and (od:vir)">
-      <xsl:call-template name="melding">
-        <xsl:with-param name="tekst">De gegevens van de leerling m.b.t. VIR (Verwijsindex jongeren) zijn verboden in een overstapdossier.</xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.ZB03 -->
-    <!-- zat afgeraden bij alle overstapdossiers -->
-    <!-- 20131128 BR toegevoegd (is aanbeveling, dus is commentaar) -->
-    <!--<xsl:if test="($typeDocument='overstapdossier')  and (od:zat)">
+  <!-- 20190101 verwijderd -->
+  <!--<xsl:template match="od:zorg">-->
+  <!-- ___________________________________________________ -->
+  <!-- Zorg business rules t.b.v. profiel “Overstapdossier” -->
+  <!-- ___________________________________________________ -->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.ZB01 -->
+  <!-- 20190101 het betreffende veld naamib en blok LGF in versie 2019.1 verwijderd -->
+  <!-- naam ib-er verplicht bij lgf -->
+  <!--<xsl:if test="($typeDocument='overstapdossier') and od:lgf and not(od:naamib)">
+			<xsl:call-template name="melding">
+				<xsl:with-param name="tekst">De naam van de interne begeleider is verplicht als er leerlinggebonden financiering (lgf) is.</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>-->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.ZB02 -->
+  <!-- vir verboden bij alle overstapdossiers -->
+  <!-- 20190101 het betreffende blok vir in versie 2019.1 verwijderd -->
+  <!-- 20131128 toegevoegd -->
+  <!--<xsl:if test="($typeDocument='overstapdossier')  and (od:vir)">
+			<xsl:call-template name="melding">
+				<xsl:with-param name="tekst">De gegevens van de leerling m.b.t. VIR (Verwijsindex jongeren) zijn verboden in een overstapdossier.</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>-->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.ZB03 -->
+  <!-- zat afgeraden bij alle overstapdossiers -->
+  <!-- 20190101 het betreffende blok zat in versie 2019.1 verwijderd -->
+  <!-- 20131128 BR toegevoegd (is aanbeveling, dus is commentaar) -->
+  <!--<xsl:if test="($typeDocument='overstapdossier')  and (od:zat)">
 			<xsl:call-template name="melding">
 				<xsl:with-param name="tekst">De gegevens van de leerling m.b.t. ZAT (Zorgadviesteam) worden afgeraden in een overstapdossier.</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>-->
-    <xsl:apply-templates/>
-  </xsl:template>
+  <!--<xsl:apply-templates/>-->
+  <!--</xsl:template>-->
   <xsl:template match="od:eindtoets_basisonderwijs">
     <!-- ________________________________________________________ -->
     <!-- Eindtoets business rules t.b.v. profiel “Overstapdossier” -->
     <!-- ________________________________________________________ -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.EB01 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.EB01 -->
     <!-- Aanbeveling: niet verplicht -->
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.EB02 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.EB02 -->
     <!-- Bij deelname van eindtoets is toetsresultaat verplicht -->
     <!-- 20150216 BR toegevoegd -->
     <xsl:if test="($typeDocument='overstapdossier') and xs:boolean(od:deelgenomen) and not(od:eindtoetsresultaat)">
@@ -565,7 +589,7 @@
         <xsl:with-param name="tekst">Indien leerling heeft deelgenomen aan de eindtoets basisonderwijs moet het blok 'eindtoets' aanwezig zijn.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.EB03 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.EB03 -->
     <!-- Bij geen deelname of ontheffing van eindtoets is identificatie van toets (toetssoort) verplicht -->
     <!-- 20160120 BR gewijzigd (ontheffing en toetsidentificatie vervangen door eindtoetsresultaat/wettelijke_ontheffing resp. toetssoort) -->
     <!-- 20150216 BR toegevoegd -->
@@ -579,7 +603,7 @@
         <xsl:with-param name="tekst">Indien leerling ontheffing heeft voor deelname aan de eindtoets basisonderwijs moet binnen eindtoets het 'Soort eindtoets' aanwezig zijn.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.EB04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.EB04 -->
     <!-- 20150216: Bij deelname van eindtoets is toets verplicht -->
     <!-- 20160120 BR gewijzigd (toetsadvies vervangen door eindtoetsresultaat/toets_advies) -->
     <!-- 20150216 BR toegevoegd -->
@@ -594,7 +618,7 @@
   <!-- Toetsresultaten Business rules t.b.v. profiel “Overstapdossier” -->
   <!-- ______________________________________________________________ -->
   <xsl:template match="od:toets">
-    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.TR04 -->
+    <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.TR04 -->
     <!-- alleen de toetsen van huidig, vorig en eervorig schooljaar zijn toestaan bij een POVO-overstap. Een schooljaar loopt van 1 augustus t/m 31 juli -->
     <xsl:variable name="documentdatum" select="xs:date(//od:metadata/od:datum)"/>
     <xsl:variable name="beginSchooljaar" select="xs:date(concat(year-from-date($documentdatum),'-08-01'))"/>
@@ -615,7 +639,7 @@
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.TR05 -->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.TR05 -->
   <!-- Een toetsresultaat moet minimaal een score, een referentiescore of een bijlage bevatten	-->
   <xsl:template match="od:resultaat">
     <xsl:if test="($typeDocument='overstapdossier') and not(od:toetsscore) and not(od:referentiescore) and not(od:document)">
@@ -625,17 +649,17 @@
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.TR06 -->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.TR06 -->
   <!-- Een toetsscore moet minimaal het aantal goed, het aantal fout, het aantal gelezen, de tijd of de vaardigeheidsscore bevatten -->
   <xsl:template match="od:toetsscore">
     <xsl:if test="($typeDocument='overstapdossier') and not(od:aantalopgaven)and not(od:aantalgoed) and not(od:aantalfout) and not(od:aantalgelezen) and not(od:tijd) and not(od:vaardigheidsscore)">
       <xsl:call-template name="melding">
-        <xsl:with-param name="tekst">Een toetsscore moet minimaal het aantal oipgaven, het aantal goed, het aantal fout, het aantal gelezen, de tijd of de vaardigeheidsscore bevatten.</xsl:with-param>
+        <xsl:with-param name="tekst">Een toetsscore moet minimaal het aantal opgaven, het aantal goed, het aantal fout, het aantal gelezen, de tijd of de vaardigeheidsscore bevatten.</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
     <xsl:apply-templates/>
   </xsl:template>
-  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2018.1, business rule OVa.CL01 -->
+  <!-- Afspraak OSO gegevensset + overstapprofielen versie 2019.1, business rule OVa.CL01 -->
   <!-- Een score moet minimaal een waarde of een kwalificatie bevatten -->
   <xsl:template match="od:score">
     <xsl:if test="($typeDocument='overstapdossier') and not(od:waarde) and not(od:kwalificatie)">

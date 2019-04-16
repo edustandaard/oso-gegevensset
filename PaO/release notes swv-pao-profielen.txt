@@ -1,17 +1,29 @@
-Release notes bij SWV PaO profielen technische bestanden versie 2018.1 van 20180704.
+Release notes bij Overstapprofielen technische bestanden versie 2019.1 van 20190415.
 In deze release zijn de bestanden "OSO gegevensset XSD", "OSO Codelijsten" en "Validatie XSLT" gewijzigd.
 
-Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2018.1_xxx.xml"). 
+Ter illustratie van de aanpassingen zijn enkele voorbeeld XML-bestanden bijgevoegd (zie bestanden "Voorbeelddossier_2019.1_xxx.xml").
 
-Deze aanpassing betreft:
+Deze meest-recente aanpassing betreft:
+A) Validatie gecorrigeerd m.b.t. de categorie "Onderwijsondersteuning" is VERPLICHT/VERBODEN/OPT-UIT.
+B) XSD aangepast m.b.t. het vervallen vna de verplichting van TLV bijlagedocument.
+Verdere aanpassingen: 
+1) Aanpassingen m.b.t. onderwijsondersteuning (vernieuwen standaard) 
+2) Validatie van codelijsten 23 (diagnose) uitgebreid met enkele codes voor o.a. Verstandelijke beperking, Zwakbegaafd, Hoogbegaafd, TOS, Leerstoornis en Aanpassingsstoornissen
+3) Validatie van codelijsten 43 (niveau eindtoets) ingeperkt tot code "G"
+4) Validatie toegevoegd dat bij selectief uitleveren wanneer een categorie VERBODEN is ook werkelijk alle gegevens uit deze categorie ontbreken
+5) Validatie van actuele versie 2019.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
+
+
+
+
+---
+
+Eerdere aanpassingen in versie 2018.1
+2018.1.1 van 20180704: Deze aanpassing betreft:
 1) Validatie van codelijsten 9 uitgebreid met codes 7 t/m 15 
-En eerder al:
 2) Nieuwe velden <overleden> en <overlijdensdatum> binnen <verzorger> toegevoegd, inclusief validatie van BR bij <overlijdensdatum>
 3) Validatie van codelijsten 43 (niveau eindtoets) uitgebreid met code "G"
 4) Validatie van actuele versie 2018.1 van de afspraak: validatie van <standaardversie> en <validatieversie> aangepast
-In deze laatste versie is de validatie van de BR bij <overlijdensdatum> gecorrigeerd!
-
----
 
 Eerdere aanpassingen in versie 2017.1
 2017.1.1 van 20180102: Deze aanpassing betreft:

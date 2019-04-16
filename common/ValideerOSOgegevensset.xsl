@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Overzicht van wijzigingen -->
+<!--Overzicht van wijzigingen in afgelopen jaren -->
+<!-- 20190311: regels van categorie onderwijsondersteuning gecorrigeerd naar validatie van aanwezigheid van de deelelementen van het blok onderwijsondersteuning 
+	           (en correctie business rules nummering t.b.v. documentatie) -->
+<!-- 20190101: Eerste comcept release voor Validatie van OSO Gegevensset versie 2019.1, inclusief de wijzigingen:
+				Validatie van veld <standaardversie> gewijzigd
+			    Validatie van veld cat_zorgenbegeleiding vervangen door veld cat_onderwijsondersteuning
+				Validatie van codelijsten 3, 12, 32, 34 en 38 verwijderd m.b.t. verwijderde gegevensvelden  
+				Validatie van codelijst 23 m.b.t. diagnose aangepast: nieuwe code voor F79.VB, F79.ZB, HB, F80, F81.9 en F43.2 toegevoegd 
+				Validatie van codelijsten 42 (Toetssoort) en 43 (Toetsniveau) m.b.t. eindtoets aangepast 
+                Validaties van aanwezigheid van categorie en velden/blokken van categorie uitgebreid: melding nu ook bij verboden categorieen -->
 <!-- 20180704: Validatie van codelijst 9 (VVE programma) uitgebreid met waarden "7" t/m "15". -->
 <!-- 20180322: Validatie van codelijst 43 (niveau eindtoets) uitgebreid met waarde "G". -->
 <!-- 20180226: Correctie van validatie van BR OG.04 bij veld <overlijdensdatum> -->
@@ -11,18 +20,7 @@
 				Validatie toegevoegd dat bij selectief uitleveren in het geval van OPT-UIT ook werkelijk alle gegevens uit deze categorie ontbreken 
 				Validatie van codelijsten aangepast: codelijsten 16 (soort overstap/dossier), 29 (soort overdracht)
 				Validatie van codelijst 48 toegevoegd (voor alle velden binnen blok categorie_uitlevering) -->
-<!-- 20161128: Validatie van codelijsten 42 t/m 47 m.b.t. eindtoets toegevoegd -->
-<!-- 20160120: Wijzigingen n.a.v. nieuwe versie 2016.1: 
-				Validatie van codelijsten aangepast: 4 & 23 gewijzigd; 39 & 40 verwijderd en 41 toegevoegd -->
-<!-- 20151119: Validatie van code Nvt van codelijst 39 toegevoegd -->
-<!-- 20150716: Validatie van code NAZ van codelijst 11 en Nvt van codelijst 31 toegevoegd -->
-<!-- 20150529: Validatie van code LA van codelijst 11 toegevoegd -->
-<!-- 20150218: validatie van waarde van gegevensveld "profiel" met codelijst 21 code "ondersteuning" toegevoegd -->
-<!-- 20150216: validatie van waarde van gegevensveld "toestemming" met codelijst 37, "soort_arrangement" met codelijst 39 en "niveau_eindtoets" met codelijst 40 toegevoegd -->
-<!-- 20140519: validatie van 4 velden met codelijst (akkoord, lgfindicatierec, rvcindicatie, examenuitslag en beoordelingexamenvak) toegevoegd, na verwijdering uit XSD -->
-<!-- 20140509: validatie van veel gegevensvelden met codelijsten (enumeraties) toegevoegd, na verwijdering uit XSD -->
-<!--           validatie van veld Herzien VO advies (herzienadvies) toegevoegd -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2018/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2018/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:od="http://www.edustandaard.nl/oso_gegevensset/2019/dossier" xmlns="http://www.edustandaard.nl/oso_gegevensset/2019/schemas/Meldingen" exclude-result-prefixes="xs" version="2.0" extension-element-prefixes="od">
   <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
   <xsl:template match="/">
     <meldingen>
@@ -77,13 +75,17 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld codelgfonderwijssoort conform codelijst 3. LGF onderwijssoort -->
-      <xsl:for-each select="/descendant::*/od:lgf/od:codelgfonderwijssoort">
-        <xsl:if test="not(text()='11') and not(text()='12') and not(text()='13') and not(text()='14') and      not(text()='21') and not(text()='22') and not(text()='23') and not(text()='24') and not(text()='25') and not(text()='26') and      not(text()='31') and not(text()='32') and not(text()='33') and not(text()='34') and not(text()='35') and      not(text()='40') and not(text()='44')">
-          <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'LGF onderwijssoort' bevat een waarde die niet voorkomt in in codelijst 3.</xsl:with-param>
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:for-each>
+      <!-- 20190101: validatie van deze codelijst verwijderd omdat veld is vewijderd -->
+      <!--<xsl:for-each select="/descendant::*/od:lgf/od:codelgfonderwijssoort">
+				<xsl:if test="not(text()='11') and not(text()='12') and not(text()='13') and not(text()='14') and
+					not(text()='21') and not(text()='22') and not(text()='23') and not(text()='24') and not(text()='25') and not(text()='26') and
+					not(text()='31') and not(text()='32') and not(text()='33') and not(text()='34') and not(text()='35') and
+					not(text()='40') and not(text()='44')">
+					<xsl:call-template name="melding">
+						<xsl:with-param name="tekst">Het veld 'LGF onderwijssoort' bevat een waarde die niet voorkomt in in codelijst 3.</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>-->
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld communicatie.soort conform codelijst 4. Communicatie soort -->
       <!-- 20160120: validatie van de waarden "mobiel" en "fax" verwijderd -->
@@ -169,13 +171,18 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld domein conform codelijst 12. Domeinen -->
-      <xsl:for-each select="/descendant::*/od:extrahulpingroep78/od:domein">
-        <xsl:if test="not(text()='TL') and not(text()='BL') and not(text()='SP') and not(text()='RW') and       not(text()='ST') and not(text()='MT') and       not(text()='BO') and not(text()='SV') and       not(text()='WO') and not(text()='EN') and not(text()='CV') and       not(text()='LCC') and not(text()='LNK') and not(text()='LZS') and not(text()='LTP')and not(text()='LZV') and not(text()='LDV') and not(text()='LWV') and not(text()='LHW')">
-          <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'Hulpdomeinen' bevat een waarde die niet voorkomt in codelijst 12.</xsl:with-param>
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:for-each>
+      <!-- 20190101: validatie van deze codelijst verwijderd omdat veld is vewijderd -->
+      <!--<xsl:for-each select="/descendant::*/od:extrahulpingroep78/od:domein">
+				<xsl:if test="not(text()='TL') and not(text()='BL') and not(text()='SP') and not(text()='RW') and 
+					not(text()='ST') and not(text()='MT') and 
+					not(text()='BO') and not(text()='SV') and 
+					not(text()='WO') and not(text()='EN') and not(text()='CV') and 
+					not(text()='LCC') and not(text()='LNK') and not(text()='LZS') and not(text()='LTP')and not(text()='LZV') and not(text()='LDV') and not(text()='LWV') and not(text()='LHW')">
+					<xsl:call-template name="melding">
+						<xsl:with-param name="tekst">Het veld 'Hulpdomeinen' bevat een waarde die niet voorkomt in codelijst 12.</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>-->
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld jaargroep (4x binnen schoolloopbaan, toetsresultaat en cijferlijst) conform codelijst 13. Jaargroepen-->
       <xsl:for-each select="/descendant::*/od:jaargroep">
@@ -261,9 +268,10 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld diagnose.code conform codelijst 23. Diagnose codes -->
+      <!-- 20190101: validatie van de nieuwe waarden F79.VB, F79.ZB, HB, F80, F81.9 en F43.2 t.b.v. 2019.1 toegevoegd -->
       <!-- 20160120: validatie van de waarden "H54.0" tot en met "H91.9.s" toegevoegd -->
       <xsl:for-each select="/descendant::*/od:diagnose/od:code">
-        <xsl:if test="not(text()='F81.0') and not(text()='F81.1') and not(text()='F81.2') and not(text()='F82') and      not(text()='F84') and not(text()='F84.0') and not(text()='F84.2') and not(text()='F84.5') and not(text()='F84.nld') and not(text()='F84.mcdd') and       not(text()='F90') and not(text()='F90.0') and not(text()='F90.0+') and not(text()='F90.0-') and not(text()='F91') and not(text()='F91.3') and       not(text()='F95') and not(text()='F95.2') and      not(text()='F41.0') and not(text()='F43.1') and not(text()='F50') and not(text()='F92.0') and not(text()='F93.1') and not(text()='F94') and       not(text()='Fspd') and not(text()='G40') and       not(text()='H54.0') and not(text()='H54.2') and not(text()='H91.9.d') and not(text()='H91.9.s') and       not(text()='Z62')">
+        <xsl:if test="      not(text()='F79.VB') and not(text()='F79.ZB') and not(text()='HB') and not(text()='F80') and       not(text()='F81.0') and not(text()='F81.1') and not(text()='F81.2') and not(text()='F81.9') and not(text()='F82') and       not(text()='F84') and not(text()='F84.0') and not(text()='F84.2') and not(text()='F84.5') and not(text()='F84.nld') and not(text()='F84.mcdd') and       not(text()='F90') and not(text()='F90.0') and not(text()='F90.0+') and not(text()='F90.0-') and not(text()='F91') and not(text()='F91.3') and       not(text()='F95') and not(text()='F95.2') and      not(text()='F41.0') and not(text()='F43.1') and not(text()='F43.2') and not(text()='F50') and       not(text()='F92.0') and not(text()='F93.1') and not(text()='F94') and       not(text()='Fspd') and not(text()='G40') and       not(text()='H54.0') and not(text()='H54.2') and not(text()='H91.9.d') and not(text()='H91.9.s') and       not(text()='Z62')">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Code van diagnose' bevat een waarde die niet voorkomt in codelijst 23.</xsl:with-param>
           </xsl:call-template>
@@ -291,13 +299,14 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld upwuitstroomprofiel conform codelijst 32. UPW uitstroomprofiel -->
-      <xsl:for-each select="/descendant::*/od:upw/od:upwuitstroomprofiel">
-        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3')">
-          <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'UPW uitstroomprofiel' bevat een waarde die niet voorkomt in codelijst 32.</xsl:with-param>
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:for-each>
+      <!-- 20190101: validatie van deze codelijst verwijderd omdat veld is vewijderd -->
+      <!--<xsl:for-each select="/descendant::*/od:upw/od:upwuitstroomprofiel">
+				<xsl:if test="not(text()='1') and not(text()='2') and not(text()='3')">
+					<xsl:call-template name="melding">
+						<xsl:with-param name="tekst">Het veld 'UPW uitstroomprofiel' bevat een waarde die niet voorkomt in codelijst 32.</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>-->
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld metadata.deeldossier conform 33. Deeldossier type -->
       <!--<xsl:for-each select="/descendant::*/od:metadata/od:deeldossier">
@@ -314,13 +323,14 @@
       </xsl:if>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld upwleerjaar conform codelijst 34. UPW leerjaar -->
-      <xsl:for-each select="/descendant::*/od:upw/od:upwleerjaar">
-        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')">
-          <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'UPW leerjaar' bevat een waarde die niet voorkomt in codelijst 34.</xsl:with-param>
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:for-each>
+      <!-- 20190101: validatie van deze codelijst verwijderd omdat veld is vewijderd -->
+      <!--<xsl:for-each select="/descendant::*/od:upw/od:upwleerjaar">
+				<xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4') and not(text()='5') and not(text()='6')">
+					<xsl:call-template name="melding">
+						<xsl:with-param name="tekst">Het veld 'UPW leerjaar' bevat een waarde die niet voorkomt in codelijst 34.</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>-->
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld examenuitslag conform codelijst 35. Examenuitslag -->
       <xsl:for-each select="/descendant::*/od:examenresultaat/od:examenuitslag">
@@ -357,13 +367,14 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld lgfindicatierec conform codelijst 38. LGF indicatie voor REC -->
-      <xsl:for-each select="/descendant::*/od:lgf/od:lgfindicatierec">
-        <xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4')">
-          <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'LGF indicatie voor REC' bevat een waarde die niet voorkomt in codelijst 38.</xsl:with-param>
-          </xsl:call-template>
-        </xsl:if>
-      </xsl:for-each>
+      <!-- 20190101: validatie van deze codelijst verwijderd omdat veld is vewijderd -->
+      <!--<xsl:for-each select="/descendant::*/od:lgf/od:lgfindicatierec">
+				<xsl:if test="not(text()='1') and not(text()='2') and not(text()='3') and not(text()='4')">
+					<xsl:call-template name="melding">
+						<xsl:with-param name="tekst">Het veld 'LGF indicatie voor REC' bevat een waarde die niet voorkomt in codelijst 38.</xsl:with-param>
+					</xsl:call-template>
+				</xsl:if>
+			</xsl:for-each>-->
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld soort_arrangement conform codelijst 39. Soort arrangement -->
       <!-- 20160120: veld "soort_arrangement" verwijderd, dus ook deze codelijst validatie -->
@@ -399,11 +410,10 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetssoort> binnen <eindtoets_basisonderwijs> conform codelijst 42. Soort eindtoets -->
-      <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
-      <!-- Is de waarde van veld <toetssoort> binnen <eindtoets_basisonderwijs> conform codelijst 42. Soort eindtoets -->
+      <!-- 20190101: Validatie van code 0015 (CESAN) verwijderd -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetssoort">
-        <xsl:if test="not(text()='0011') and not(text()='0012') and not(text()='0013') and not(text()='0014') and not(text()='0015') and not(text()='0016') ">
+        <xsl:if test="not(text()='0011') and not(text()='0012') and not(text()='0013') and not(text()='0014') and not(text()='0016') ">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Toetssoort' binnen het blok 'Eindtoets basisonderwijs' bevat een waarde die niet voorkomt in codelijst 42.</xsl:with-param>
           </xsl:call-template>
@@ -411,10 +421,11 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <toetsniveau> binnen <eindtoets_basisonderwijs> conform codelijst 43. Niveau eindtoets -->
+      <!-- 20190101: Validatie van deze codelijst aangepast: alleen waarde "G" (van Generiek) toegestaan; oudere waarden verwijderd -->
       <!-- 20180322: Validatie van deze codelijst aangepast: ook waarde "G" (van Generiek) toegestaan en oudere waarden t.b.v. oudere eindtoetsresultaten nog steeds toegestaan -->
       <!-- 20161128: Validatie van deze codelijst toegevoegd -->
       <xsl:for-each select="/descendant::*/od:eindtoets_basisonderwijs/od:eindtoetsresultaat/od:toetsniveau">
-        <xsl:if test="not(text()='G') and not(text()='S') and not(text()='B') and not(text()='N') and not(text()='E') ">
+        <xsl:if test="not(text()='G')">
           <xsl:call-template name="melding">
             <xsl:with-param name="tekst">Het veld 'Toetsniveau' binnen het blok 'Eindtoets basisonderwijs' bevat een waarde die niet voorkomt in codelijst 43.</xsl:with-param>
           </xsl:call-template>
@@ -469,6 +480,7 @@
       </xsl:for-each>
       <!-- Afspraak OSO gegevensset: validatie van veldwaarde conform codelijst -->
       <!-- Is de waarde van veld <domeincode> binnen <eindtoets_basisonderwijs> conform codelijst 48. Categorie uitlevering -->
+      <!-- 20190101 naam betrokken veld gewijzigd in cat_onderwijsondersteuning (voorheen cat_zorgenbegeleiding) -->
       <!-- 20170308: Validatie van deze codelijst toegevoegd voor alle betreffende velden in blok "categorie uitlevering" -->
       <xsl:for-each select="//od:metadata/od:categorie_uitlevering/od:cat_metadata">
         <xsl:if test="not(text()='VERPLICHT') and not(text()='OPTIONEEL')  and not(text()='VERBODEN') and not(text()='OPT-UIT')">
@@ -526,10 +538,10 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <xsl:for-each select="//od:metadata/od:categorie_uitlevering/od:cat_zorgenbegeleiding">
+      <xsl:for-each select="//od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning">
         <xsl:if test="not(text()='VERPLICHT') and not(text()='OPTIONEEL')  and not(text()='VERBODEN') and not(text()='OPT-UIT')">
           <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'Categorie Zorg en Begeleiding' (cat_zorgenbegeleiding) binnen metadata bevat een waarde die niet voorkomt in codelijst 48.</xsl:with-param>
+            <xsl:with-param name="tekst">Het veld 'Categorie Onderwijsondersteuning' (cat_onderwijsondersteuning) binnen metadata bevat een waarde die niet voorkomt in codelijst 48.</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
@@ -557,7 +569,7 @@
       <xsl:for-each select="//od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen">
         <xsl:if test="not(text()='VERPLICHT') and not(text()='OPTIONEEL')  and not(text()='VERBODEN') and not(text()='OPT-UIT')">
           <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'Categorie Handelingsplannen' (cat_overstapadvies) binnen metadata bevat een waarde die niet voorkomt in codelijst 48.</xsl:with-param>
+            <xsl:with-param name="tekst">Het veld 'Categorie Handelingsplannen' (cat_handelingsplannen) binnen metadata bevat een waarde die niet voorkomt in codelijst 48.</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
@@ -585,7 +597,7 @@
       <!-- ________________________________________________________________________________________ -->
       <!--                              Validatie van veldwaarden                                   -->
       <!-- ________________________________________________________________________________________ -->
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.01 -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OG.01 -->
       <!-- e-mail format controle van veld "nummer" binnen "communicatie" (zie Tabel A.6): 
 				Formaat AN  4…256 (karakterset afkomstig van basistype)Reguliere expressie
 				Beschrijving controles: 
@@ -620,18 +632,19 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.02 -->
-      <!-- Veld <standaardversie> binnen <metadata> heeft waarde "2018.1" -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OG.02 -->
+      <!-- Veld <standaardversie> binnen <metadata> heeft waarde "2019.1" -->
       <!-- Is de waarde van veld dossier.metadata.standaardversie conform afspraak -->
-      <!-- 201801020: Validatie van deze veldwaarde gewijzigd -->
+      <!-- 20190101: Validatie van deze veldwaarde gewijzigd -->
+      <!-- 20180102: Validatie van deze veldwaarde gewijzigd -->
       <xsl:for-each select="/descendant::*/od:metadata/od:standaardversie">
-        <xsl:if test="not(text()='2018.1')">
+        <xsl:if test="not(text()='2019.1')">
           <xsl:call-template name="melding">
-            <xsl:with-param name="tekst">Het veld 'Versienummer van standaard' bevat een waarde die niet gelijk is aan de verplichte waarde "2018.1".</xsl:with-param>
+            <xsl:with-param name="tekst">Het veld 'Versienummer van standaard' bevat een waarde die niet gelijk is aan de verplichte waarde "2019.1".</xsl:with-param>
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.03 -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OG.03 -->
       <!-- lwoo einddatum format controle van veld "lwoo_einddatum" binnen "lwoo" (zie Tabel A.20): 
 				Formaat "EEJJ-07-31"
 				reguliere expressie: "[0-9][0-9][0-9][0-9]-07-31" -->
@@ -643,7 +656,7 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OG.04 -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OG.04 -->
       <!-- Gegevensveld "Overlijdensdatum van ouders/verzorgers" is alleen toegestaan indien is overleden (overleden heeft waarde “true”). -->
       <!-- 20180115 volgende regel toegevoegd -->
       <xsl:for-each select="/descendant::*/od:verzorger">
@@ -658,12 +671,48 @@
           </xsl:call-template>
         </xsl:if>
       </xsl:for-each>
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OG.05 -->
+      <!-- Gegevensvelden "Geslacht" en "Adresgeheim" is niet toegestaan binnen huisarts. -->
+      <!-- 20190101 volgende regel toegevoegd -->
+      <xsl:for-each select="/descendant::*/od:huisarts">
+        <xsl:if test="(od:roepnaam) ">
+          <xsl:call-template name="melding">
+            <xsl:with-param name="tekst">De gegevens over huisarts mogen geen roepnaam bevatten .</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="(od:geslacht) ">
+          <xsl:call-template name="melding">
+            <xsl:with-param name="tekst">De gegevens over huisarts mogen geen geslacht bevatten .</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:if test="(xs:boolean(od:adresgeheim)) ">
+          <xsl:call-template name="melding">
+            <xsl:with-param name="tekst">De gegevens over huisarts mogen geen aanduiding dat het adres geheim is bevatten.</xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+      </xsl:for-each>
       <!-- ________________________________________________________________________________________ -->
-      <!--                              Validatie van Categorie velden wanneer uitgezet             -->
+      <!--          Validatie van Categorie velden wanneer verplicht, verboden of uitgezet          -->
       <!-- ________________________________________________________________________________________ -->
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_metadata -->
-      <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat01 (cat_metadata) -->
+      <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_metadata='VERPLICHT') and not((//od:dossier/od:metadata) or (//od:dossier/od:overdrachtsoort)) )">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Metadata" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_metadata='VERBODEN') and (//od:dossier/od:metadata))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Metadata" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_metadata='VERBODEN') and (//od:dossier/od:overdrachtsoort))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens over de overdracht uit de categorie "Metadata" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_metadata='OPT-UIT') and (//od:dossier/od:metadata))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Metadata" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
@@ -674,17 +723,53 @@
           <xsl:with-param name="tekst">Een dossier mag geen gegevens over de overdracht uit de categorie "Metadata" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_ouderinzage -->
-      <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat02 (cat_ouderinzage) -->
+      <!-- Gegevens van categorie "Ouderinzage" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_ouderinzage='VERPLICHT') and not(//od:dossier/od:inzage))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Ouderinzage" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_ouderinzage='VERBODEN') and (//od:dossier/od:inzage))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Ouderinzage" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_ouderinzage='OPT-UIT') and (//od:dossier/od:inzage))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Ouderinzage" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_oudersverzorgers -->
-      <!-- Gegevens van categorie "Ouders/Verzorgers" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat03 (cat_school) -->
+      <!-- Gegevens van categorie "School" zijn altijd verplicht in dossier middels XSD -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat04 (cat_leerling) -->
+      <!-- Gegevens van categorie "Leerling" zijn altijd verplicht in dossier middels XSD -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat05 (cat_oudersverzorgers) -->
+      <!-- Gegevens van categorie "Ouders/Verzorgers" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLIVHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='VERPLICHT') and      not((//od:dossier/od:huidigeschool/od:leerling/od:verzorgersaansprakelijk) or (//od:dossier/od:huidigeschool/od:leerling/od:verzorger) or (//od:dossier/od:huidigeschool/od:leerling/od:aansprakelijkeinstelling) ) )">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:verzorgersaansprakelijk))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:verzorger))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen ouders/verzorger gegevens uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:aansprakelijkeinstelling))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen aansprakelijke instelling gegevens bevatten uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_oudersverzorgers='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:verzorgersaansprakelijk))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
@@ -700,9 +785,35 @@
           <xsl:with-param name="tekst">Een dossier mag geen aansprakelijke instelling gegevens bevatten uit de categorie "Ouders/Verzorgers" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_vve -->
-      <!-- Gegevens van categorie "VVE" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat06 (cat_vve) -->
+      <!-- Gegevens van categorie "VVE" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regels toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='VERPLICHT') and      not((//od:dossier/od:huidigeschool/od:leerling/od:vanpeuterspeelzaal) or (//od:dossier/od:huidigeschool/od:leerling/od:naampeuterspeelzaal)     or (//od:dossier/od:huidigeschool/od:leerling/od:voorschools) or (//od:dossier/od:huidigeschool/od:leerling/od:vroegschools) ) )">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "VVE" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:vanpeuterspeelzaal))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen PSZ gegevens uit de categorie "VVE" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:naampeuterspeelzaal))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen PSZ naam uit de categorie "VVE" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:voorschools))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Voorschoolse educatie gegevens uit de categorie "VVE" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:vroegschools))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Vroegschoolse educatie gegevens uit de categorie "VVE" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vve='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:vanpeuterspeelzaal))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen PSZ gegevens uit de categorie "VVE" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
@@ -723,78 +834,284 @@
           <xsl:with-param name="tekst">Een dossier mag geen Vroegschoolse educatie gegevens uit de categorie "VVE" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_schoolloopbaan -->
-      <!-- Gegevens van categorie "Schoolloopbaan" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat07 (cat_schoolloopbaan) -->
+      <!-- Gegevens van categorie "Schoolloopbaan" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_schoolloopbaan='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:schoolloopbaanlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Schoolloopbaan" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_schoolloopbaan='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:schoolloopbaanlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Schoolloopbaan" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_schoolloopbaan='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:schoolloopbaanlijst))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Schoolloopbaan" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_overstapadvies -->
-      <!-- Gegevens van categorie "Overstapadvies" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat08 (cat_overstapadvies) -->
+      <!-- Gegevens van categorie "Overstapadvies" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_overstapadvies='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:overstapadvies))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Overstapadvies" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_overstapadvies='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:overstapadvies))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Overstapadvies" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_overstapadvies='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:overstapadvies))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Overstapadvies" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_zorgenbegeleiding -->
-      <!-- Gegevens van categorie "Zorg en Begeleiding" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat09 (cat_onderwijsondersteuning) -->
+      <!-- Gegevens van categorie "Onderwijsondersteuning" (voorheen "Zorg en Begeleiding") zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190311 regels van categorie onderwijsondersteuning gecorrigeerd naar validatie van aanwezigheid van de deelelementen van het blok onderwijsondersteuning -->
+      <!-- 20190101 regel gewijzigd -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regels toegevoegd -->
-      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_zorgenbegeleiding='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:zorg))">
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERPLICHT') and      not((//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:toelichting_onderwijsbehoeften) or (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:diagnose) or      (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:medicijngebruik) or (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:opp) or      (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:tlv) or (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_cluster12) or      (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_pao) or (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:lwoo) or      (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:rvc)) )">
         <xsl:call-template name="melding">
-          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Zorg en Begeleiding" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_zorgenbegeleiding='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:sefunctioneren))">
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:toelichting_onderwijsbehoefte))">
         <xsl:call-template name="melding">
-          <xsl:with-param name="tekst">Een dossier mag geen gevevens over SE functioneren uit de categorie "Zorg en Begeleiding" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+          <xsl:with-param name="tekst">Een dossier mag geen "Toelichting onderwijsbehoeften" uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_verzuim -->
-      <!-- Gegevens van categorie "Verzuim" zijn verboden wanneer uitgezet in dossier -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:diagnose))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Diagnose-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:medicijngebruik))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag het gegeven Medicijngebruik uit de categorie "Onderwijsondersteuning" niet bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:opp))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen OPP uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:tlv))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen TLV-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_cluster12))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens m.b.t. arrangement (cluster 1 en 2) uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_pao))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens m.b.t. arrangement (passend onderwijs) uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:lwoo))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen LWOO-aanwijzing uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:rvc))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen RVC-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:toelichting_onderwijsbehoefte))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen "Toelichting onderwijsbehoeften" uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:diagnose))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Diagnose-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:medicijngebruik))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag het gegeven Medicijngebruik uit de categorie "Onderwijsondersteuning" niet bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:opp))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen OPP uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:tlv))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen TLV-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_cluster12))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens m.b.t. arrangement (cluster 1 en 2) uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:arrangement_pao))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens m.b.t. arrangement (passend onderwijs) uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:lwoo))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen LWOO-aanwijzing uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_onderwijsondersteuning='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:rvc))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen RVC-gegevens uit de categorie "Onderwijsondersteuning" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat10 (cat_verzuim) -->
+      <!-- Gegevens van categorie "Verzuim" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_verzuim='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:verzuim))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Verzuim" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_verzuim='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:verzuim))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Verzuim" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_verzuim='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:verzuim))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Verzuim" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_eindtoetsbo -->
-      <!-- Gegevens van categorie "Eindtoets bo" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat11 (cat_eindtoetsbo) -->
+      <!-- Gegevens van categorie "Eindtoets bo" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_eindtoetsbo='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:eindtoets_basisonderwijs))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Eindtoets bo" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_eindtoetsbo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:eindtoets_basisonderwijs))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Eindtoets bo" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_eindtoetsbo='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:eindtoets_basisonderwijs))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Eindtoets bo" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_toetsresultaten -->
-      <!-- Gegevens van categorie "Toetsresultaten" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat120 (cat_toetsresultaten) -->
+      <!-- Gegevens van categorie "Toetsresultaten" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_toetsresultaten='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:toetslijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Toetsresultaten" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_toetsresultaten='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:toetslijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Toetsresultaten" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_toetsresultaten='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:toetslijst))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Toetsresultaten" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_handelingsplannen -->
-      <!-- Gegevens van categorie "Handelingsplannen" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat13 (cat_handelingsplannen) -->
+      <!-- Gegevens van categorie "Handelingsplannen" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
-      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:handelingsplanlijst))">
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:handelingsplan))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Handelingsplannen" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:handelingsplan))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Handelingsplannen" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_handelingsplannen='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:onderwijsondersteuning/od:handelingsplan))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Handelingsplannen" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_cijferlijsten -->
-      <!-- Gegevens van categorie "Cijferlijsten" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat14 (cat_cijferlijsten) -->
+      <!-- Gegevens van categorie "Cijferlijsten" zijn verboden verboden of wanneer uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_cijferlijsten='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:cijferlijstlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Cijferlijsten" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_cijferlijsten='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:cijferlijstlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Cijferlijsten" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_cijferlijsten='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:cijferlijstlijst))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Cijferlijsten" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_vombo -->
-      <!-- Gegevens van categorie "Cijferlijsten" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat15 (cat_vombo) -->
+      <!-- Gegevens van categorie "VO-MBO" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regels toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERPLICHT') and      not((//od:dossier/od:huidigeschool/od:leerling/od:bevorderd) or (//od:dossier/od:huidigeschool/od:leerling/od:examenresultaat) or     (//od:dossier/od:huidigeschool/od:leerling/od:resultaatvakkenvo) or (//od:dossier/od:huidigeschool/od:leerling/od:certificaat) or     (//od:dossier/od:huidigeschool/od:leerling/od:competenties)or (//od:dossier/od:huidigeschool/od:leerling/od:stage) or     (//od:dossier/od:huidigeschool/od:leerling/od:overigvombo) ) )">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:bevorderd))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Bevorderd gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:examenresultaat))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Examens en uitslagen uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:resultaatvakkenvo))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen VO vakken en resultaten uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:certificaat))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Certificaat gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:competenties))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Competentie gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:stage))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Stage gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:overigvombo))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen Overige VO-MBO gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_vombo='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:bevorderd))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen Bevorderd gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
@@ -830,9 +1147,20 @@
           <xsl:with-param name="tekst">Een dossier mag geen Overige VO-MBO gegevens uit de categorie "VO-MBO" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
         </xsl:call-template>
       </xsl:if>
-      <!-- Afspraak OSO gegevensset versie 2018.1, business rule OS.cat_bijlagedocs -->
-      <!-- Gegevens van categorie "Bijlagedocumenten" zijn verboden wanneer uitgezet in dossier -->
+      <!-- Afspraak OSO gegevensset versie 2019.1, business rule OS.cat16 (cat_bijlagedocs) -->
+      <!-- Gegevens van categorie "Bijlagedocumenten" zijn verboden wanneer verboden of uitgezet in dossier -->
+      <!-- 20190101 regels voor VERPLICHT en VERBODEN toegevoegd -->
       <!-- 20170308 volgende regel toegevoegd -->
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_bijlagedocs='VERPLICHT') and not(//od:dossier/od:huidigeschool/od:leerling/od:overigdocumentlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier moet gegevens uit de categorie "Bijlagedocumenten" bevatten wanneer deze categorie verplicht is.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+      <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_bijlagedocs='VERBODEN') and (//od:dossier/od:huidigeschool/od:leerling/od:overigdocumentlijst))">
+        <xsl:call-template name="melding">
+          <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Bijlagedocumenten" bevatten wanneer deze categorie is verboden.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:if test="((//od:dossier/od:metadata/od:categorie_uitlevering/od:cat_bijlagedocs='OPT-UIT') and (//od:dossier/od:huidigeschool/od:leerling/od:overigdocumentlijst))">
         <xsl:call-template name="melding">
           <xsl:with-param name="tekst">Een dossier mag geen gegevens uit de categorie "Bijlagedocumenten" bevatten wanneer deze categorie is uitgezet.</xsl:with-param>
